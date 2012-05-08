@@ -8,11 +8,9 @@ every day, but those features were "finished" two months ago, you're not
 doing CD.
 
 This also applies to the other stages of an ideas lifecycle: we want to
-decrease the time an idea spends between its inception in someones brain to
-its realization in production. In the lean world this is known as _cycle
-time_. Having a low cycle time gives us many of the benefits explained
-below.
-
+decrease the time an idea spends as work-in-progress. In the lean world 
+this is known as _cycle time_. Having a low cycle time gives us many of the
+benefits explained below.
 
 Lower deltas means lower risk
 -----------------------------

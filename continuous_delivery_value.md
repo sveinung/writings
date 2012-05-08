@@ -15,9 +15,14 @@ benefits explained below.
 Lower deltas means lower risk
 -----------------------------
 
+If we deploy each feature to production individually, there are only so
+many things that can go wrong, and it is much easier to pinpoint the
+code that caused the failure than if we deploy a years worth of work at
+once.
 
 Shorter feedback loops
 ----------------------
+
 
 Build quality in
 ----------------

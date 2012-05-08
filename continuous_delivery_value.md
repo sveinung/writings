@@ -23,6 +23,15 @@ once.
 Shorter feedback loops
 ----------------------
 
+We already know the benefits of a shortened feedback loop when it comes
+to testing: Doing testing continuously as a part of development instead
+afterwords enables us to catch programmatic errors earlier, while they
+are still cheap to correct.
+
+The same thing goes for releasing - we can not be sure that a given
+feature gives the customer value unless it has been released. Therefore,
+for all we know, we might be creating the wrong thing. We want to _fail
+fast_.
 
 Build quality in
 ----------------

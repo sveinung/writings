@@ -16,15 +16,24 @@ Lower deltas means lower risk
 -----------------------------
 
 If we deploy each feature to production individually, there are only so
-many things that can go wrong, and it is much easier to pinpoint the
-code that caused the failure than if we deploy a years worth of work at
-once.
+many things that can go wrong at a time, and it is much easier to pinpoint
+the code that caused the failure than if we deploy a years worth of work at
+once. This applies both at the code-level and the feature-level.
+
+At the code-level this is quite obvious -- it's why we do TDD. Debugging
+one new line of code is easier than debugging a hundred.
+
+The same goes for features deployed into production -- releasing ten
+features separately makes it easier to pinpoint those the customers respond
+well to than releasing all at once.
+
+Working with small batches also enables shorter feedback loops.
 
 Shorter feedback loops
 ----------------------
 
 We already know the benefits of a shortened feedback loop when it comes
-to testing: Doing testing continuously as a part of development instead
+to testing: Doing testing continuously (as a part of development) instead
 afterwords enables us to catch programmatic errors earlier, while they
 are still cheap to correct.
 

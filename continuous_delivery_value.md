@@ -45,7 +45,13 @@ fast_.
 Build quality in
 ----------------
 
-Increased responsiveness to market changes
+Increased responsiveness
 ------------------------------------------
 
-
+With CD your you get more responsive: Toward your customers, and
+toward your competitors. You should be capable of deploying a given
+feature to production when the feature is ready with as little overhead
+as possible -- not as little part of a huge batch half a year later. If
+the time between a customer request and the delivery of the resulting
+feature is short, the customer gets the feeling that he/she is listened
+to (and is respected).

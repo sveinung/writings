@@ -42,6 +42,10 @@ feature gives the customer value unless it has been released. Therefore,
 for all we know, we might be creating the wrong thing. We want to _fail
 fast_.
 
+Being able to sooner make the correct decisions are one of the main
+advantages of shorter feedback loops, but to be able to decide anything
+we need data.
+
 Increased responsiveness
 ------------------------------------------
 

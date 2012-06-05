@@ -42,9 +42,6 @@ feature gives the customer value unless it has been released. Therefore,
 for all we know, we might be creating the wrong thing. We want to _fail
 fast_.
 
-Build quality in
-----------------
-
 Increased responsiveness
 ------------------------------------------
 

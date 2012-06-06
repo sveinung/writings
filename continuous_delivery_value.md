@@ -24,37 +24,25 @@ decrease the time an idea spends as work-in-progress. In the lean world
 this is known as _cycle time_. Having a low cycle time gives us many of the
 benefits explained below.
 
-Fewer changes means lower risk
-------------------------------
+Smaller deltas of change means lower risk
+-----------------------------------------
 
-("Deploying fewer changes means that less can go wrong. Why? Both from a
-technical and business perspective it is far easier to pinpoint the
-problem when there is less changes in the product — when doing fewer
-changes at a time we can be more certain that we are actually delivering
-the _right thing_.")
+With relation to the amount of changes done between one deployment to
+production and the next we sometimes talk of the _delta of change_.
+Reducing the delta of change means that less can go wrong at a given
+deploy. Why? Both from a technical and business perspective it is far
+easier to pinpoint the problem when there are less changes in the product -
+when doing fewer changes at a time we can be more certain that we are
+actually delivering the _right thing_.
 
-("When releasing fewer changes it is also easier for business to
+When releasing fewer changes it is also easier for business to
 understand the impact of each additional change. This enable us to learn
-more about customers and don't waste money on building less important
-features.")
+more about customers and not waste money on building features that
+does not add value.
 
-("Also, fewer changes means that we can deploy more often. And deploying
+Also, fewer changes means that we can deploy more often. And deploying
 more often means shorter feedback loops. And shorter feedback loops
-means we will learn more about customers.")
-
-If we deploy each feature to production individually, there are only so
-many things that can go wrong at a time, and it is much easier to pinpoint
-the code that caused the failure than if we deploy a years worth of work at
-once. This applies both at the code-level and the feature-level.
-
-At the code-level this is quite obvious -- it's why we do TDD. Debugging
-one new line of code is easier than debugging a hundred.
-
-The same goes for features deployed into production -- releasing ten
-features separately makes it easier to pinpoint those the customers respond
-well to than releasing all at once.
-
-Working with small batches also enables shorter feedback loops.
+means we will learn more about customers.
 
 Shorter feedback loops
 ----------------------

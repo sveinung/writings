@@ -11,13 +11,11 @@ are building the right product. Many have talked and written about the
 technical aspects of continuous delivery, so in this blog post we will
 look at three core _business_ aspects of delivering continuously:")
 
-(Ingen forkortelser! Det er ulovlig!)
-
-Continuous Delivery (CD) does not neccessarily mean that we push new features
+Continuous Delivery does not neccessarily mean that we push new features
 into production often, it means that we are able to push new features
 into production as soon as they are ready. If you push out new features
 every day, but those features were "finished" two months ago, you're not
-doing CD.
+doing Continuous Delivery.
 
 This also applies to the other stages of an ideas lifecycle: we want to
 decrease the time an idea spends as work-in-progress. In the lean world 
@@ -87,7 +85,7 @@ more satisfied they will be.")
 just lay around waiting to be deployed in a year? Or for that matter, in
 a month or a week?")
 
-With CD your you get more responsive: Toward your customers, and
+With Continuous Delivery you get more responsive: Toward your customers, and
 toward your competitors. You should be capable of deploying a given
 feature to production when the feature is ready with as little overhead
 as possible -- not as little part of a huge batch half a year later. If

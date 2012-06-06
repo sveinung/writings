@@ -1,26 +1,18 @@
 Why should the business guys care about Continuous Delivery?
 ============================================================
 
-(Dette er en utydelig intro som ikke får fram målet med bloggposten. Hva
-med noe mer i nærheten av: "Continuous Delivery is about delivering
-features to customers as soon as they are ready. Doing this has several
-benefits for both business and development. First and foremost it let's
-us adapt rapidly to customer feedback and changes in the market, which
-enables us to gain insights from real usage and thereby ensure that we
-are building the right product. Many have talked and written about the
-technical aspects of continuous delivery, so in this blog post we will
-look at three core _business_ aspects of delivering continuously:")
+At its core, Continuous Delivery is about delivering features to
+customers as soon as they are ready. Doing this has several benefits
+for both business and development. First and foremost it lets us adapt
+continuously and rapidly to customer feedback and changes in the market,
+which enables us gain insights from real usage. As a result, we have a
+better basis for knowing if we are building the right product.
 
-Continuous Delivery does not neccessarily mean that we push new features
-into production often, it means that we are able to push new features
-into production as soon as they are ready. If you push out new features
-every day, but those features were "finished" two months ago, you're not
-doing Continuous Delivery.
-
-This also applies to the other stages of an ideas lifecycle: we want to
-decrease the time an idea spends as work-in-progress. In the lean world 
-this is known as _cycle time_. Having a low cycle time gives us many of the
-benefits explained below.
+A lot have been said and written about the technical aspects of
+continuous delivery -- why it reduces overhead for development by
+automating everything that can be automated. This blog post will
+therefore focus on three code _business_ aspects of delivering
+continuously.
 
 Smaller deltas of change means lower risk
 -----------------------------------------

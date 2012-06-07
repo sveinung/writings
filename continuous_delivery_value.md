@@ -17,11 +17,10 @@ continuously.
 Smaller deltas of change means lower risk
 -----------------------------------------
 
-With relation to the amount of changes done between one deployment to
-production and the next we sometimes talk of the _delta of change_.
-Reducing the delta of change means that less can go wrong at a given
-deploy. Why? Both from a technical and business perspective it is far
-easier to pinpoint the problem when there are less changes in the product -
+We call the amount of changes between two deploys the _delta of change_.
+Reducing this delta means that less can go wrong when a new version is
+deployed. Why? Both from a technical and business perspective it is far
+easier to pinpoint the problem when there are less changes in the product —
 when doing fewer changes at a time we can be more certain that we are
 actually delivering the _right thing_.
 

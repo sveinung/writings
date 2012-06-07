@@ -1,5 +1,5 @@
-Why should the business guys care about Continuous Delivery?
-============================================================
+Why should business care about Continuous Delivery?
+===================================================
 
 At its core, Continuous Delivery is about delivering features to
 customers as soon as they are ready. Doing this has several benefits

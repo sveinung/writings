@@ -2,11 +2,11 @@ Why should business care about Continuous Delivery?
 ===================================================
 
 At its core, Continuous Delivery is about delivering features to
-customers as soon as they are ready. Doing this has several benefits
-for both business and development. First and foremost it lets us adapt
-continuously and rapidly to customer feedback and changes in the market,
-which enables us gain insights from real usage. As a result, we have a
-better basis for knowing if we are building the right product.
+customers as soon as they are ready. This rapid delivery has several
+benefits for both business and development. First and foremost it lets
+us adapt continuously and rapidly to customer feedback and changes in
+the market, which enables us gain insights from real usage. As a result,
+we have a better basis for knowing if we are building the right product.
 
 A lot have been said and written about the technical aspects of
 continuous delivery - why it reduces overhead for development by

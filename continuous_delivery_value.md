@@ -37,20 +37,20 @@ Shorter feedback loops
 ----------------------
 
 Between the team developing the product and the customers using it, there
-is a feedback loop: The creation and delivery of the product, the
+is a feedback loop: The development and delivery of the product, the
 customers usage of it, the interpretation of this usage, and the final
 decision making with possible changes to the product and the strategy.
 Delivering continuously shortens the feedback loop, which enables us to
 learn more—and more rapidly—about our customers and making the correct
 decisions faster.
 
-("The developers of a product often have several layers between them and
-the customer. Shorter feedback loops means fewer and more rapid code
-changes, which will increase the developers understanding of what the
+The developers of a product often have several layers between them and
+the customer. Smaller code changes delivered often means shorter feedback
+loops, which will increase the developers understanding of what the
 customer wants. This improvement can lead to improved decisions and
 technical innovation that are more aligned with what the user wants.
 The more you know your customers, the easier it is to build the right
-thing.")
+thing.
 
 Increased responsiveness
 ------------------------

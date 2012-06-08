@@ -36,8 +36,8 @@ means we will learn more about customers.
 Shorter feedback loops
 ----------------------
 
-Between the team developing the product and the customers using it, there
-is a feedback loop: The development and delivery of the product, the
+There is a feedback loop between the team developing the product and the
+customers using it: The development and delivery of the product, the
 customers usage of it, the interpretation of this usage, and the final
 decision making with possible changes to the product and the strategy.
 Delivering continuously shortens the feedback loop, which enables us to

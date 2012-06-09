@@ -9,7 +9,7 @@ the market, which enables us gain insights from real usage. As a result,
 we have a better basis for knowing if we are building the right product.
 
 A lot have been said and written about the technical aspects of
-continuous delivery - why it reduces overhead for development by
+continuous delivery—why it reduces overhead for development by
 automating everything that can be automated. This blog post will
 therefore focus on three core _business_ aspects of delivering
 continuously.

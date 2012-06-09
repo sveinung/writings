@@ -55,21 +55,14 @@ thing.
 Increased responsiveness
 ------------------------
 
-("By continuously delivering small changes rapidly you can be more
-reponsive, both with regards to customers and with regards to the market
-and your competitors. Increased responsiveness means that you are able
-to faster adapt to customer needs and market changes. For example, the
-faster you are able to deliver on a customer request, the happier and
-more satisfied they will be.")
+By continuously delivering small changes rapidly you can be more
+responsive: With regards to customers, the market, and your competitors.
+Increased responsiveness means that you are able to adapt faster to
+customer needs and market changes. For example, the faster you are able
+to deliver on a customer request, the happier and more satisfied they will
+be.
 
-("Why keep a feature that is already developed and ready for production
+Why keep a feature that is already developed and ready for production
 just lay around waiting to be deployed in a year? Or for that matter, in
-a month or a week?")
-
-With Continuous Delivery you get more responsive: Toward your customers, and
-toward your competitors. You should be capable of deploying a given
-feature to production when the feature is ready with as little overhead
-as possible -- not as little part of a huge batch half a year later. If
-the time between a customer request and the delivery of the resulting
-feature is short, the customer gets the feeling that he/she is listened
-to (and is respected).
+a month or a week? A feature only adds value after being delivered to
+the customers, if not it's only _inventory waste_.

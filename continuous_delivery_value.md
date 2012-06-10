@@ -5,7 +5,7 @@ At its core, Continuous Delivery is about delivering features to
 customers as soon as they are ready. This rapid delivery has several
 benefits for both business and development. First and foremost it lets
 us adapt continuously and rapidly to customer feedback and changes in
-the market—it enables us gain insights from real usage. As a result
+the market—it enables us to gain insights from real usage. As a result
 we have a better basis for knowing if we are building the right product.
 
 A lot have been said and written about the technical aspects of
@@ -25,7 +25,7 @@ that we are actually delivering the _right thing_.
 
 When releasing fewer changes it is also easier for business to
 understand the impact of each additional change. This enable us to learn
-more about customers and not waste money building features that does not
+more about customers and not waste money building features that don't
 add value.
 
 Also, fewer changes means that we can deploy more often. And deploying
@@ -47,7 +47,7 @@ The developers of a product often have several layers between them and
 the customer. Smaller code changes delivered often means shorter feedback
 loops, which will increase the developers understanding of what the
 customer wants. This improvement can lead to improved decisions and
-technical innovation that are more aligned with what the user wants.
+technical innovations that are more aligned with what the user wants.
 The more you know your customers, the easier it is to build the right
 thing.
 

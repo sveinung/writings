@@ -47,7 +47,7 @@ The developers of a product often have several layers between them and
 the customer. Smaller code changes delivered often means shorter feedback
 loops, which will increase the developers understanding of what the
 customer wants. This improvement can lead to improved decisions and
-technical innovations that are more aligned with what the user wants.
+technical innovations that are more aligned with what the user needs.
 The more you know your customers, the easier it is to build the right
 thing.
 

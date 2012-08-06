@@ -14,6 +14,11 @@ toggles, and branch by abstraction.
 Using feature branches
 ----------------------
 
+The first technique for controlling the exposure of features is called
+_feature branching_. Simply explained, this consists of creating a new
+development branch every time you begin working on a new feature. After
+the feature has reached sufficient maturity, it is merged back into the
+main development branch.
 
 Using feature toggles
 ---------------------

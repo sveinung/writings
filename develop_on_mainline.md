@@ -7,3 +7,19 @@ continuously they should be made available for our users as soon as they
 have matured. Unfortunately for us, features are seldom finished at the
 same time. Therefore, we need mechanisms for controlling when a given
 feature is made available.
+
+This blogpost will focus on techniques such as: feature branching, feature
+toggles, and branch by abstraction. 
+
+Using feature branches
+----------------------
+
+
+Using feature toggles
+---------------------
+
+
+Branch by abstraction
+---------------------
+
+

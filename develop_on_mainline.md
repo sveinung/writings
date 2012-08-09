@@ -34,8 +34,25 @@ of time, overlapping functionality between features are bound to happen.
 Using feature toggles
 ---------------------
 
+The purpose of the next technique, _feature toggling_, is to let us
+develop directly on mainline. Our sole mechanism for keeping the feature
+away from the user is a conditional statement surrounding the given
+feature, and a boolean variable.
+
+The advantage of this approach is being able to share code among
+features without any form of complex merging strategy, where we have to
+be aware at all times of what code goes to which branch.
+
+The disadvantage of toggles is that they add complexity to the code. For
+this reason, they should in many cases be removed as soon as the feature
+is ready. The corollary: feature toggles are best suited for projects
+where features have few entry points in the user interface.
 
 Branch by abstraction
 ---------------------
+
+
+Example: a modernization project
+--------------------------------
 
 

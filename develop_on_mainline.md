@@ -18,16 +18,16 @@ Using feature branches
 
 The first technique for controlling the exposure of features is called
 _feature branching_. Simply explained, this consists of creating a new
-development branch every time you begin working on a new feature. After
-the feature has reached sufficient maturity, it is merged back into the
-main development branch.
+development branch every time you begin working on a new feature that
+must be delivered separately. After the feature has reached sufficient
+maturity, it is merged back into the main development branch.
 
 Feature branching works best when each branch is relatively short-lived
-and each feature does'nt overlap too much with other features during its
-lifespan. Overlap leads to increased overhead when during merging as the
+and each feature doesn't overlap too much with other features during its
+lifespan. Overlap leads to increased overhead during merging as the
 person doing the job has to decide which changes to keep.
 
-One downside of feature branching is that they make it hard to share
+Another downside of feature branching is that they make it hard to share
 code across branches. As we do not—and should not—plan everything ahead
 of time, overlapping functionality between features are bound to happen.
 

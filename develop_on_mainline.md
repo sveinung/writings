@@ -22,6 +22,8 @@ development branch every time you begin working on a new feature that
 must be delivered separately. After the feature has reached sufficient
 maturity, it is merged back into the main development branch.
 
+![feature branching](img/feature_branching/feature_branch_big.png)
+
 Feature branching works best when each branch is relatively short-lived
 and each feature doesn't overlap too much with other features during its
 lifespan. Overlap leads to increased overhead during merging as the

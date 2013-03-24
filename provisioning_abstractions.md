@@ -1,5 +1,5 @@
-Simple abstractions for provisioning your architecture
-======================================================
+Simple abstractions for provisioning your infrastructure
+========================================================
 
 ```bash
 function _include {

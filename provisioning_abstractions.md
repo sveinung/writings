@@ -11,6 +11,11 @@ function _include {
 
 ```bash
 function _package {
-  sudo apt-get install --yes --quiet install $1
+  local CMD="sudo apt-get --yes --quiet install $1"
+  if [[ -z $2 ]]; then
+    $CMD
+  else
+    $CMD=$2
+  fi
 }
 ```

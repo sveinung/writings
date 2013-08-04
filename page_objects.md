@@ -8,7 +8,7 @@ This blog post will deal with testing complex views in a maintainable way throug
 Hiding access to the markup
 ---------------------------
 
-The lowest hanging fruit is to start wrapping you selectors behind some abstractions.
+The first thing you can do is to start wrapping your selectors inside some reusable abstractions.
 
 Hiding flow between views
 -------------------------

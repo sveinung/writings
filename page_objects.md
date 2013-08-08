@@ -26,8 +26,6 @@ Hiding access to the markup
 
 The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
 
-TODO: A picture of the view
-
 ```javascript
 it('hides the view when cancelling', function() {
     var view = new AddBookView();

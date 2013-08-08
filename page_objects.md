@@ -5,6 +5,10 @@ Some JavaScript views are complex; they have a lot of markup and they have a lot
 
 This blog post will deal with testing complex views in a maintainable way through the use of _Page Objects_ (though the examples will be simple for educational purposes).
 
+The examples will use an app where the user can add books to a library like below.
+
+![The library app](/page_objects/img/1-library.png?raw=true)
+
 Hiding access to the markup
 ---------------------------
 

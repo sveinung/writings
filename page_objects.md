@@ -66,7 +66,7 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
          }]
      });
      view.render();
-     var pageObject = new DropDownViewPageObject(view);
++    var pageObject = new DropDownViewPageObject(view);
 
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 

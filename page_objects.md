@@ -77,7 +77,7 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
  });
 ```
 
-Then we can move the interraction with the view into the page object. In this case the opening of the dropdown.
+Then we can move the interraction with the view into the page object. In this case opening the dropdown and choosing the option "Satire".
 
 ```diff
  var DropDownViewPageObject = function(dropDownView) {

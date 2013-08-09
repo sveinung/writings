@@ -29,7 +29,7 @@ Let's start with a simple view, for example the dropdown.
 The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
 
 ```javascript
- it('opens the dropdown', function() {
+ it('chooses an option', function() {
      var view = new DropDownView({
          defaultOption: "Choose!",
          options: [{
@@ -40,11 +40,12 @@ The first thing you can do is to start wrapping your selectors inside some reusa
      });
      view.render();
 
-     expect(view.$(".dropdown-menu")).toHaveClass("hide");
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
      view.$(".dropdown-trigger").click();
+     view.$(".dropdown-menu a[data-value='Satire']").click();
 
-     expect(view.$(".dropdown-menu")).not.toHaveClass("hide");
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
  });
 ```
 
@@ -55,7 +56,7 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
 +    this.view = dropDownView;
 +};
 
- it('opens the dropdown', function() {
+ it('chooses an option', function() {
      var view = new DropDownView({
          defaultOption: "Choose!",
          options: [{
@@ -65,13 +66,100 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
          }]
      });
      view.render();
-+    var pageObject = new DropDownViewPageObject(view);
+     var pageObject = new DropDownViewPageObject(view);
 
-     expect(view.$(".dropdown-menu")).toHaveClass("hide");
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
      view.$(".dropdown-trigger").click();
+     view.$(".dropdown-menu a[data-value='Satire']").click();
 
-     expect(view.$(".dropdown-menu")).not.toHaveClass("hide");
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+Then we can move the interraction with the view into the page object. In this case the opening of the dropdown.
+
+```diff
+ var DropDownViewPageObject = function(dropDownView) {
+     this.view = dropDownView;
+ };
+
++_.extend(DropDownViewPageObject.prototype, {
++    openMenu: function() {
++        this.view.$(".dropdown-trigger").click();
++        return this;
++    },
++    chooseOption: function(option) {
++        this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
++        return this;
++    }
++});
+
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
+     var pageObject = new DropDownViewPageObject(view);
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+-    view.$(".dropdown-trigger").click();
+-    view.$(".dropdown-menu a[data-value='Satire']").click();
++    pageObject.
++        openMenu().
++        chooseOption("Satire");
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+Personally I also like to move the assertions into the page objects if it improves readability, or if the same assertions are used frequently.
+
+```diff
+ var DropDownViewPageObject = function(dropDownView) {
+     this.view = dropDownView;
+ };
+
+ _.extend(DropDownViewPageObject.prototype, {
+     openMenu: function() {
+         this.view.$(".dropdown-trigger").click();
+         return this;
+     },
+     chooseOption: function(option) {
+         this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
+         return this;
+     }
+ });
+
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
+     var pageObject = new DropDownViewPageObject(view);
+
+-    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+     pageObject.
+-        openMenu().
+-        chooseOption("Satire");
++        expectToHaveChosen("Choose!").
++        openMenu().
++        chooseOption("Satire").
++        expectToHaveChosen("Satire");
+
+-    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
  });
 ```
 

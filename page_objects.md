@@ -24,19 +24,55 @@ and see them appear in the list
 Hiding access to the markup
 ---------------------------
 
+Let's start with a simple view, for example the dropdown.
+
 The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
 
 ```javascript
-it('hides the view when cancelling', function() {
-    var view = new AddBookView();
-    view.render();
+ it('opens the dropdown', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
 
-    expect(view.$el).not.toHaveClass('hide');
+     expect(view.$(".dropdown-menu")).toHaveClass("hide");
 
-    view.$(".cancel-button").click();
+     view.$(".dropdown-trigger").click();
 
-    expect(view.$el).toHaveClass('hide');
-});
+     expect(view.$(".dropdown-menu")).not.toHaveClass("hide");
+ });
+```
+
+The test accesses the DOM directly, which want to avoid, so we create a page object and inject the view.
+
+```diff
++var DropDownViewPageObject = function(dropDownView) {
++    this.view = dropDownView;
++};
+
+ it('opens the dropdown', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
++    var pageObject = new DropDownViewPageObject(view);
+
+     expect(view.$(".dropdown-menu")).toHaveClass("hide");
+
+     view.$(".dropdown-trigger").click();
+
+     expect(view.$(".dropdown-menu")).not.toHaveClass("hide");
+ });
 ```
 
 Hiding flow between views

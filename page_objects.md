@@ -134,6 +134,14 @@ Personally I also like to move the assertions into the page objects if it improv
      chooseOption: function(option) {
          this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
          return this;
++    },
++    expectToHaveChosen: function(option) {
++        expect(this.view.$(".dropdown-trigger .chosen-value")).toHaveText(option);
++        return this;
++    },
++    expectToBeHidden: function() {
++        expect(this.view.$(".dropdown-menu")).toHaveClass("hide");
++        return this;
      }
  });
 

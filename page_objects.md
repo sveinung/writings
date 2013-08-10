@@ -119,7 +119,7 @@ Then we can move the interraction with the view into the page object. In this ca
  });
 ```
 
-Personally I also like to move the assertions into the page objects if it improves readability, or if the same assertions are used frequently.
+Personally, I also like to move the assertions into the page objects if it _improves readability_, or if the same assertions are _used frequently_.
 
 ```diff
  var DropDownViewPageObject = function(dropDownView) {

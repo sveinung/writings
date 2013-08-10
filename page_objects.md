@@ -171,6 +171,52 @@ Personally, I also like to move the assertions into the page objects if it _impr
  });
 ```
 
+In the end we end up with the code in the block below. Notice how much more readable the test is!
+
+```javascript
+ var DropDownViewPageObject = function(dropDownView) {
+     this.view = dropDownView;
+ };
+
+ _.extend(DropDownViewPageObject.prototype, {
+     openMenu: function() {
+         this.view.$(".dropdown-trigger").click();
+         return this;
+     },
+     chooseOption: function(option) {
+         this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
+         return this;
+     },
+     expectToHaveChosen: function(option) {
+         expect(this.view.$(".dropdown-trigger .chosen-value")).toHaveText(option);
+         return this;
+     },
+     expectToBeHidden: function() {
+         expect(this.view.$(".dropdown-menu")).toHaveClass("hide");
+         return this;
+     }
+ });
+
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
+     var pageObject = new DropDownViewPageObject(view);
+
+     pageObject.
+         expectToHaveChosen("Choose!").
+         openMenu().
+         chooseOption("Satire").
+         expectToHaveChosen("Satire");
+ });
+```
+
 Hiding flow between views
 -------------------------
 

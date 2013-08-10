@@ -52,8 +52,8 @@ The first thing you can do is to start wrapping your selectors inside some reusa
 The test accesses the DOM directly, which want to avoid, so we create a page object and inject the view.
 
 ```diff
-+var DropDownViewPageObject = function(dropDownView) {
-+    this.view = dropDownView;
++var DropDownViewPageObject = function($dropDownView) {
++    this.$view = $dropDownView;
 +};
 
  it('chooses an option', function() {
@@ -66,7 +66,7 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
          }]
      });
      view.render();
-+    var pageObject = new DropDownViewPageObject(view);
++    var pageObject = new DropDownViewPageObject(view.$el);
 
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
@@ -80,17 +80,17 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
 Then we can move the interraction with the view into the page object. In this case opening the dropdown and choosing the option "Satire".
 
 ```diff
- var DropDownViewPageObject = function(dropDownView) {
-     this.view = dropDownView;
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
  };
 
 +_.extend(DropDownViewPageObject.prototype, {
 +    openMenu: function() {
-+        this.view.$(".dropdown-trigger").click();
++        this.$view.find(".dropdown-trigger").click();
 +        return this;
 +    },
 +    chooseOption: function(option) {
-+        this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
++        this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
 +        return this;
 +    }
 +});
@@ -105,7 +105,7 @@ Then we can move the interraction with the view into the page object. In this ca
          }]
      });
      view.render();
-     var pageObject = new DropDownViewPageObject(view);
+     var pageObject = new DropDownViewPageObject(view.$el);
 
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
@@ -122,25 +122,25 @@ Then we can move the interraction with the view into the page object. In this ca
 Personally, I also like to move the assertions into the page objects if it _improves readability_, or if the same assertions are _used frequently_.
 
 ```diff
- var DropDownViewPageObject = function(dropDownView) {
-     this.view = dropDownView;
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
  };
 
  _.extend(DropDownViewPageObject.prototype, {
      openMenu: function() {
-         this.view.$(".dropdown-trigger").click();
+         this.$view.find(".dropdown-trigger").click();
          return this;
      },
      chooseOption: function(option) {
-         this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
+         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
          return this;
 +    },
 +    expectToHaveChosen: function(option) {
-+        expect(this.view.$(".dropdown-trigger .chosen-value")).toHaveText(option);
++        expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
 +        return this;
 +    },
 +    expectToBeHidden: function() {
-+        expect(this.view.$(".dropdown-menu")).toHaveClass("hide");
++        expect(this.$view.find(".dropdown-menu")).toHaveClass("hide");
 +        return this;
      }
  });
@@ -155,7 +155,7 @@ Personally, I also like to move the assertions into the page objects if it _impr
          }]
      });
      view.render();
-     var pageObject = new DropDownViewPageObject(view);
+     var pageObject = new DropDownViewPageObject(view.$el);
 
 -    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
@@ -174,25 +174,25 @@ Personally, I also like to move the assertions into the page objects if it _impr
 In the end we end up with the code in the block below. Notice how much more readable the test is!
 
 ```javascript
- var DropDownViewPageObject = function(dropDownView) {
-     this.view = dropDownView;
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
  };
 
  _.extend(DropDownViewPageObject.prototype, {
      openMenu: function() {
-         this.view.$(".dropdown-trigger").click();
+         this.$view.find(".dropdown-trigger").click();
          return this;
      },
      chooseOption: function(option) {
-         this.view.$(".dropdown-menu a[data-value='" + option + "']").click();
+         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
          return this;
      },
      expectToHaveChosen: function(option) {
-         expect(this.view.$(".dropdown-trigger .chosen-value")).toHaveText(option);
+         expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
          return this;
      },
      expectToBeHidden: function() {
-         expect(this.view.$(".dropdown-menu")).toHaveClass("hide");
+         expect(this.$view.find(".dropdown-menu")).toHaveClass("hide");
          return this;
      }
  });
@@ -207,7 +207,7 @@ In the end we end up with the code in the block below. Notice how much more read
          }]
      });
      view.render();
-     var pageObject = new DropDownViewPageObject(view);
+     var pageObject = new DropDownViewPageObject(view.$el);
 
      pageObject.
          expectToHaveChosen("Choose!").

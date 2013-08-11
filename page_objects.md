@@ -265,3 +265,78 @@ The next thing we will look at is hiding ajax calls and responses. In this examp
      }));
  });
 ```
+
+We quickly do the same thing we did in the previous example and hide interraction in a page object. This time, we are reusing the DropDownViewPageObject.
+
+```diff
+
++var AddBookViewPageObject = function($addBookView) {
++    this.$view = $addBookView;
++    this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
++};
++_.extend(AddBookViewPageObject.prototype, {
++    author: function(author) {
++        this.$view.find(".author-input").
++        val(author).
++        change();
++        return this;
++    },
++    title: function(title) {
++        this.$view.find(".title-input").
++        val(title).
++        change();
++        return this;
++    },
++    genre: function(genre) {
++        this.genreDropDown.
++        openMenu().
++        chooseOption(genre);
++        return this;
++    }
++});
+
+ it('saves the book', function() {
+     var genres = new Genres([
+         {"name":"Crime novel"},
+         {"name":"Picaresco"}
+     ]);
+     var view = new AddBookView({
+         genres: genres
+     });
+     view.render();
+
++    var pageObject = new AddBookViewPageObject(view.$el);
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+-    view.$(".author-input").
+-        val("Miguel de Cervantes Saavedra").
+-        change();
+-
+-    view.$(".title-input").
+-        val("Don Quixote").
+-        change();
+-
+-    var dropdown = view.$(".genres-dropdown");
+-    dropdown.find(".dropdown-trigger").click();
+-    dropdown.find("a[data-value='Picaresco']").click();
+
++    pageObject.
++        author("Miguel de Cervantes Saavedra").
++        title("Don Quixote").
++        genre("Picaresco");
+
+     responseFaker.fakeResponse(view.book.toJSON(), {}, function() {
+         view.$(".submit-button").click();
+     });
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```

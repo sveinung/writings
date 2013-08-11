@@ -252,9 +252,15 @@ The next thing we will look at is hiding ajax calls and responses. In this examp
      dropdown.find(".dropdown-trigger").click();
      dropdown.find("a[data-value='Picaresco']").click();
 
-     responseFaker.fakeResponse(view.book.toJSON(), {}, function() {
-         view.$(".submit-button").click();
-     });
+     var server = sinon.fakeServer.create();
+
+     view.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respondWith([200, { "Content-Type": "application/json" }, response]);
+     server.respond();
+     server.restore();
 
      expect(callback).toHaveBeenCalledWith(sinon.match({
          attributes: {
@@ -327,9 +333,15 @@ We quickly do the same thing we did in the previous example and hide interractio
 +        title("Don Quixote").
 +        genre("Picaresco");
 
-     responseFaker.fakeResponse(view.book.toJSON(), {}, function() {
-         view.$(".submit-button").click();
-     });
+     var server = sinon.fakeServer.create();
+
+     view.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respondWith([200, { "Content-Type": "application/json" }, response]);
+     server.respond();
+     server.restore();
 
      expect(callback).toHaveBeenCalledWith(sinon.match({
          attributes: {

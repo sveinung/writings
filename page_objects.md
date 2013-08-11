@@ -283,20 +283,20 @@ We quickly do the same thing we did in the previous example and hide interractio
 +_.extend(AddBookViewPageObject.prototype, {
 +    author: function(author) {
 +        this.$view.find(".author-input").
-+        val(author).
-+        change();
++            val(author).
++            change();
 +        return this;
 +    },
 +    title: function(title) {
 +        this.$view.find(".title-input").
-+        val(title).
-+        change();
++            val(title).
++            change();
 +        return this;
 +    },
 +    genre: function(genre) {
 +        this.genreDropDown.
-+        openMenu().
-+        chooseOption(genre);
++            openMenu().
++            chooseOption(genre);
 +        return this;
 +    }
 +});

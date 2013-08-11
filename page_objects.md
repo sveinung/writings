@@ -224,3 +224,44 @@ Hiding flow between views
 Hiding backend communication
 ----------------------------
 
+The next thing we will look at is hiding ajax calls and responses. In this example we will look at test that asserts that the AddBookView saves a new book.
+
+```javascript
+ it('saves the book', function() {
+     var genres = new Genres([
+         {"name":"Crime novel"},
+         {"name":"Picaresco"}
+     ]);
+     var view = new AddBookView({
+         genres: genres
+     });
+     view.render();
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+     view.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
+
+     view.$(".title-input").
+         val("Don Quixote").
+         change();
+
+     var dropdown = view.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     responseFaker.fakeResponse(view.book.toJSON(), {}, function() {
+         view.$(".submit-button").click();
+     });
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```

@@ -301,13 +301,8 @@ We quickly do the same thing we did in the previous example and hide interractio
 +});
 
  it('saves the book', function() {
-     var genres = new Genres([
-         {"name":"Crime novel"},
-         {"name":"Picaresco"}
-     ]);
-     var view = new AddBookView({
-         genres: genres
-     });
+     …
+     var view = new AddBookView({ genres: genres });
      view.render();
 
 +    var pageObject = new AddBookViewPageObject(view.$el);
@@ -392,13 +387,8 @@ Afterwards we move the Sinon XHR stubbing into the page object.
  });
 
  it('saves the book', function() {
-     var genres = new Genres([
-         {"name":"Crime novel"},
-         {"name":"Picaresco"}
-     ]);
-     var view = new AddBookView({
-         genres: genres
-     });
+     …
+     var view = new AddBookView({ genres: genres });
      view.render();
 
      var pageObject = new AddBookViewPageObject(view.$el);

@@ -421,3 +421,68 @@ Afterwards we move the Sinon XHR stubbing into the page object.
      }));
  });
 ```
+
+We have one potential little problem here. Each test that makes assertions about saving books will have intimate knowledge about the AddBookView. That is, that the view has an instance of a Book. If there's only a few tests, who cares (!), but if there are many we should probably clean it up. In this case we could inject the view itself instead of the jQuery object.
+
+```diff
+ var AddBookViewPageObject = function($addBookView) {
+     this.$view = $addBookView;
+     this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
+ };
+ _.extend(AddBookViewPageObject.prototype, {
+     author: function(author) { … },
+     title: function(title) { … },
+     genre: function(genre) { … },
+     save: function() {
++        this.saveCallback = sinon.spy();
++        this.view.book.on('sync', this.saveCallback);
+
+         var server = sinon.fakeServer.create();
+ 
+         this.$view.find(".submit-button").click();
+ 
+         // Responding with what was sent in
+         var response = server.queue[0].requestBody;
+         server.respondWith([200, { "Content-Type": "application/json" }, response]);
+         server.respond();
+         server.restore();
+
++        return this;
++    },
++    expectToHaveSaved: function(book) {
++        expect(this.saveCallback).toHaveBeenCalledWith(sinon.match({
++            attributes: book
++        }));
+     }
+ });
+
+ it('saves the book', function() {
+     …
+     var view = new AddBookView({ genres: genres });
+     view.render();
+
+     var pageObject = new AddBookViewPageObject(view.$el);
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+     pageObject.
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
+         save().
++        expectToHaveSaved({
++            author: "Miguel de Cervantes Saavedra",
++            title: "Don Quixote",
++            genre: "Picaresco"
++        });
+
+-    expect(callback).toHaveBeenCalledWith(sinon.match({
+-        attributes: {
+-            author: "Miguel de Cervantes Saavedra",
+-            title: "Don Quixote",
+-            genre: "Picaresco"
+-        }
+-    }));
+ });
+```

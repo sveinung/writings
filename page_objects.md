@@ -409,6 +409,8 @@ Afterwards we move the Sinon XHR stubbing into the page object.
 
 We have one potential little problem here. Each test that makes assertions about saving books will have intimate knowledge about the AddBookView. That is, that the view has an instance of a Book. If there's only a few tests, who cares (!), but if there are many we should probably clean it up. In this case we could inject the view itself instead of the jQuery object.
 
+Notice that in order to avoid unnecessary state in the page object the `save` function returns an object with the XHR assertion function with the `saveCallback` bound in a closure.
+
 ```diff
  var AddBookViewPageObject = function($addBookView) {
      this.$view = $addBookView;
@@ -419,8 +421,8 @@ We have one potential little problem here. Each test that makes assertions about
      title: function(title) { … },
      genre: function(genre) { … },
      save: function() {
-+        this.saveCallback = sinon.spy();
-+        this.view.book.on('sync', this.saveCallback);
++        var saveCallback = sinon.spy();
++        this.view.book.on('sync', saveCallback);
 
          var server = sinon.fakeServer.create();
  
@@ -432,12 +434,13 @@ We have one potential little problem here. Each test that makes assertions about
          server.respond();
          server.restore();
 
-+        return this;
-+    },
-+    expectToHaveSaved: function(book) {
-+        expect(this.saveCallback).toHaveBeenCalledWith(sinon.match({
-+            attributes: book
-+        }));
++        return {
++            expectToHaveSaved: function(book) {
++                expect(saveCallback).toHaveBeenCalledWith(sinon.match({
++                    attributes: book
++                }));
++            }
++        };
      }
  });
 
@@ -469,5 +472,82 @@ We have one potential little problem here. Each test that makes assertions about
 -            genre: "Picaresco"
 -        }
 -    }));
+ });
+```
+
+The end result is then:
+
+```javascript
+ var AddBookViewPageObject = function(addBookView) {
+     this.view = addBookView;
+     this.genreDropDown = new DropDownViewPageObject(this.view.$(".genres-dropdown"));
+ };
+ _.extend(AddBookViewPageObject.prototype, {
+     author: function(author) {
+         this.view.$(".author-input").
+             val(author).
+             change();
+         return this;
+     },
+     title: function(title) {
+         this.view.$(".title-input").
+             val(title).
+             change();
+         return this;
+     },
+     genre: function(genre) {
+         this.genreDropDown.
+             openMenu().
+             chooseOption(genre);
+         return this;
+     },
+     save: function() {
+         // Use this when asserting the XHR response
+         var saveCallback = sinon.spy();
+         this.view.book.on('sync', saveCallback);
+
+         var server = sinon.fakeServer.create();
+
+         this.view.$(".submit-button").click();
+
+         // Responding with what was sent in
+         var response = server.queue[0].requestBody;
+         server.respondWith([200, { "Content-Type": "application/json" }, response]);
+         server.respond();
+         server.restore();
+
+         return {
+             expectToHaveSaved: function(book) {
+                 expect(saveCallback).toHaveBeenCalledWith(sinon.match({
+                     attributes: book
+                 }));
+             }
+         };
+     }
+ });
+
+ it('saves the book', function() {
+     var genres = new Genres([
+         {"name":"Crime novel"},
+         {"name":"Picaresco"}
+     ]);
+
+     var view = new AddBookView({
+         genres: genres
+     });
+     view.render();
+
+     var pageObject = new AddBookViewPageObject(view);
+
+     pageObject.
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
+         save().
+         expectToHaveSaved({
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         });
  });
 ```

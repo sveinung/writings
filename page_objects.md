@@ -355,24 +355,9 @@ Afterwards we move the Sinon XHR stubbing into the page object.
      this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
  };
  _.extend(AddBookViewPageObject.prototype, {
-     author: function(author) {
-         this.$view.find(".author-input").
-             val(author).
-             change();
-         return this;
-     },
-     title: function(title) {
-         this.$view.find(".title-input").
-             val(title).
-             change();
-         return this;
-     },
-     genre: function(genre) {
-         this.genreDropDown.
-             openMenu().
-             chooseOption(genre);
-         return this;
-     },
+     author: function(author) { … },
+     title: function(title) { … },
+     genre: function(genre) { … },
 +    save: function() {
 +        var server = sinon.fakeServer.create();
 +

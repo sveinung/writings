@@ -551,5 +551,35 @@ The end result is then:
 Hiding flow between views
 -------------------------
 
+```javascript
+ var LibraryViewPageObject = function(libraryView) {
+     this.view = libraryView;
+ };
+ _.extend(LibraryViewPageObject.prototype, {
+     clickAddBook: function() {
+         var self = this;
+         var genresResponse = [{"name":"Crime novel"},{"name":"Picaresco"}];
+         responseFaker.fakeResponse(genresResponse, {}, function() {
+             self.view.$(".add-book").click();
+         });
+     }
+ });
+ it('shows the AddBookView', function() {
+     var library = new Library([
+         {"title":"Of Mice and Men","uri":"/book/1"},
+         {"title":"Sult","uri":"/book/2"}
+     ]);
+     var libraryView = new LibraryView({
+         library: library
+     });
+     libraryView.render();
 
+     var pageObject = new LibraryViewPageObject(libraryView);
+
+     pageObject.
+         clickAddBook();
+
+     expect(libraryView.$(".add-book-view")).not.toHaveClass("hide");
+ });
+```
 

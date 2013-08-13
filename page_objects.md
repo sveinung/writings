@@ -217,10 +217,6 @@ In the end we end up with the code in the block below. Notice how much more read
  });
 ```
 
-Hiding flow between views
--------------------------
-
-
 Hiding backend communication
 ----------------------------
 
@@ -551,3 +547,9 @@ The end result is then:
          });
  });
 ```
+
+Hiding flow between views
+-------------------------
+
+
+

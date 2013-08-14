@@ -96,14 +96,7 @@ Then we can move the interraction with the view into the page object. In this ca
 +});
 
  it('chooses an option', function() {
-     var view = new DropDownView({
-         defaultOption: "Choose!",
-         options: [{
-             value: "Picaresco"
-         }, {
-             value: "Satire"
-         }]
-     });
+     var view = new DropDownView(…);
      view.render();
      var pageObject = new DropDownViewPageObject(view.$el);
 
@@ -146,14 +139,7 @@ Personally, I also like to move the assertions into the page objects if it _impr
  });
 
  it('chooses an option', function() {
-     var view = new DropDownView({
-         defaultOption: "Choose!",
-         options: [{
-             value: "Picaresco"
-         }, {
-             value: "Satire"
-         }]
-     });
+     var view = new DropDownView(…);
      view.render();
      var pageObject = new DropDownViewPageObject(view.$el);
 

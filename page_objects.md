@@ -1,9 +1,13 @@
 Testing complex JavaScript views using Page Objects
 ===================================================
 
-Some JavaScript views are complex; they have a lot of markup and they have a lot of logic, and therefore, they are often hard to test. If these views are very susceptible to change they will likely burden you with a lot of exstra work keeping the tests running green. Failures may be caused by changes to the markup, some selector, or maybe some ajax response. Other complicating factors might be the views' frequency of use and how hard they are to mock.
+Testing complex JavaScript views is a pain. These views often contain lots of markup and logic, resulting in tests that are both cluttered and difficult to understand. Additionally, there is often duplicated code, such as DOM selectors and Ajax responses. In my experience, writing maintainable tests for these views can be greatly improved by using _Page Objects_.
 
-This blog post will deal with testing complex views in a maintainable way through the use of _Page Objects_ (though the examples will be simple for educational purposes).
+// what is page object (2 setninger)
+// kanskje noe sånt som "facade for viewene dine", eller noe i den retningen
+
+The example
+-----------
 
 The examples will use an app where the user can view a list of books
 

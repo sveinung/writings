@@ -32,6 +32,8 @@ Let's start with a simple view, for example the dropdown.
 
 The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
 
+// trykkes det på cancel i dette eksemplet?
+
 ```javascript
  it('chooses an option', function() {
      var view = new DropDownView({
@@ -52,6 +54,8 @@ The first thing you can do is to start wrapping your selectors inside some reusa
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
  });
 ```
+
+// hvorfor vil vi unngå DOM-en? Står litt i introen nå, men bør tydeliggjøres (kanskje en ekstra paragraf i intro)
 
 The test accesses the DOM directly, which want to avoid, so we create a page object and inject the view.
 
@@ -82,6 +86,8 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
 ```
 
 Then we can move the interraction with the view into the page object. In this case opening the dropdown and choosing the option "Satire".
+
+// jeg er usikker på bruken av pageObject.openMenu(). Hva er pageObject? Man må alltid slå opp, selv om det var er litt over. Hva med `dropDownEl` eller noe sånt her? Når jeg tenker litt på det er det kanskje naturlig å bruke `var dropDownView = new DropDownView` også? Lettere å se konteksten uten å måtte søke opp etter variabel-deklarasjonen.
 
 ```diff
  var DropDownViewPageObject = function($dropDownView) {
@@ -115,6 +121,8 @@ Then we can move the interraction with the view into the page object. In this ca
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
  });
 ```
+
+// underbygg disse punktene. Lesbarhet er VIKTIG! Kan linke til noe som dette, for eksempel: http://blogs.msdn.com/b/oldnewthing/archive/2007/04/06/2036150.aspx
 
 Personally, I also like to move the assertions into the page objects if it _improves readability_, or if the same assertions are _used frequently_.
 
@@ -162,6 +170,10 @@ Personally, I also like to move the assertions into the page objects if it _impr
 ```
 
 In the end we end up with the code in the block below. Notice how much more readable the test is!
+
+// Kanskje jeg ville dratt `DropDownViewPageObject` inn i sin egen kodesnutt under, og kun vist selve testen her. Det tydeliggjør hvor lesbar koden er. Nå må man "lete litt".
+
+// Igjen, litt usikker på lesbarheten av `pageObject` (men er ikke vant til det)
 
 ```javascript
  var DropDownViewPageObject = function($dropDownView) {
@@ -211,6 +223,9 @@ Hiding backend communication
 ----------------------------
 
 The next thing we will look at is hiding ajax calls and responses. In this example we will look at test that asserts that the AddBookView saves a new book.
+
+// Forresten, jeg ville injecta denne: https://github.com/sveinung/pageobject-example/blob/caf904d3d6f1009e5c9d4ec217fcb51b62600c6b/src/main/webapp/modules/library/books/addBookView.js#L20
+// det gjøre testen bedre også. Liker ikke at det plutselig kommer en `view.book` der.
 
 ```javascript
  it('saves the book', function() {

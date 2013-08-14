@@ -1,5 +1,5 @@
-Page Objects in JavaScript
-==========================
+Testing complex JavaScript views using Page Objects
+===================================================
 
 Some JavaScript views are complex; they have a lot of markup and they have a lot of logic, and therefore, they are often hard to test. If these views are very susceptible to change they will likely burden you with a lot of exstra work keeping the tests running green. Failures may be caused by changes to the markup, some selector, or maybe some ajax response. Other complicating factors might be the views' frequency of use and how hard they are to mock.
 

@@ -74,7 +74,7 @@ The test accesses the DOM directly, which want to avoid, so we create a page obj
          }]
      });
      view.render();
-+    var pageObject = new DropDownViewPageObject(view.$el);
++    var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
 
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
@@ -108,13 +108,13 @@ Then we can move the interraction with the view into the page object. In this ca
  it('chooses an option', function() {
      var view = new DropDownView(…);
      view.render();
-     var pageObject = new DropDownViewPageObject(view.$el);
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
 
      expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
 -    view.$(".dropdown-trigger").click();
 -    view.$(".dropdown-menu a[data-value='Satire']").click();
-+    pageObject.
++    dropDownViewPageObject.
 +        openMenu().
 +        chooseOption("Satire");
 
@@ -153,11 +153,11 @@ Personally, I also like to move the assertions into the page objects if it _impr
  it('chooses an option', function() {
      var view = new DropDownView(…);
      view.render();
-     var pageObject = new DropDownViewPageObject(view.$el);
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
 
 -    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
 
-     pageObject.
+     dropDownViewPageObject.
 -        openMenu().
 -        chooseOption("Satire");
 +        expectToHaveChosen("Choose!").
@@ -209,9 +209,9 @@ In the end we end up with the code in the block below. Notice how much more read
          }]
      });
      view.render();
-     var pageObject = new DropDownViewPageObject(view.$el);
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
 
-     pageObject.
+     dropDownViewPageObject.
          expectToHaveChosen("Choose!").
          openMenu().
          chooseOption("Satire").
@@ -306,7 +306,7 @@ We quickly do the same thing we did in the previous example and hide interractio
      var view = new AddBookView({ genres: genres });
      view.render();
 
-+    var pageObject = new AddBookViewPageObject(view.$el);
++    var addBookViewPageObject = new AddBookViewPageObject(view.$el);
 
      var callback = sinon.spy();
      view.book.on('sync', callback);
@@ -323,7 +323,7 @@ We quickly do the same thing we did in the previous example and hide interractio
 -    dropdown.find(".dropdown-trigger").click();
 -    dropdown.find("a[data-value='Picaresco']").click();
 
-+    pageObject.
++    addBookViewPageObject.
 +        author("Miguel de Cervantes Saavedra").
 +        title("Don Quixote").
 +        genre("Picaresco");
@@ -377,12 +377,12 @@ Afterwards we move the Sinon XHR stubbing into the page object.
      var view = new AddBookView({ genres: genres });
      view.render();
 
-     var pageObject = new AddBookViewPageObject(view.$el);
+     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
 
      var callback = sinon.spy();
      view.book.on('sync', callback);
 
-     pageObject.
+     addBookViewPageObject.
          author("Miguel de Cervantes Saavedra").
          title("Don Quixote").
          genre("Picaresco").
@@ -450,12 +450,12 @@ Notice that in order to avoid unnecessary state in the page object the `save` fu
      var view = new AddBookView({ genres: genres });
      view.render();
 
-     var pageObject = new AddBookViewPageObject(view.$el);
+     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
 
      var callback = sinon.spy();
      view.book.on('sync', callback);
 
-     pageObject.
+     addBookViewPageObject.
          author("Miguel de Cervantes Saavedra").
          title("Don Quixote").
          genre("Picaresco").
@@ -538,9 +538,9 @@ The end result is then:
      });
      view.render();
 
-     var pageObject = new AddBookViewPageObject(view);
+     var addBookViewPageObject = new AddBookViewPageObject(view);
 
-     pageObject.
+     addBookViewPageObject.
          author("Miguel de Cervantes Saavedra").
          title("Don Quixote").
          genre("Picaresco").

@@ -143,11 +143,7 @@ Personally, I also like to move the assertions into the page objects if it _impr
 +    expectToHaveChosen: function(option) {
 +        expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
 +        return this;
-+    },
-+    expectToBeHidden: function() {
-+        expect(this.$view.find(".dropdown-menu")).toHaveClass("hide");
-+        return this;
-     }
++    }
  });
 
  it('chooses an option', function() {
@@ -191,10 +187,6 @@ In the end we end up with the code in the block below. Notice how much more read
      },
      expectToHaveChosen: function(option) {
          expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
-         return this;
-     },
-     expectToBeHidden: function() {
-         expect(this.$view.find(".dropdown-menu")).toHaveClass("hide");
          return this;
      }
  });

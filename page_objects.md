@@ -225,8 +225,10 @@ The next thing we will look at is hiding ajax calls and responses. In this examp
          {"name":"Crime novel"},
          {"name":"Picaresco"}
      ]);
+     var book = new Book();
      var view = new AddBookView({
-         genres: genres
+         genres: genres,
+         book: book
      });
      view.render();
 
@@ -524,9 +526,10 @@ The end result is then:
          {"name":"Crime novel"},
          {"name":"Picaresco"}
      ]);
-
+     var book = new Book();
      var view = new AddBookView({
-         genres: genres
+         genres: genres,
+         book: book
      });
      view.render();
 

@@ -1,5 +1,5 @@
-Testing complex JavaScript views using Page Objects
-===================================================
+Writing maintainable Backbone view tests
+========================================
 
 Testing complex JavaScript views is a pain. These views often contain lots of markup and logic, resulting in tests that are both cluttered and difficult to understand. Additionally, there is often duplicated code, such as DOM selectors and Ajax responses. In my experience, writing maintainable tests for these views can be greatly improved by using _Page Objects_.
 

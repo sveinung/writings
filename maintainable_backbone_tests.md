@@ -26,6 +26,7 @@ and see them appear in the list
 ![The library app](pageobjects/img/4-book-added.png?raw=true)
 
 We want to test that the adding of new books works as intended. In detail, we want to:
+
 1. Insert the name of the author
 2. Insert the title of the book
 3. Choose a genre from the drop-down

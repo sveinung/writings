@@ -25,6 +25,111 @@ and see them appear in the list
 
 ![The library app](/page_objects/img/4-book-added.png?raw=true)
 
+Clean up view creation
+----------------------
+
+```javascript
+ it('saves the book', function() {
+     //  Create some genres for the drop-down
+     var genres = new Genres([
+         { name: "Crime novel" },
+         { name: "Picaresco" }
+     ]);
+
+     //  The book we are going to save
+     var book = new Book();
+
+     //  The view we are testing
+     var addBookView = new AddBookView({
+         genres: genres,
+         book: book
+     });
+     addBookView.render();
+
+     //  Set the author field
+     addBookView.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
+
+     //  Set the title field
+     addBookView.$(".title-input").
+         val("Don Quixote").
+         change();
+
+     // Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  Listen to the 'sync' event so that we can check what we saved later
+     var callback = sinon.spy();
+     this.addBookView.book.on('sync', callback);
+
+     //  Fake ajax responses
+     var server = sinon.fakeServer.create();
+
+     //  Save the book
+     this.addBookView.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respond();
+     server.restore();
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```
+
+In this test about a fourth of the lines are dedicated to setting up the view. A lot of that setup isn't even relevant for the functionality we are testing.
+
+The first thing we can do is to move view creation into a helper function.
+
+```diff
+ it('saves the book', function() {
+-    //  Create some genres for the drop-down
+-    var genres = new Genres([
+-        { name: "Crime novel" },
+-        { name: "Picaresco" }
+-    ]);
+-
+-    //  The book we are going to save
+-    var book = new Book();
+-
+-    //  The view we are testing
+-    var addBookView = new AddBookView({
+-        genres: genres,
+-        book: book
+-    });
+
++    var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     //  The rest of the test
+ });
+
++    function createAddBookView(options) {
++        options = options || {};
++
++        var genres = [];
++        if (options.genres) {
++            genres = _.map(options.genres, function(genre) {
++                return { name: genre }
++            });
++        }
++
++        return new AddBookView({
++            genres: new Genres(genres),
++            book: new Book()
++        });
++    }
+```
+
 Hiding access to the markup
 ---------------------------
 

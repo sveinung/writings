@@ -65,10 +65,6 @@ A typical test of a Backbone view looks like this:
      dropdown.find(".dropdown-trigger").click();
      dropdown.find("a[data-value='Picaresco']").click();
 
-     //  Listen to the 'sync' event so that we can check what we saved later
-     var callback = sinon.spy();
-     this.addBookView.book.on('sync', callback);
-
      //  Fake ajax responses
      var server = sinon.fakeServer.create();
 
@@ -76,17 +72,16 @@ A typical test of a Backbone view looks like this:
      this.addBookView.$(".submit-button").click();
 
      //  Responding with what was sent in
-     var response = server.queue[0].requestBody;
+     var requestBody = server.queue[0].requestBody;
      server.respond();
      server.restore();
 
-     expect(callback).toHaveBeenCalledWith(sinon.match({
-         attributes: {
-             author: "Miguel de Cervantes Saavedra",
-             title: "Don Quixote",
-             genre: "Picaresco"
-         }
-     }));
+     //  Check that we really save what we expect to have saved
+     expect(JSON.parse(requestBody)).toEqual({
+         author: "Miguel de Cervantes Saavedra",
+         title: "Don Quixote",
+         genre: "Picaresco"
+     });
  });
 ```
 
@@ -375,7 +370,23 @@ The result is as following:
          title("Don Quixote").
          genre("Picaresco");
 
-     //  The rest of the test
+     //  Fake ajax responses
+     var server = sinon.fakeServer.create();
+
+     //  Save the book
+     this.addBookView.$(".submit-button").click();
+
+     //  Responding with what was sent in
+     var requestBody = server.queue[0].requestBody;
+     server.respond();
+     server.restore();
+
+     //  Check that we really save what we expect to have saved
+     expect(JSON.parse(requestBody)).toEqual({
+         author: "Miguel de Cervantes Saavedra",
+         title: "Don Quixote",
+         genre: "Picaresco"
+     });
  });
 ```
 ```javascript
@@ -416,6 +427,8 @@ The result is as following:
      }
  }
 ```
+
+The remaining clutter is related to faking ajax with sinon and asserting that the saved book is what we inserted. Let's start with cleaning up the ajax parts.
 
 Hiding backend communication
 ----------------------------

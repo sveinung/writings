@@ -236,14 +236,15 @@ So, instead of calling e.g. `$(".author-input")` in our tests, we want to do som
 -         val("Don Quixote").
 -         change();
 
+-    //  Choose a genre for the book
+-    var dropdown = addBookView.$(".genres-dropdown");
+-    dropdown.find(".dropdown-trigger").click();
+-    dropdown.find("a[data-value='Picaresco']").click();
+
 +    addBookViewPageObject(addBookView.$el).
 +        author("Miguel de Cervantes Saavedra").
-+        title("Don Quixote");
-
-     //  Choose a genre for the book
-     var dropdown = addBookView.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
++        title("Don Quixote").
++        genre("Picaresco");
 
      //  The rest of the test
  });
@@ -265,6 +266,12 @@ To achieve this, we can wrap the jQuery code in an object.
 +                val(title).
 +                change();
 +            return this;
++        },
++        genre: function(genre) {
++            var dropdown = $el.find(".genres-dropdown");
++            dropdown.find(".dropdown-trigger").click();
++            dropdown.find("a[data-value='" + genre + "']").click();
++            return this;
 +        }
 +    };
 +};
@@ -279,12 +286,8 @@ An object such as this is called a _Page Object_, as it's an abstraction used fo
 
      addBookViewPageObject(addBookView.$el).
          author("Miguel de Cervantes Saavedra").
-         title("Don Quixote");
-
-     //  Choose a genre for the book
-     var dropdown = addBookView.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
+         title("Don Quixote").
+         genre("Picaresco");
 
      //  The rest of the test
  });
@@ -303,6 +306,12 @@ An object such as this is called a _Page Object_, as it's an abstraction used fo
              $el.find(".title-input").
                  val(title).
                  change();
+             return this;
+         },
+         genre: function(genre) {
+             var dropdown = $el.find(".genres-dropdown");
+             dropdown.find(".dropdown-trigger").click();
+             dropdown.find("a[data-value='" + genre + "']").click();
              return this;
          }
      };

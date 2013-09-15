@@ -603,51 +603,16 @@ intent. It's also easy to keep up-to-date with changes in our
 nearly no terms in this test that isn't relevant to the functionality
 being tested.
 
-Wrapup
-------
+Wrap up
+-------
 
-To make it even easier to create Page Objects use can use [po.js](https://github.com/kjbekkelund/po.js)
+Generally, Page Objects should not know anything about your application
+except for the DOM and Ajax requests &emph; it should treat the
+application as a black box.
 
-`addBookViewPageObject` might then look like the following:
+We know that this might feel like a heavy solution, but this is a way of
+handling hundreds or maybe thousands of tests for a complex application
+and still being able to maintain and (easily) understand the tests.
 
-```javascript
- var addBookViewPageObject = po.create({
-     author: po.input(".author-input"),
-     title: po.input(".title-input"),
-     cancel: po.button(".cancel-button"),
-     submit: po.button(".submit-button"),
-     genre: function(genre) {
-         dropDownViewPageObject(this.$el.find(".genres-dropdown")).
-             openMenu().
-             chooseOption(genre);
-         return this;
-     },
-     save: function() {
-         return this.mockRequest(function() {
-             this.submit();
-         }, this);
-     },
-     mockRequest: function(callback, context) {
-         var server = sinon.fakeServer.create();
-
-         callback.call(context || this);
-
-         this.lastRequestBody = server.queue[0].requestBody;
-
-         server.respond();
-         server.restore();
-
-         return this;
-     },
-     expectToHaveSaved: function(attributes) {
-         var requestBody = JSON.parse(this.lastRequestBody);
-         var obj = _.pick(requestBody, _.keys(attributes));
-
-         expect(obj).toEqual(attributes);
-
-         return this;
-     }
- });
-```
-
-The code examples can be found at [https://github.com/sveinung/pageobject-example](https://github.com/sveinung/pageobject-example)
+In our experience Page Objects can considerably decrease the cost (and
+pain) of writing JavaScript tests.

@@ -570,3 +570,52 @@ In the end the test looks like this:
 ```
 
 It has gotten quite slimmer since we started. There's almost no terms in the test that isn't relevant to the functionality being tested.
+
+Wrapup
+------
+
+To make it even easier to create Page Objects use can use [po.js](https://github.com/kjbekkelund/po.js)
+
+`addBookViewPageObject` might then look like the following:
+
+```javascript
+ var addBookViewPageObject = po.create({
+     author: po.input(".author-input"),
+     title: po.input(".title-input"),
+     cancel: po.button(".cancel-button"),
+     submit: po.button(".submit-button"),
+     genre: function(genre) {
+         dropDownViewPageObject(this.$el.find(".genres-dropdown")).
+             openMenu().
+             chooseOption(genre);
+         return this;
+     },
+     save: function() {
+         return this.mockRequest(function() {
+             this.submit();
+         }, this);
+     },
+     mockRequest: function(callback, context) {
+         var server = sinon.fakeServer.create();
+
+         callback.call(context || this);
+
+         this.lastRequestBody = server.queue[0].requestBody;
+
+         server.respond();
+         server.restore();
+
+         return this;
+     },
+     expectToHaveSaved: function(attributes) {
+         var requestBody = JSON.parse(this.lastRequestBody);
+         var obj = _.pick(requestBody, _.keys(attributes));
+
+         expect(obj).toEqual(attributes);
+
+         return this;
+     }
+ });
+```
+
+The code examples can be found at [https://github.com/sveinung/pageobject-example](https://github.com/sveinung/pageobject-example)

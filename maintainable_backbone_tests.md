@@ -610,9 +610,15 @@ Generally, Page Objects should not know anything about your application
 except for the DOM and Ajax requests &mdash; it should treat the
 application as a black box.
 
-We know that this might feel like a heavy solution, but this is a way of
-handling hundreds or maybe thousands of tests for a complex application
-and still being able to maintain and (easily) understand the tests.
-
 In our experience Page Objects can considerably decrease the cost (and
-pain) of writing JavaScript tests.
+pain) of writing JavaScript tests. We know that this might feel like a
+heavy solution, but this is a way of handling hundreds or maybe
+thousands of tests for a complex application and still being able to
+maintain and (easily) understand the tests.  Also, we can easily create
+a couple of simple helpers for building Page Objects, as we have done
+with [po.js](https://github.com/kjbekkelund/po.js).
+
+To help you get started with Page Objects we have created a [sample
+application](https://github.com/sveinung/pageobject-example) that you
+can check out. Let us know about your experiences with writing
+maintainable and understandable JavaScript tests!

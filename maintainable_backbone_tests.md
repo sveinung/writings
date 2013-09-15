@@ -6,7 +6,7 @@ contain quite a bit of markup and logic, resulting in tests that are
 both cluttered and difficult to understand. Additionally, we often end
 up duplicating DOM selectors and Ajax responses.
 
-In this blog post we'll show one way one writing clean and maintainable
+In this blog post we'll show one way of writing clean and maintainable
 tests for Backbone views.
 
 The example
@@ -71,7 +71,8 @@ it('saves the book', function() {
     dropdown.find(".dropdown-trigger").click();
     dropdown.find("a[data-value='Picaresco']").click();
 
-    //  Fake Ajax responses
+    // Fake Ajax responses, so that we can see that the correct request
+    // is sent
     var server = sinon.fakeServer.create();
 
     //  Save the book
@@ -80,7 +81,7 @@ it('saves the book', function() {
     //  Find the body of the last Ajax request
     var requestBody = server.queue[0].requestBody;
 
-    // Respond to the Ajax request
+    // Respond to the Ajax request and restore XMLHttpRequest
     server.respond();
     server.restore();
 
@@ -102,7 +103,8 @@ of that setup isn't even relevant for the functionality we are testing.
 Clean up view creation
 ----------------------
 
-The first thing we can do is to move view creation into a helper function.
+The first step towards a cleaner test is to move the view creation into
+a helper:
 
 ```diff
  it('saves the book', function() {
@@ -126,57 +128,55 @@ The first thing we can do is to move view creation into a helper function.
 
      //  The rest of the test
  });
-
-+function createAddBookView(options) {
-+    options = options || {};
-+
-+    var genres = [];
-+    if (options.genres) {
-+        genres = _.map(options.genres, function(genre) {
-+            return { name: genre }
-+        });
-+    }
-+
-+    return new AddBookView({
-+        genres: new Genres(genres),
-+        book: new Book()
-+    });
-+}
 ```
 
 The result:
 
 ```javascript
- it('saves the book', function() {
-     var addBookView = createAddBookView({ genres: ["Picaresco"] });
-     addBookView.render();
+it('saves the book', function() {
+    var addBookView = createAddBookView({ genres: ["Picaresco"] });
+    addBookView.render();
 
-     //  The rest of the test
- });
+    //  The rest of the test
+});
 
- function createAddBookView(options) {
-     options = options || {};
- 
-     var genres = [];
-     if (options.genres) {
-         genres = _.map(options.genres, function(genre) {
-             return { name: genre }
-         });
-     }
- 
-     return new AddBookView({
-         genres: new Genres(genres),
-         book: new Book()
-     });
- }
+function createAddBookView(options) {
+    options = options || {};
+
+    var genres = [];
+    if (options.genres) {
+        genres = _.map(options.genres, function(genre) {
+            return { name: genre }
+        });
+    }
+
+    return new AddBookView({
+        genres: new Genres(genres),
+        book: new Book()
+    });
+}
 ```
 
-This cleaned up the test quite a bit, but there's still a lot to do, like removing markup-specific code.
+Now our setup is a bit cleaner and can easily be reused across tests.
+When we first started testing our code, we often used `beforeEach` for
+this type of setup, but there are significant problems with this
+approach. First of all, when we have a lot of tests in a single file
+it's often quite hard to find a setup that works for _all tests_. Also,
+we often needed to jump to the `beforeEach` to see the current state of
+the code. Additionally, it's also possible to have several `describe`s
+inside each other, and therefore several `beforeEach`s who all work on
+setting up the state. We prefer to use creation methods instead.
 
 Hiding access to the markup
 ---------------------------
 
-Writing a lot of jQuery selectors and triggering events on DOM objects in our code can easily make our tests brittle in the long run. If we removed the `author-input` field and added an `author-firstname-input` field and an `author-lastname-input` field instead, we would have to change quite a lot of all tests hitting this view. To alleviate this problem and make our tests more robust we can wrap access to low-level jQuery code.
+Writing a lot of jQuery selectors and triggering events on DOM objects
+in our code can easily make our tests brittle in the long run. If we
+removed the `author-input` field and added an `author-firstname-input`
+field and an `author-lastname-input` field instead, we would have to
+change quite a lot of all tests hitting this view. To alleviate this
+problem and make our tests more robust we can wrap access to low-level
+jQuery code.
 
 ```javascript
  it('saves the book', function() {

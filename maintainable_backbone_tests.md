@@ -164,33 +164,9 @@ This cleaned up the test quite a bit, but there's still a lot to do, like removi
 Hiding access to the markup
 ---------------------------
 
-```javascript
- it('saves the book', function() {
-     var addBookView = createAddBookView({ genres: ["Picaresco"] });
-     addBookView.render();
-
-     //  Set the author field
-     addBookView.$(".author-input").
-         val("Miguel de Cervantes Saavedra").
-         change();
-
-     //  Set the title field
-     addBookView.$(".title-input").
-         val("Don Quixote").
-         change();
-
-     //  Choose a genre for the book
-     var dropdown = addBookView.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
-
-     //  The rest of the test
- });
-```
-
 Writing a lot of jQuery selectors and triggering events on DOM objects in our code can easily make our tests brittle in the long run. If we removed the `author-input` field and added an `author-firstname-input` field and an `author-lastname-input` field instead, we would have to change quite a lot of all tests hitting this view. To alleviate this problem and make our tests more robust we can wrap access to low-level jQuery code.
 
-```diff
+```javascript
  it('saves the book', function() {
      var addBookView = createAddBookView({ genres: ["Picaresco"] });
      addBookView.render();

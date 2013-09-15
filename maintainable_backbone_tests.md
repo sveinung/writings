@@ -1,93 +1,103 @@
 Writing maintainable Backbone view tests
 ========================================
 
-Testing complex JavaScript views is a pain. These views often contain lots of markup and logic, resulting in tests that are both cluttered and difficult to understand. Additionally, there is often duplicated code, such as DOM selectors and Ajax responses.
+Testing complex Backbone.js views can be painful. These views often
+contain quite a bit of markup and logic, resulting in tests that are
+both cluttered and difficult to understand. Additionally, we often end
+up duplicating DOM selectors and Ajax responses.
 
-This blog post will deal with writing clean and maintainable tests for Backbone views.
+In this blog post we'll show one way one writing clean and maintainable
+tests for Backbone views.
 
 The example
 -----------
 
-The examples will use an app where the user can view a list of books
+Throughout the blog post we'll use a simple library application as an
+example. The user can view a list of books:
 
 ![The library app](pageobjects/img/1-library.png?raw=true)
 
-after clicking the cross
+And click "add book" to get a new view for adding a book:
 
 ![The library app](pageobjects/img/2-add-book-view.png?raw=true)
 
-you can add more books
+Then the user can fill in some info about the book:
 
 ![The library app](pageobjects/img/3-adding-a-book.png?raw=true)
 
-and see them appear in the list
+And then the book appears in the list:
 
 ![The library app](pageobjects/img/4-book-added.png?raw=true)
 
-We want to test that the adding of new books works as intended. In detail, we want to:
+In this blog post we try to write tests for `AddBookView`, which is the
+view that is opened when clicking "Add book" and closed when saving the
+new book. Basically, we want to test that the adding of new books works
+as intended. In detail, we want to:
 
 1. Insert the name of the author
 2. Insert the title of the book
 3. Choose a genre from the drop-down
+4. Press "Confirm"
 
-A typical Backbone view test might look like this:
+A typical test for this Backbone view using Jasmine might look something
+like this: (we've added some comments to clarify the intention)
 
 ```javascript
- it('saves the book', function() {
-     //  Create some genres for the drop-down
-     var genres = new Genres([
-         { name: "Crime novel" },
-         { name: "Picaresco" }
-     ]);
+it('saves the book', function() {
+    //  Create some genres for the drop-down
+    var genres = new Genres([
+        { name: "Crime novel" },
+        { name: "Picaresco" }
+    ]);
 
-     //  The book we are going to save
-     var book = new Book();
+    //  The book we are going to save
+    var book = new Book();
 
-     //  The view we are testing
-     var addBookView = new AddBookView({
-         genres: genres,
-         book: book
-     });
-     addBookView.render();
+    //  The view we are testing
+    var addBookView = new AddBookView({
+        genres: genres,
+        book: book
+    });
+    addBookView.render();
 
-     //  Set the author field
-     addBookView.$(".author-input").
-         val("Miguel de Cervantes Saavedra").
-         change();
+    //  Set the author field
+    addBookView.$(".author-input").val("Miguel de Cervantes Saavedra");
 
-     //  Set the title field
-     addBookView.$(".title-input").
-         val("Don Quixote").
-         change();
+    //  Set the title field
+    addBookView.$(".title-input").val("Don Quixote");
 
-     //  Choose a genre for the book
-     var dropdown = addBookView.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
+    //  Choose a genre for the book
+    var dropdown = addBookView.$(".genres-dropdown");
+    dropdown.find(".dropdown-trigger").click();
+    dropdown.find("a[data-value='Picaresco']").click();
 
-     //  Fake ajax responses
-     var server = sinon.fakeServer.create();
+    //  Fake Ajax responses
+    var server = sinon.fakeServer.create();
 
-     //  Save the book
-     this.addBookView.$(".submit-button").click();
+    //  Save the book
+    this.addBookView.$(".submit-button").click();
 
-     //  Responding with what was sent in
-     var requestBody = server.queue[0].requestBody;
-     server.respond();
-     server.restore();
+    //  Find the body of the last Ajax request
+    var requestBody = server.queue[0].requestBody;
 
-     //  Check that we really save what we expect to have saved
-     expect(JSON.parse(requestBody)).toEqual({
-         author: "Miguel de Cervantes Saavedra",
-         title: "Don Quixote",
-         genre: "Picaresco"
-     });
- });
+    // Respond to the Ajax request
+    server.respond();
+    server.restore();
+
+    //  Check that we actually saved what we expect to have saved
+    expect(JSON.parse(requestBody)).toEqual({
+        author: "Miguel de Cervantes Saavedra",
+        title: "Don Quixote",
+        genre: "Picaresco"
+    });
+});
 ```
 
-This a _lot_ of code, especially considering that the functionality being tested is quite simple.
-
-In this test about a fourth of the lines are dedicated to setting up the view. A lot of that setup isn't even relevant for the functionality we are testing.
+This a _lot_ of code, especially considering that the functionality
+being tested is quite simple. Also, it's not easy to see precisely what
+is being tested without reading all the code. Actually, in this test
+about a fourth of the lines are dedicated to setting up the view. A lot
+of that setup isn't even relevant for the functionality we are testing.
 
 Clean up view creation
 ----------------------
@@ -133,6 +143,8 @@ The first thing we can do is to move view creation into a helper function.
 +    });
 +}
 ```
+
+The result:
 
 ```javascript
  it('saves the book', function() {

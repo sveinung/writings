@@ -31,7 +31,7 @@ We want to test that the adding of new books works as intended. In detail, we wa
 2. Insert the title of the book
 3. Choose a genre from the drop-down
 
-A typical test of a Backbone view looks like this:
+A typical Backbone view test might look like this:
 
 ```javascript
  it('saves the book', function() {

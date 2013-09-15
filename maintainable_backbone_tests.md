@@ -124,16 +124,13 @@ towards a cleaner test is to move view creation into a helper:
 
 ```diff
  it('saves the book', function() {
--    //  Create some genres for the drop-down
 -    var genres = new Genres([
 -        { name: "Crime novel" },
 -        { name: "Picaresco" }
 -    ]);
 -
--    //  The book we are going to save
 -    var book = new Book();
 -
--    //  The view we are testing
 -    var addBookView = new AddBookView({
 -        el: $('<div></div>'),
 -        genres: genres,
@@ -240,17 +237,14 @@ this:
      var addBookView = createAddBookView({ genres: ["Picaresco"] });
      addBookView.render();
 
--     //  Set the author field
 -     addBookView.$(".author-input").
 -         val("Miguel de Cervantes Saavedra").
 -         change();
 -
--     //  Set the title field
 -     addBookView.$(".title-input").
 -         val("Don Quixote").
 -         change();
-
--    //  Choose a genre for the book
+-
 -    var dropdown = addBookView.$(".genres-dropdown");
 -    dropdown.find(".dropdown-trigger").click();
 -    dropdown.find("a[data-value='Picaresco']").click();
@@ -448,18 +442,14 @@ saved:
 +            genre: "Picaresco"
 +        });
 
--    //  Fake ajax responses
 -    var server = sinon.fakeServer.create();
 -
--    //  Save the book
 -    this.addBookView.$(".submit-button").click();
 -
--    //  Responding with what was sent in
 -    var requestBody = server.queue[0].requestBody;
 -    server.respond();
 -    server.restore();
 -
--    //  Check that we really save what we expect to have saved
 -    expect(JSON.parse(requestBody)).toEqual({
 -        author: "Miguel de Cervantes Saavedra",
 -        title: "Don Quixote",
@@ -585,21 +575,21 @@ And now we are getting somewhere! With this change our test looks like
 this:
 
 ```javascript
- it('saves the book', function() {
-     var addBookView = createAddBookView({ genres: ["Picaresco"] });
-     addBookView.render();
+it('saves the book', function() {
+    var addBookView = createAddBookView({ genres: ["Picaresco"] });
+    addBookView.render();
 
-     addBookViewPageObject(addBookView.$el).
-         author("Miguel de Cervantes Saavedra").
-         title("Don Quixote").
-         genre("Picaresco").
-         save().
-         expectToHaveSaved({
-             author: "Miguel de Cervantes Saavedra",
-             title: "Don Quixote",
-             genre: "Picaresco"
-         });
- });
+    addBookViewPageObject(addBookView.$el).
+        author("Miguel de Cervantes Saavedra").
+        title("Don Quixote").
+        genre("Picaresco").
+        save().
+        expectToHaveSaved({
+            author: "Miguel de Cervantes Saavedra",
+            title: "Don Quixote",
+            genre: "Picaresco"
+        });
+});
 ```
 
 This test is really easy to understand &mdash; it's succinct and reveals our

@@ -318,6 +318,105 @@ An object such as this is called a _Page Object_, as it's an abstraction used fo
  };
 ```
 
+That jQuery code dealing with the drop-down doesn't really belong in a Page Object for AddBookView, so we should move it into a separate Page Object. This new Page Object should deal with opening the drop-down and choosing an option from the list.
+
+```diff
+ function addBookViewPageObject($el) {
+     return {
+         author: function(author) {
+             $el.find(".author-input").
+                 val(author).
+                 change();
+             return this;
+         },
+         title: function(title) {
+             $el.find(".title-input").
+                 val(title).
+                 change();
+             return this;
+         },
+         genre: function(genre) {
+-            var dropdown = $el.find(".genres-dropdown");
+-            dropdown.find(".dropdown-trigger").click();
+-            dropdown.find("a[data-value='" + genre + "']").click();
+
++            dropDownViewPageObject($el.find(".genres-dropdown")).
++                openMenu().
++                chooseOption(genre);
+             return this;
+         }
+     };
+ };
+```
+```diff
++function dropDownViewPageObject($view) {
++    return {
++        openMenu: function() {
++            $view.find(".dropdown-trigger").click();
++            return this;
++        },
++        chooseOption: function(option) {
++            $view.find(".dropdown-menu a[data-value='" + option + "']").click();
++            return this;
++        }
++    }
++}
+```
+
+The result is as following:
+
+```javascript
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     addBookViewPageObject(addBookView.$el).
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco");
+
+     //  The rest of the test
+ });
+```
+```javascript
+ function addBookViewPageObject($el) {
+     return {
+         author: function(author) {
+             $el.find(".author-input").
+                 val(author).
+                 change();
+             return this;
+         },
+         title: function(title) {
+             $el.find(".title-input").
+                 val(title).
+                 change();
+             return this;
+         },
+         genre: function(genre) {
+             dropDownViewPageObject($el.find(".genres-dropdown")).
+                 openMenu().
+                 chooseOption(genre);
+             return this;
+         }
+     };
+ };
+```
+```javascript
+ function dropDownViewPageObject($view) {
+     return {
+         openMenu: function() {
+             $view.find(".dropdown-trigger").click();
+             return this;
+         },
+         chooseOption: function(option) {
+             $view.find(".dropdown-menu a[data-value='" + option + "']").click();
+             return this;
+         }
+     }
+ }
+```
+
 Hiding backend communication
 ----------------------------
 

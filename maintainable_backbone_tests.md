@@ -597,7 +597,7 @@ this:
  });
 ```
 
-This test is really easy to understand. It's succinct and reveals our
+This test is really easy to understand &mdash; it's succinct and reveals our
 intent. It's also easy to keep up-to-date with changes in our
 `AddBookView` and `DropDownView`. And perhaps best of all, there's
 nearly no terms in this test that isn't relevant to the functionality
@@ -607,7 +607,7 @@ Wrap up
 -------
 
 Generally, Page Objects should not know anything about your application
-except for the DOM and Ajax requests &emph; it should treat the
+except for the DOM and Ajax requests &mdash; it should treat the
 application as a black box.
 
 We know that this might feel like a heavy solution, but this is a way of

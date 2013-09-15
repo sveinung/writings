@@ -38,6 +38,7 @@ intended. And specifically that means that we want to:
 2. Insert the title of the book
 3. Choose a genre from the drop-down
 4. Press "Confirm"
+5. Ensure that the book is saved
 
 A typical test for this Backbone view using Jasmine might look something
 like this: (we've added some comments to clarify the intention)

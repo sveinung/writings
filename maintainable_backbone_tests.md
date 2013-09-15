@@ -55,6 +55,9 @@ it('saves the book', function() {
 
     //  The view we are testing
     var addBookView = new AddBookView({
+        // we pass in an in-memory jQuery object so the view does not
+        // end up working directly with the DOM
+        el: $('<div></div>'),
         genres: genres,
         book: book
     });
@@ -132,6 +135,7 @@ towards a cleaner test is to move view creation into a helper:
 -
 -    //  The view we are testing
 -    var addBookView = new AddBookView({
+-        el: $('<div></div>'),
 -        genres: genres,
 -        book: book
 -    });
@@ -164,6 +168,7 @@ function createAddBookView(options) {
     }
 
     return new AddBookView({
+        el: $('<div></div>'),
         genres: new Genres(genres),
         book: new Book()
     });

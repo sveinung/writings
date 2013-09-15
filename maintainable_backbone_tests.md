@@ -170,39 +170,43 @@ setting up the state. We prefer to use creation methods instead.
 Hiding access to the markup
 ---------------------------
 
-Writing a lot of jQuery selectors and triggering events on DOM objects
-in our code can easily make our tests brittle in the long run. If we
-removed the `author-input` field and added an `author-firstname-input`
-field and an `author-lastname-input` field instead, we would have to
-change quite a lot of all tests hitting this view. To alleviate this
-problem and make our tests more robust we can wrap access to low-level
-jQuery code.
+Althought we have improved the test setup, there are still problems with
+our test. Writing a lot of jQuery selectors and triggering events on DOM
+objects can easily make our tests brittle in the long run. For example,
+if we remove the `.author-input` field and add an
+`.author-firstname-input` field and an `.author-lastname-input` field
+instead we often have to change quite a few tests. A better way to
+handle this problem &ndash; and write more robust tests at the same time
+&mdash; is to wrap all low-level jQuery code.
+
+So, let's back to our `AddBookView` test:
 
 ```javascript
- it('saves the book', function() {
-     var addBookView = createAddBookView({ genres: ["Picaresco"] });
-     addBookView.render();
+it('saves the book', function() {
+    var addBookView = createAddBookView({ genres: ["Picaresco"] });
+    addBookView.render();
 
-     //  Set the author field
-     addBookView.$(".author-input").
-         val("Miguel de Cervantes Saavedra").
-         change();
+    //  Set the author field
+    addBookView.$(".author-input").
+        val("Miguel de Cervantes Saavedra").
+        change();
 
-     //  Set the title field
-     addBookView.$(".title-input").
-         val("Don Quixote").
-         change();
+    //  Set the title field
+    addBookView.$(".title-input").
+        val("Don Quixote").
+        change();
 
-     //  Choose a genre for the book
-     var dropdown = addBookView.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
+    //  Choose a genre for the book
+    var dropdown = addBookView.$(".genres-dropdown");
+    dropdown.find(".dropdown-trigger").click();
+    dropdown.find("a[data-value='Picaresco']").click();
 
-     //  The rest of the test
- });
+    //  The rest of the test
+});
 ```
 
-So, instead of calling e.g. `$(".author-input")` in our tests, we want to do something like the following:
+Instead of calling `$(".author-input")`, we could do something like
+this:
 
 ```diff
  it('saves the book', function() {
@@ -233,7 +237,13 @@ So, instead of calling e.g. `$(".author-input")` in our tests, we want to do som
  });
 ```
 
-To achieve this, we can wrap the jQuery code in an object.
+Here we have created a higher-level helper, which we call
+`addBookViewPageObject`, which wraps all the jQuery details. Because of
+this helper it's now easier to update the view and still have all the
+tests running. Additionally, as we are now working at a higher level of
+abstraction in our tests it's often easier to understand the intent.
+
+This is how we wrap jQuery:
 
 ```diff
 +function addBookViewPageObject($el) {
@@ -260,7 +270,17 @@ To achieve this, we can wrap the jQuery code in an object.
 +};
 ```
 
-An object such as this is called a _Page Object_, as it's an abstraction used for interacting with the DOM.
+We have chosen to call this abstraction of the DOM a _Page Object_. A
+similar idea is [documented for Selenium](https://code.google.com/p/selenium/wiki/PageObjects)
+as follows:
+
+> PageObjects can be thought of as facing in two directions
+> simultaneously. Facing towards the developer of a test, they represent
+> the services offered by a particular page. Facing away from the
+> developer, they should be the only thing that has a deep knowledge of
+> the structure of the HTML of a page.
+
+With this abstraction we have cleaned up our test quite a bit:
 
 ```javascript
  it('saves the book', function() {
@@ -276,32 +296,15 @@ An object such as this is called a _Page Object_, as it's an abstraction used fo
  });
 ```
 
-```javascript
- function addBookViewPageObject($el) {
-     return {
-         author: function(author) {
-             $el.find(".author-input").
-                 val(author).
-                 change();
-             return this;
-         },
-         title: function(title) {
-             $el.find(".title-input").
-                 val(title).
-                 change();
-             return this;
-         },
-         genre: function(genre) {
-             var dropdown = $el.find(".genres-dropdown");
-             dropdown.find(".dropdown-trigger").click();
-             dropdown.find("a[data-value='" + genre + "']").click();
-             return this;
-         }
-     };
- };
-```
+Now, for the next step in our test we need to handle the genre. However,
+choosing a genre is actually implemented as a `DropDownView`, so we
+don't want the `AddBookView` to have to much knowledge about the
+implementation. That only end up giving us problems in the long run, as
+we push knowledge about drop-down specific functionality into other
+tests. Therefore we have implemented a `dropDownViewPageObject` that
+deals with opening the drop-down and choosing options.
 
-That jQuery code dealing with the drop-down doesn't really belong in a Page Object for AddBookView, so we should move it into a separate Page Object. This new Page Object should deal with opening the drop-down and choosing an option from the list.
+Using the `dropDownViewPageObject` could look like this:
 
 ```diff
  function addBookViewPageObject($el) {
@@ -331,22 +334,26 @@ That jQuery code dealing with the drop-down doesn't really belong in a Page Obje
      };
  };
 ```
+
+And the `dropDownViewPageObject` is quite simple:
+
 ```diff
-+function dropDownViewPageObject($view) {
++function dropDownViewPageObject($el) {
 +    return {
 +        openMenu: function() {
-+            $view.find(".dropdown-trigger").click();
++            $el.find(".dropdown-trigger").click();
 +            return this;
 +        },
 +        chooseOption: function(option) {
-+            $view.find(".dropdown-menu a[data-value='" + option + "']").click();
++            $el.find(".dropdown-menu a[data-value='" + option + "']").click();
 +            return this;
 +        }
 +    }
 +}
 ```
 
-The result is as following:
+Aften applying both the creation helper and the page object, our test is
+getting better:
 
 ```javascript
  it('saves the book', function() {
@@ -377,51 +384,19 @@ The result is as following:
      });
  });
 ```
-```javascript
- function addBookViewPageObject($el) {
-     return {
-         author: function(author) {
-             $el.find(".author-input").
-                 val(author).
-                 change();
-             return this;
-         },
-         title: function(title) {
-             $el.find(".title-input").
-                 val(title).
-                 change();
-             return this;
-         },
-         genre: function(genre) {
-             dropDownViewPageObject($el.find(".genres-dropdown")).
-                 openMenu().
-                 chooseOption(genre);
-             return this;
-         }
-     };
- };
-```
-```javascript
- function dropDownViewPageObject($view) {
-     return {
-         openMenu: function() {
-             $view.find(".dropdown-trigger").click();
-             return this;
-         },
-         chooseOption: function(option) {
-             $view.find(".dropdown-menu a[data-value='" + option + "']").click();
-             return this;
-         }
-     }
- }
-```
 
-The remaining clutter is related to faking ajax with sinon and asserting that the saved book is what we inserted. Let's start with cleaning up the ajax parts.
+The remaining clutter is related to handling Ajax requests with
+[Sinon.JS](http://sinonjs.org/) and asserting that the saved book is
+what we inserted. Let's start with cleaning up the Ajax related code.
 
 Hiding backend communication
 ----------------------------
 
-Sinon in our tests gives us a lot of the same issues as with jQuery: A lot of low-level logic that isn't really relevant to the test. So, the first thing we can do is to write a `save(book)` method, where the provided `book` parameter is the the JavaScript object we expect to have saved.
+Sinon in our tests gives us a lot of the same issues as with jQuery: A
+lot of low-level logic that isn't really relevant to the test. So, the
+first thing we can do is to write a `save(book)` method, where the
+provided `book` parameter is the the JavaScript object we expect to have
+saved.
 
 ```diff
  it('saves the book', function() {

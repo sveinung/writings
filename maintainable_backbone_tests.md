@@ -419,11 +419,14 @@ related code.
 Hiding backend communication
 ----------------------------
 
-Sinon in our tests gives us a lot of the same issues as with jQuery: A
-lot of low-level logic that isn't really relevant to the test. So, the
-first thing we can do is to write a `save(book)` method, where the
-provided `book` parameter is the the JavaScript object we expect to have
-saved.
+Sinon.JS is a low-level helper, and it causes some of the same problems
+as jQuery: A lot of low-level logic that isn't really relevant to the
+test.
+
+Our first step in solving this problem could be to wrap everything
+inside a `save(book)` method in `addBookViewPageObject`, where the
+provided `book` parameter is the JavaScript object we expect to have
+saved:
 
 ```diff
  it('saves the book', function() {
@@ -459,6 +462,9 @@ saved.
 -    });
  });
 ```
+
+`addBookViewPageObject.js`:
+
 ```diff
  function addBookViewPageObject($el) {
      return {
@@ -496,7 +502,11 @@ saved.
  };
 ```
 
-However, there are some problems with having the `save` method doing the assertion. E.g. we might in some tests want to assert that _no_ book is saved if we add client-side validation. One solution is to have the `save` method return a new object containing all the relevant expect methods.
+However, there are some problems with having the `save` method doing the
+assertion. Lets say that we for example want to assert that _no_ book is
+saved if we add client-side validation. Another solution is to have the
+`save` method return a new object that contains the relevant expect
+methods:
 
 ```diff
  it('saves the book', function() {
@@ -520,6 +530,9 @@ However, there are some problems with having the `save` method doing the asserti
 +        });
  });
 ```
+
+`addBookViewPageObject.js`:
+
 ```diff
  function addBookViewPageObject($el) {
      return {
@@ -563,7 +576,8 @@ However, there are some problems with having the `save` method doing the asserti
  };
 ```
 
-In the end the test looks like this:
+And now we are getting somewhere! With this change our test looks like
+this:
 
 ```javascript
  it('saves the book', function() {
@@ -583,7 +597,11 @@ In the end the test looks like this:
  });
 ```
 
-It has gotten quite slimmer since we started. There's almost no terms in the test that isn't relevant to the functionality being tested.
+This test is really easy to understand. It's succinct and reveals our
+intent. It's also easy to keep up-to-date with changes in our
+`AddBookView` and `DropDownView`. And perhaps best of all, there's
+nearly no terms in this test that isn't relevant to the functionality
+being tested.
 
 Wrapup
 ------

@@ -60,7 +60,7 @@ A typical test of a Backbone view looks like this:
          val("Don Quixote").
          change();
 
-     // Choose a genre for the book
+     //  Choose a genre for the book
      var dropdown = addBookView.$(".genres-dropdown");
      dropdown.find(".dropdown-trigger").click();
      dropdown.find("a[data-value='Picaresco']").click();
@@ -75,7 +75,7 @@ A typical test of a Backbone view looks like this:
      //  Save the book
      this.addBookView.$(".submit-button").click();
 
-     // Responding with what was sent in
+     //  Responding with what was sent in
      var response = server.queue[0].requestBody;
      server.respond();
      server.restore();
@@ -164,190 +164,149 @@ The first thing we can do is to move view creation into a helper function.
  }
 ```
 
+This cleaned up the test quite a bit, but there's still a lot to do, like removing markup-specific code.
+
 Hiding access to the markup
 ---------------------------
 
-Let's start with a simple view, for example the dropdown.
-
-The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
-
-// trykkes det på cancel i dette eksemplet?
-
 ```javascript
- it('chooses an option', function() {
-     var view = new DropDownView({
-         defaultOption: "Choose!",
-         options: [{
-             value: "Picaresco"
-         }, {
-             value: "Satire"
-         }]
-     });
-     view.render();
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
 
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+     //  Set the author field
+     addBookView.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
 
-     view.$(".dropdown-trigger").click();
-     view.$(".dropdown-menu a[data-value='Satire']").click();
+     //  Set the title field
+     addBookView.$(".title-input").
+         val("Don Quixote").
+         change();
 
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+     //  Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  The rest of the test
  });
 ```
 
-// hvorfor vil vi unngå DOM-en? Står litt i introen nå, men bør tydeliggjøres (kanskje en ekstra paragraf i intro)
-
-The test accesses the DOM directly, which want to avoid, so we create a page object and inject the view.
+Writing a lot of jQuery selectors and triggering events on DOM objects in our code can easily make our tests brittle in the long run. If we removed the `author-input` field and added an `author-firstname-input` field and an `author-lastname-input` field instead, we would have to change quite a lot of all tests hitting this view. To alleviate this problem and make our tests more robust we can wrap access to low-level jQuery code.
 
 ```diff
-+var DropDownViewPageObject = function($dropDownView) {
-+    this.$view = $dropDownView;
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     //  Set the author field
+     addBookView.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
+
+     //  Set the title field
+     addBookView.$(".title-input").
+         val("Don Quixote").
+         change();
+
+     //  Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  The rest of the test
+ });
+```
+
+So, instead of calling e.g. `$(".author-input")` in our tests, we want to do something like the following:
+
+```diff
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+-     //  Set the author field
+-     addBookView.$(".author-input").
+-         val("Miguel de Cervantes Saavedra").
+-         change();
+-
+-     //  Set the title field
+-     addBookView.$(".title-input").
+-         val("Don Quixote").
+-         change();
+
++    addBookViewPageObject(addBookView.$el).
++        author("Miguel de Cervantes Saavedra").
++        title("Don Quixote");
+
+     //  Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  The rest of the test
+ });
+```
+
+To achieve this, we can wrap the jQuery code in an object.
+
+```diff
++function addBookViewPageObject($el) {
++    return {
++        author: function(author) {
++            $el.find(".author-input").
++                val(author).
++                change();
++            return this;
++        },
++        title: function(title) {
++            $el.find(".title-input").
++                val(title).
++                change();
++            return this;
++        }
++    };
 +};
-
- it('chooses an option', function() {
-     var view = new DropDownView({
-         defaultOption: "Choose!",
-         options: [{
-             value: "Picaresco"
-         }, {
-             value: "Satire"
-         }]
-     });
-     view.render();
-+    var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
-
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
-
-     view.$(".dropdown-trigger").click();
-     view.$(".dropdown-menu a[data-value='Satire']").click();
-
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
- });
 ```
 
-Then we can move the interraction with the view into the page object. In this case opening the dropdown and choosing the option "Satire".
-
-// jeg er usikker på bruken av pageObject.openMenu(). Hva er pageObject? Man må alltid slå opp, selv om det var er litt over. Hva med `dropDownEl` eller noe sånt her? Når jeg tenker litt på det er det kanskje naturlig å bruke `var dropDownView = new DropDownView` også? Lettere å se konteksten uten å måtte søke opp etter variabel-deklarasjonen.
-
-```diff
- var DropDownViewPageObject = function($dropDownView) {
-     this.$view = $dropDownView;
- };
-
-+_.extend(DropDownViewPageObject.prototype, {
-+    openMenu: function() {
-+        this.$view.find(".dropdown-trigger").click();
-+        return this;
-+    },
-+    chooseOption: function(option) {
-+        this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
-+        return this;
-+    }
-+});
-
- it('chooses an option', function() {
-     var view = new DropDownView(…);
-     view.render();
-     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
-
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
-
--    view.$(".dropdown-trigger").click();
--    view.$(".dropdown-menu a[data-value='Satire']").click();
-+    dropDownViewPageObject.
-+        openMenu().
-+        chooseOption("Satire");
-
-     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
- });
-```
-
-// underbygg disse punktene. Lesbarhet er VIKTIG! Kan linke til noe som dette, for eksempel: http://blogs.msdn.com/b/oldnewthing/archive/2007/04/06/2036150.aspx
-
-Personally, I also like to move the assertions into the page objects if it _improves readability_, or if the same assertions are _used frequently_.
-
-```diff
- var DropDownViewPageObject = function($dropDownView) {
-     this.$view = $dropDownView;
- };
-
- _.extend(DropDownViewPageObject.prototype, {
-     openMenu: function() {
-         this.$view.find(".dropdown-trigger").click();
-         return this;
-     },
-     chooseOption: function(option) {
-         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
-         return this;
-+    },
-+    expectToHaveChosen: function(option) {
-+        expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
-+        return this;
-+    }
- });
-
- it('chooses an option', function() {
-     var view = new DropDownView(…);
-     view.render();
-     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
-
--    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
-
-     dropDownViewPageObject.
--        openMenu().
--        chooseOption("Satire");
-+        expectToHaveChosen("Choose!").
-+        openMenu().
-+        chooseOption("Satire").
-+        expectToHaveChosen("Satire");
-
--    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
- });
-```
-
-In the end we end up with the code in the block below. Notice how much more readable the test is!
-
-// Kanskje jeg ville dratt `DropDownViewPageObject` inn i sin egen kodesnutt under, og kun vist selve testen her. Det tydeliggjør hvor lesbar koden er. Nå må man "lete litt".
-
-// Igjen, litt usikker på lesbarheten av `pageObject` (men er ikke vant til det)
+An object such as this is called a _Page Object_, as it's an abstraction used for interacting with the DOM.
 
 ```javascript
- var DropDownViewPageObject = function($dropDownView) {
-     this.$view = $dropDownView;
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     addBookViewPageObject(addBookView.$el).
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote");
+
+     //  Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  The rest of the test
+ });
+```
+
+```javascript
+ function addBookViewPageObject($el) {
+     return {
+         author: function(author) {
+             $el.find(".author-input").
+                 val(author).
+                 change();
+             return this;
+         },
+         title: function(title) {
+             $el.find(".title-input").
+                 val(title).
+                 change();
+             return this;
+         }
+     };
  };
-
- _.extend(DropDownViewPageObject.prototype, {
-     openMenu: function() {
-         this.$view.find(".dropdown-trigger").click();
-         return this;
-     },
-     chooseOption: function(option) {
-         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
-         return this;
-     },
-     expectToHaveChosen: function(option) {
-         expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
-         return this;
-     }
- });
-
- it('chooses an option', function() {
-     var view = new DropDownView({
-         defaultOption: "Choose!",
-         options: [{
-             value: "Picaresco"
-         }, {
-             value: "Satire"
-         }]
-     });
-     view.render();
-     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
-
-     dropDownViewPageObject.
-         expectToHaveChosen("Choose!").
-         openMenu().
-         chooseOption("Satire").
-         expectToHaveChosen("Satire");
- });
 ```
 
 Hiding backend communication

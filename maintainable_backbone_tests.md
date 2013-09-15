@@ -11,19 +11,19 @@ The example
 
 The examples will use an app where the user can view a list of books
 
-![The library app](/page_objects/img/1-library.png?raw=true)
+![The library app](pageobjects/img/1-library.png?raw=true)
 
 after clicking the cross
 
-![The library app](/page_objects/img/2-add-book-view.png?raw=true)
+![The library app](pageobjects/img/2-add-book-view.png?raw=true)
 
 you can add more books
 
-![The library app](/page_objects/img/3-adding-a-book.png?raw=true)
+![The library app](pageobjects/img/3-adding-a-book.png?raw=true)
 
 and see them appear in the list
 
-![The library app](/page_objects/img/4-book-added.png?raw=true)
+![The library app](pageobjects/img/4-book-added.png?raw=true)
 
 We want to test that the adding of new books works as intended. In detail, we want to:
 1. Insert the name of the author

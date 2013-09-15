@@ -25,8 +25,12 @@ and see them appear in the list
 
 ![The library app](/page_objects/img/4-book-added.png?raw=true)
 
-Clean up view creation
-----------------------
+We want to test that the adding of new books works as intended. In detail, we want to:
+1. Insert the name of the author
+2. Insert the title of the book
+3. Choose a genre from the drop-down
+
+A typical test of a Backbone view looks like this:
 
 ```javascript
  it('saves the book', function() {
@@ -86,7 +90,12 @@ Clean up view creation
  });
 ```
 
+This a _lot_ of code, especially considering that the functionality being tested is quite simple.
+
 In this test about a fourth of the lines are dedicated to setting up the view. A lot of that setup isn't even relevant for the functionality we are testing.
+
+Clean up view creation
+----------------------
 
 The first thing we can do is to move view creation into a helper function.
 

@@ -12,16 +12,16 @@ tests for Backbone views.
 The example
 -----------
 
-Throughout the blog post we'll use a simple library application as an
-example. The user can view a list of books:
+Throughout this blog post we'll use a simple library application as an
+example. In this library app the user can view a list of books:
 
 ![The library app](pageobjects/img/1-library.png?raw=true)
 
-And click "add book" to get a new view for adding a book:
+He can click "add book" to get a new view for adding a book:
 
 ![The library app](pageobjects/img/2-add-book-view.png?raw=true)
 
-Then the user can fill in some info about the book:
+Then he can fill in some info about the book:
 
 ![The library app](pageobjects/img/3-adding-a-book.png?raw=true)
 
@@ -31,8 +31,8 @@ And then the book appears in the list:
 
 In this blog post we try to write tests for `AddBookView`, which is the
 view that is opened when clicking "Add book" and closed when saving the
-new book. Basically, we want to test that the adding of new books works
-as intended. In detail, we want to:
+new book. Basically, we want to test that adding new books works as
+intended. And specifically that means that we want to:
 
 1. Insert the name of the author
 2. Insert the title of the book
@@ -71,8 +71,8 @@ it('saves the book', function() {
     dropdown.find(".dropdown-trigger").click();
     dropdown.find("a[data-value='Picaresco']").click();
 
-    // Fake Ajax responses, so that we can see that the correct request
-    // is sent
+    // We need to fake Ajax responses, so that we can see that the
+    // correct request is sent
     var server = sinon.fakeServer.create();
 
     //  Save the book
@@ -94,17 +94,30 @@ it('saves the book', function() {
 });
 ```
 
-This a _lot_ of code, especially considering that the functionality
-being tested is quite simple. Also, it's not easy to see precisely what
-is being tested without reading all the code. Actually, in this test
-about a fourth of the lines are dedicated to setting up the view. A lot
-of that setup isn't even relevant for the functionality we are testing.
+This a _lot_ of code, especially considering the functionality we're
+testing is quite simple. Also, it's not easy to see precisely what is
+tested here without reading all the code. Actually, in this test about a
+fourth of the lines are dedicated to setting up the view &mdash; much of
+which isn't even relevant for the functionality we are testing.
 
 Clean up view creation
 ----------------------
 
-The first step towards a cleaner test is to move the view creation into
-a helper:
+There are several ways of cleaning up the setup in this test. When we
+first started writing tests for our JavaScript we usually went with a
+`beforeEach` for this type of setup. However, there are significant
+problems with this approach.
+
+First of all, when we have a lot of tests in a single file it's often
+quite hard to find a setup that works for _all tests_. Also, we often
+needed to jump to the `beforeEach` to see the current state of the code,
+which can be a hassle. Additionally, it's also possible to have several
+`describe`s inside each other, and therefore also several `beforeEach`s
+who all work on setting up the state. Often it could be quite hard to
+understand the state of the object we were testing.
+
+Now we prefer to use creation methods instead. So, for us the first step
+towards a cleaner test is to move view creation into a helper:
 
 ```diff
  it('saves the book', function() {
@@ -157,29 +170,38 @@ function createAddBookView(options) {
 }
 ```
 
-Now our setup is a bit cleaner and can easily be reused across tests.
-When we first started testing our code, we often used `beforeEach` for
-this type of setup, but there are significant problems with this
-approach. First of all, when we have a lot of tests in a single file
-it's often quite hard to find a setup that works for _all tests_. Also,
-we often needed to jump to the `beforeEach` to see the current state of
-the code. Additionally, it's also possible to have several `describe`s
-inside each other, and therefore several `beforeEach`s who all work on
-setting up the state. We prefer to use creation methods instead.
+Now our setup is a bit cleaner and can easily be reused across tests. We
+can also move logic into the creation helper that can help us clarify
+intent in our tests. For example, if we need genres in our tests we can
+write:
+
+```javascript
+createAddBookView({ genres: ["Picaresco"] })
+```
+
+But when we don't need one, we can use the default instead:
+
+```javascript
+createAddBookView()
+```
+
+In our experience this can be a very powerful technique for both
+revealing intent and writing less brittle tests.
 
 Hiding access to the markup
 ---------------------------
 
 Althought we have improved the test setup, there are still problems with
 our test. Writing a lot of jQuery selectors and triggering events on DOM
-objects can easily make our tests brittle in the long run. For example,
-if we remove the `.author-input` field and add an
-`.author-firstname-input` field and an `.author-lastname-input` field
-instead we often have to change quite a few tests. A better way to
-handle this problem &ndash; and write more robust tests at the same time
-&mdash; is to wrap all low-level jQuery code.
+objects can easily make our tests brittle in the long run.
 
-So, let's back to our `AddBookView` test:
+For example, if we remove the `.author-input` field and add an
+`.author-firstname-input` field and an `.author-lastname-input` field
+instead, we often have to change several tests. A better way to handle
+this problem &ndash; and write more robust tests at the same time
+&mdash; is to wrap the low-level jQuery code.
+
+So, let's go back to our `AddBookView` test:
 
 ```javascript
 it('saves the book', function() {
@@ -205,7 +227,7 @@ it('saves the book', function() {
 });
 ```
 
-Instead of calling `$(".author-input")`, we could do something like
+Instead of calling `$(".author-input")` we could do something like
 this:
 
 ```diff
@@ -239,9 +261,13 @@ this:
 
 Here we have created a higher-level helper, which we call
 `addBookViewPageObject`, which wraps all the jQuery details. Because of
-this helper it's now easier to update the view and still have all the
-tests running. Additionally, as we are now working at a higher level of
-abstraction in our tests it's often easier to understand the intent.
+this helper it's easier to update the view and still have all the tests
+running &mdash; we only need to update the jQuery selector one place.
+Additionally, as we are now working at a higher level of abstraction in
+our tests it's often easier to understand the intent. (The more you
+struggle with hundreds of tests in highly interactive JavaScript
+applications the more you end up loving tests that are easy to
+understand and maintain.)
 
 This is how we wrap jQuery:
 
@@ -271,7 +297,7 @@ This is how we wrap jQuery:
 ```
 
 We have chosen to call this abstraction of the DOM a _Page Object_. A
-similar idea is [documented for Selenium](https://code.google.com/p/selenium/wiki/PageObjects)
+similar idea is [documented in the Selenium wiki](https://code.google.com/p/selenium/wiki/PageObjects)
 as follows:
 
 > PageObjects can be thought of as facing in two directions
@@ -299,12 +325,12 @@ With this abstraction we have cleaned up our test quite a bit:
 Now, for the next step in our test we need to handle the genre. However,
 choosing a genre is actually implemented as a `DropDownView`, so we
 don't want the `AddBookView` to have to much knowledge about the
-implementation. That only end up giving us problems in the long run, as
+implementation. That only ends up causing problems in the long run, as
 we push knowledge about drop-down specific functionality into other
 tests. Therefore we have implemented a `dropDownViewPageObject` that
 deals with opening the drop-down and choosing options.
 
-Using the `dropDownViewPageObject` could look like this:
+Using the `dropDownViewPageObject` the test could look like this:
 
 ```diff
  function addBookViewPageObject($el) {
@@ -335,7 +361,7 @@ Using the `dropDownViewPageObject` could look like this:
  };
 ```
 
-And the `dropDownViewPageObject` is quite simple:
+The `dropDownViewPageObject` is just a simple helper:
 
 ```diff
 +function dropDownViewPageObject($el) {
@@ -352,7 +378,7 @@ And the `dropDownViewPageObject` is quite simple:
 +}
 ```
 
-Aften applying both the creation helper and the page object, our test is
+After applying both the creation helper and the page object, our test is
 getting better:
 
 ```javascript
@@ -386,8 +412,9 @@ getting better:
 ```
 
 The remaining clutter is related to handling Ajax requests with
-[Sinon.JS](http://sinonjs.org/) and asserting that the saved book is
-what we inserted. Let's start with cleaning up the Ajax related code.
+[Sinon.JS](http://sinonjs.org/) and asserting that the saved book
+matches the details we inserted. Let's start with cleaning up the Ajax
+related code.
 
 Hiding backend communication
 ----------------------------

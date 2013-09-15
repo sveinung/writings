@@ -113,21 +113,46 @@ The first thing we can do is to move view creation into a helper function.
      //  The rest of the test
  });
 
-+    function createAddBookView(options) {
-+        options = options || {};
++function createAddBookView(options) {
++    options = options || {};
 +
-+        var genres = [];
-+        if (options.genres) {
-+            genres = _.map(options.genres, function(genre) {
-+                return { name: genre }
-+            });
-+        }
-+
-+        return new AddBookView({
-+            genres: new Genres(genres),
-+            book: new Book()
++    var genres = [];
++    if (options.genres) {
++        genres = _.map(options.genres, function(genre) {
++            return { name: genre }
 +        });
 +    }
++
++    return new AddBookView({
++        genres: new Genres(genres),
++        book: new Book()
++    });
++}
+```
+
+```javascript
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     //  The rest of the test
+ });
+
+ function createAddBookView(options) {
+     options = options || {};
+ 
+     var genres = [];
+     if (options.genres) {
+         genres = _.map(options.genres, function(genre) {
+             return { name: genre }
+         });
+     }
+ 
+     return new AddBookView({
+         genres: new Genres(genres),
+         book: new Book()
+     });
+ }
 ```
 
 Hiding access to the markup

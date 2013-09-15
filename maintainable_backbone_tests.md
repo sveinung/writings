@@ -1,0 +1,724 @@
+Writing maintainable Backbone view tests
+========================================
+
+Testing complex JavaScript views is a pain. These views often contain lots of markup and logic, resulting in tests that are both cluttered and difficult to understand. Additionally, there is often duplicated code, such as DOM selectors and Ajax responses. In my experience, writing maintainable tests for these views can be greatly improved by using _Page Objects_.
+
+// what is page object (2 setninger)
+// kanskje noe sånt som "facade for viewene dine", eller noe i den retningen
+
+The example
+-----------
+
+The examples will use an app where the user can view a list of books
+
+![The library app](/page_objects/img/1-library.png?raw=true)
+
+after clicking the cross
+
+![The library app](/page_objects/img/2-add-book-view.png?raw=true)
+
+you can add more books
+
+![The library app](/page_objects/img/3-adding-a-book.png?raw=true)
+
+and see them appear in the list
+
+![The library app](/page_objects/img/4-book-added.png?raw=true)
+
+We want to test that the adding of new books works as intended. In detail, we want to:
+1. Insert the name of the author
+2. Insert the title of the book
+3. Choose a genre from the drop-down
+
+A typical test of a Backbone view looks like this:
+
+```javascript
+ it('saves the book', function() {
+     //  Create some genres for the drop-down
+     var genres = new Genres([
+         { name: "Crime novel" },
+         { name: "Picaresco" }
+     ]);
+
+     //  The book we are going to save
+     var book = new Book();
+
+     //  The view we are testing
+     var addBookView = new AddBookView({
+         genres: genres,
+         book: book
+     });
+     addBookView.render();
+
+     //  Set the author field
+     addBookView.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
+
+     //  Set the title field
+     addBookView.$(".title-input").
+         val("Don Quixote").
+         change();
+
+     // Choose a genre for the book
+     var dropdown = addBookView.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     //  Listen to the 'sync' event so that we can check what we saved later
+     var callback = sinon.spy();
+     this.addBookView.book.on('sync', callback);
+
+     //  Fake ajax responses
+     var server = sinon.fakeServer.create();
+
+     //  Save the book
+     this.addBookView.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respond();
+     server.restore();
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```
+
+This a _lot_ of code, especially considering that the functionality being tested is quite simple.
+
+In this test about a fourth of the lines are dedicated to setting up the view. A lot of that setup isn't even relevant for the functionality we are testing.
+
+Clean up view creation
+----------------------
+
+The first thing we can do is to move view creation into a helper function.
+
+```diff
+ it('saves the book', function() {
+-    //  Create some genres for the drop-down
+-    var genres = new Genres([
+-        { name: "Crime novel" },
+-        { name: "Picaresco" }
+-    ]);
+-
+-    //  The book we are going to save
+-    var book = new Book();
+-
+-    //  The view we are testing
+-    var addBookView = new AddBookView({
+-        genres: genres,
+-        book: book
+-    });
+
++    var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     //  The rest of the test
+ });
+
++function createAddBookView(options) {
++    options = options || {};
++
++    var genres = [];
++    if (options.genres) {
++        genres = _.map(options.genres, function(genre) {
++            return { name: genre }
++        });
++    }
++
++    return new AddBookView({
++        genres: new Genres(genres),
++        book: new Book()
++    });
++}
+```
+
+```javascript
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     //  The rest of the test
+ });
+
+ function createAddBookView(options) {
+     options = options || {};
+ 
+     var genres = [];
+     if (options.genres) {
+         genres = _.map(options.genres, function(genre) {
+             return { name: genre }
+         });
+     }
+ 
+     return new AddBookView({
+         genres: new Genres(genres),
+         book: new Book()
+     });
+ }
+```
+
+Hiding access to the markup
+---------------------------
+
+Let's start with a simple view, for example the dropdown.
+
+The first thing you can do is to start wrapping your selectors inside some reusable abstractions. Consider for example the following test, where we expect a view to be hidden once we push the 'cancel' button.
+
+// trykkes det på cancel i dette eksemplet?
+
+```javascript
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+     view.$(".dropdown-trigger").click();
+     view.$(".dropdown-menu a[data-value='Satire']").click();
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+// hvorfor vil vi unngå DOM-en? Står litt i introen nå, men bør tydeliggjøres (kanskje en ekstra paragraf i intro)
+
+The test accesses the DOM directly, which want to avoid, so we create a page object and inject the view.
+
+```diff
++var DropDownViewPageObject = function($dropDownView) {
++    this.$view = $dropDownView;
++};
+
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
++    var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+     view.$(".dropdown-trigger").click();
+     view.$(".dropdown-menu a[data-value='Satire']").click();
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+Then we can move the interraction with the view into the page object. In this case opening the dropdown and choosing the option "Satire".
+
+// jeg er usikker på bruken av pageObject.openMenu(). Hva er pageObject? Man må alltid slå opp, selv om det var er litt over. Hva med `dropDownEl` eller noe sånt her? Når jeg tenker litt på det er det kanskje naturlig å bruke `var dropDownView = new DropDownView` også? Lettere å se konteksten uten å måtte søke opp etter variabel-deklarasjonen.
+
+```diff
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
+ };
+
++_.extend(DropDownViewPageObject.prototype, {
++    openMenu: function() {
++        this.$view.find(".dropdown-trigger").click();
++        return this;
++    },
++    chooseOption: function(option) {
++        this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
++        return this;
++    }
++});
+
+ it('chooses an option', function() {
+     var view = new DropDownView(…);
+     view.render();
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+-    view.$(".dropdown-trigger").click();
+-    view.$(".dropdown-menu a[data-value='Satire']").click();
++    dropDownViewPageObject.
++        openMenu().
++        chooseOption("Satire");
+
+     expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+// underbygg disse punktene. Lesbarhet er VIKTIG! Kan linke til noe som dette, for eksempel: http://blogs.msdn.com/b/oldnewthing/archive/2007/04/06/2036150.aspx
+
+Personally, I also like to move the assertions into the page objects if it _improves readability_, or if the same assertions are _used frequently_.
+
+```diff
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
+ };
+
+ _.extend(DropDownViewPageObject.prototype, {
+     openMenu: function() {
+         this.$view.find(".dropdown-trigger").click();
+         return this;
+     },
+     chooseOption: function(option) {
+         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
+         return this;
++    },
++    expectToHaveChosen: function(option) {
++        expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
++        return this;
++    }
+ });
+
+ it('chooses an option', function() {
+     var view = new DropDownView(…);
+     view.render();
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
+
+-    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Choose!");
+
+     dropDownViewPageObject.
+-        openMenu().
+-        chooseOption("Satire");
++        expectToHaveChosen("Choose!").
++        openMenu().
++        chooseOption("Satire").
++        expectToHaveChosen("Satire");
+
+-    expect(view.$(".dropdown-trigger .chosen-value")).toHaveText("Satire");
+ });
+```
+
+In the end we end up with the code in the block below. Notice how much more readable the test is!
+
+// Kanskje jeg ville dratt `DropDownViewPageObject` inn i sin egen kodesnutt under, og kun vist selve testen her. Det tydeliggjør hvor lesbar koden er. Nå må man "lete litt".
+
+// Igjen, litt usikker på lesbarheten av `pageObject` (men er ikke vant til det)
+
+```javascript
+ var DropDownViewPageObject = function($dropDownView) {
+     this.$view = $dropDownView;
+ };
+
+ _.extend(DropDownViewPageObject.prototype, {
+     openMenu: function() {
+         this.$view.find(".dropdown-trigger").click();
+         return this;
+     },
+     chooseOption: function(option) {
+         this.$view.find(".dropdown-menu a[data-value='" + option + "']").click();
+         return this;
+     },
+     expectToHaveChosen: function(option) {
+         expect(this.$view.find(".dropdown-trigger .chosen-value")).toHaveText(option);
+         return this;
+     }
+ });
+
+ it('chooses an option', function() {
+     var view = new DropDownView({
+         defaultOption: "Choose!",
+         options: [{
+             value: "Picaresco"
+         }, {
+             value: "Satire"
+         }]
+     });
+     view.render();
+     var dropDownViewPageObject = new DropDownViewPageObject(view.$el);
+
+     dropDownViewPageObject.
+         expectToHaveChosen("Choose!").
+         openMenu().
+         chooseOption("Satire").
+         expectToHaveChosen("Satire");
+ });
+```
+
+Hiding backend communication
+----------------------------
+
+The next thing we will look at is hiding ajax calls and responses. In this example we will look at test that asserts that the AddBookView saves a new book.
+
+// Forresten, jeg ville injecta denne: https://github.com/sveinung/pageobject-example/blob/caf904d3d6f1009e5c9d4ec217fcb51b62600c6b/src/main/webapp/modules/library/books/addBookView.js#L20
+// det gjøre testen bedre også. Liker ikke at det plutselig kommer en `view.book` der.
+
+```javascript
+ it('saves the book', function() {
+     var genres = new Genres([
+         {"name":"Crime novel"},
+         {"name":"Picaresco"}
+     ]);
+     var book = new Book();
+     var view = new AddBookView({
+         genres: genres,
+         book: book
+     });
+     view.render();
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+     view.$(".author-input").
+         val("Miguel de Cervantes Saavedra").
+         change();
+
+     view.$(".title-input").
+         val("Don Quixote").
+         change();
+
+     var dropdown = view.$(".genres-dropdown");
+     dropdown.find(".dropdown-trigger").click();
+     dropdown.find("a[data-value='Picaresco']").click();
+
+     var server = sinon.fakeServer.create();
+
+     view.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respondWith([200, { "Content-Type": "application/json" }, response]);
+     server.respond();
+     server.restore();
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```
+
+We quickly do the same thing we did in the previous example and hide interraction in a page object. This time, we are reusing the DropDownViewPageObject.
+
+```diff
++var AddBookViewPageObject = function($addBookView) {
++    this.$view = $addBookView;
++    this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
++};
++_.extend(AddBookViewPageObject.prototype, {
++    author: function(author) {
++        this.$view.find(".author-input").
++            val(author).
++            change();
++        return this;
++    },
++    title: function(title) {
++        this.$view.find(".title-input").
++            val(title).
++            change();
++        return this;
++    },
++    genre: function(genre) {
++        this.genreDropDown.
++            openMenu().
++            chooseOption(genre);
++        return this;
++    }
++});
+
+ it('saves the book', function() {
+     …
+     var view = new AddBookView({ genres: genres });
+     view.render();
+
++    var addBookViewPageObject = new AddBookViewPageObject(view.$el);
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+-    view.$(".author-input").
+-        val("Miguel de Cervantes Saavedra").
+-        change();
+-
+-    view.$(".title-input").
+-        val("Don Quixote").
+-        change();
+-
+-    var dropdown = view.$(".genres-dropdown");
+-    dropdown.find(".dropdown-trigger").click();
+-    dropdown.find("a[data-value='Picaresco']").click();
+
++    addBookViewPageObject.
++        author("Miguel de Cervantes Saavedra").
++        title("Don Quixote").
++        genre("Picaresco");
+
+     var server = sinon.fakeServer.create();
+
+     view.$(".submit-button").click();
+
+     // Responding with what was sent in
+     var response = server.queue[0].requestBody;
+     server.respondWith([200, { "Content-Type": "application/json" }, response]);
+     server.respond();
+     server.restore();
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```
+
+Afterwards we move the Sinon XHR stubbing into the page object.
+
+```diff
+ var AddBookViewPageObject = function($addBookView) {
+     this.$view = $addBookView;
+     this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
+ };
+ _.extend(AddBookViewPageObject.prototype, {
+     author: function(author) { … },
+     title: function(title) { … },
+     genre: function(genre) { … },
++    save: function() {
++        var server = sinon.fakeServer.create();
++
++        this.$view.find(".submit-button").click();
++
++        // Responding with what was sent in
++        var response = server.queue[0].requestBody;
++        server.respondWith([200, { "Content-Type": "application/json" }, response]);
++        server.respond();
++        server.restore();
++    }
+ });
+
+ it('saves the book', function() {
+     …
+     var view = new AddBookView({ genres: genres });
+     view.render();
+
+     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+     addBookViewPageObject.
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
++        save();
+
+-    var server = sinon.fakeServer.create();
+-
+-    view.$(".submit-button").click();
+-
+-    // Responding with what was sent in
+-    var response = server.queue[0].requestBody;
+-    server.respondWith([200, { "Content-Type": "application/json" }, response]);
+-    server.respond();
+-    server.restore();
+
+     expect(callback).toHaveBeenCalledWith(sinon.match({
+         attributes: {
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         }
+     }));
+ });
+```
+
+We have one potential little problem here. Each test that makes assertions about saving books will have intimate knowledge about the AddBookView. That is, that the view has an instance of a Book. If there's only a few tests, who cares (!), but if there are many we should probably clean it up. In this case we could inject the view itself instead of the jQuery object.
+
+Notice that in order to avoid unnecessary state in the page object the `save` function returns an object with the XHR assertion function with the `saveCallback` bound in a closure.
+
+```diff
+ var AddBookViewPageObject = function($addBookView) {
+     this.$view = $addBookView;
+     this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
+ };
+ _.extend(AddBookViewPageObject.prototype, {
+     author: function(author) { … },
+     title: function(title) { … },
+     genre: function(genre) { … },
+     save: function() {
++        var saveCallback = sinon.spy();
++        this.view.book.on('sync', saveCallback);
+
+         var server = sinon.fakeServer.create();
+ 
+         this.$view.find(".submit-button").click();
+ 
+         // Responding with what was sent in
+         var response = server.queue[0].requestBody;
+         server.respondWith([200, { "Content-Type": "application/json" }, response]);
+         server.respond();
+         server.restore();
+
++        return {
++            expectToHaveSaved: function(book) {
++                expect(saveCallback).toHaveBeenCalledWith(sinon.match({
++                    attributes: book
++                }));
++            }
++        };
+     }
+ });
+
+ it('saves the book', function() {
+     …
+     var view = new AddBookView({ genres: genres });
+     view.render();
+
+     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
+
+     var callback = sinon.spy();
+     view.book.on('sync', callback);
+
+     addBookViewPageObject.
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
+         save().
++        expectToHaveSaved({
++            author: "Miguel de Cervantes Saavedra",
++            title: "Don Quixote",
++            genre: "Picaresco"
++        });
+
+-    expect(callback).toHaveBeenCalledWith(sinon.match({
+-        attributes: {
+-            author: "Miguel de Cervantes Saavedra",
+-            title: "Don Quixote",
+-            genre: "Picaresco"
+-        }
+-    }));
+ });
+```
+
+The end result is then:
+
+```javascript
+ var AddBookViewPageObject = function(addBookView) {
+     this.view = addBookView;
+     this.genreDropDown = new DropDownViewPageObject(this.view.$(".genres-dropdown"));
+ };
+ _.extend(AddBookViewPageObject.prototype, {
+     author: function(author) {
+         this.view.$(".author-input").
+             val(author).
+             change();
+         return this;
+     },
+     title: function(title) {
+         this.view.$(".title-input").
+             val(title).
+             change();
+         return this;
+     },
+     genre: function(genre) {
+         this.genreDropDown.
+             openMenu().
+             chooseOption(genre);
+         return this;
+     },
+     save: function() {
+         // Use this when asserting the XHR response
+         var saveCallback = sinon.spy();
+         this.view.book.on('sync', saveCallback);
+
+         var server = sinon.fakeServer.create();
+
+         this.view.$(".submit-button").click();
+
+         // Responding with what was sent in
+         var response = server.queue[0].requestBody;
+         server.respondWith([200, { "Content-Type": "application/json" }, response]);
+         server.respond();
+         server.restore();
+
+         return {
+             expectToHaveSaved: function(book) {
+                 expect(saveCallback).toHaveBeenCalledWith(sinon.match({
+                     attributes: book
+                 }));
+             }
+         };
+     }
+ });
+
+ it('saves the book', function() {
+     var genres = new Genres([
+         {"name":"Crime novel"},
+         {"name":"Picaresco"}
+     ]);
+     var book = new Book();
+     var view = new AddBookView({
+         genres: genres,
+         book: book
+     });
+     view.render();
+
+     var addBookViewPageObject = new AddBookViewPageObject(view);
+
+     addBookViewPageObject.
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
+         save().
+         expectToHaveSaved({
+             author: "Miguel de Cervantes Saavedra",
+             title: "Don Quixote",
+             genre: "Picaresco"
+         });
+ });
+```
+
+Hiding flow between views
+-------------------------
+
+```javascript
+ var LibraryViewPageObject = function(libraryView) {
+     this.view = libraryView;
+ };
+ _.extend(LibraryViewPageObject.prototype, {
+     clickAddBook: function() {
+         var self = this;
+         var genresResponse = [{"name":"Crime novel"},{"name":"Picaresco"}];
+         responseFaker.fakeResponse(genresResponse, {}, function() {
+             self.view.$(".add-book").click();
+         });
+     }
+ });
+ it('shows the AddBookView', function() {
+     var library = new Library([
+         {"title":"Of Mice and Men","uri":"/book/1"},
+         {"title":"Sult","uri":"/book/2"}
+     ]);
+     var libraryView = new LibraryView({
+         library: library
+     });
+     libraryView.render();
+
+     var pageObject = new LibraryViewPageObject(libraryView);
+
+     pageObject.
+         clickAddBook();
+
+     expect(libraryView.$(".add-book-view")).not.toHaveClass("hide");
+ });
+```
+

@@ -433,328 +433,154 @@ The remaining clutter is related to faking ajax with sinon and asserting that th
 Hiding backend communication
 ----------------------------
 
-The next thing we will look at is hiding ajax calls and responses. In this example we will look at test that asserts that the AddBookView saves a new book.
-
-// Forresten, jeg ville injecta denne: https://github.com/sveinung/pageobject-example/blob/caf904d3d6f1009e5c9d4ec217fcb51b62600c6b/src/main/webapp/modules/library/books/addBookView.js#L20
-// det gjøre testen bedre også. Liker ikke at det plutselig kommer en `view.book` der.
-
-```javascript
- it('saves the book', function() {
-     var genres = new Genres([
-         {"name":"Crime novel"},
-         {"name":"Picaresco"}
-     ]);
-     var book = new Book();
-     var view = new AddBookView({
-         genres: genres,
-         book: book
-     });
-     view.render();
-
-     var callback = sinon.spy();
-     view.book.on('sync', callback);
-
-     view.$(".author-input").
-         val("Miguel de Cervantes Saavedra").
-         change();
-
-     view.$(".title-input").
-         val("Don Quixote").
-         change();
-
-     var dropdown = view.$(".genres-dropdown");
-     dropdown.find(".dropdown-trigger").click();
-     dropdown.find("a[data-value='Picaresco']").click();
-
-     var server = sinon.fakeServer.create();
-
-     view.$(".submit-button").click();
-
-     // Responding with what was sent in
-     var response = server.queue[0].requestBody;
-     server.respondWith([200, { "Content-Type": "application/json" }, response]);
-     server.respond();
-     server.restore();
-
-     expect(callback).toHaveBeenCalledWith(sinon.match({
-         attributes: {
-             author: "Miguel de Cervantes Saavedra",
-             title: "Don Quixote",
-             genre: "Picaresco"
-         }
-     }));
- });
-```
-
-We quickly do the same thing we did in the previous example and hide interraction in a page object. This time, we are reusing the DropDownViewPageObject.
+Sinon in our tests gives us a lot of the same issues as with jQuery: A lot of low-level logic that isn't really relevant to the test. So, the first thing we can do is to write a `save(book)` method, where the provided `book` parameter is the the JavaScript object we expect to have saved.
 
 ```diff
-+var AddBookViewPageObject = function($addBookView) {
-+    this.$view = $addBookView;
-+    this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
-+};
-+_.extend(AddBookViewPageObject.prototype, {
-+    author: function(author) {
-+        this.$view.find(".author-input").
-+            val(author).
-+            change();
-+        return this;
-+    },
-+    title: function(title) {
-+        this.$view.find(".title-input").
-+            val(title).
-+            change();
-+        return this;
-+    },
-+    genre: function(genre) {
-+        this.genreDropDown.
-+            openMenu().
-+            chooseOption(genre);
-+        return this;
-+    }
-+});
-
  it('saves the book', function() {
-     …
-     var view = new AddBookView({ genres: genres });
-     view.render();
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
 
-+    var addBookViewPageObject = new AddBookViewPageObject(view.$el);
-
-     var callback = sinon.spy();
-     view.book.on('sync', callback);
-
--    view.$(".author-input").
--        val("Miguel de Cervantes Saavedra").
--        change();
--
--    view.$(".title-input").
--        val("Don Quixote").
--        change();
--
--    var dropdown = view.$(".genres-dropdown");
--    dropdown.find(".dropdown-trigger").click();
--    dropdown.find("a[data-value='Picaresco']").click();
-
-+    addBookViewPageObject.
-+        author("Miguel de Cervantes Saavedra").
-+        title("Don Quixote").
-+        genre("Picaresco");
-
-     var server = sinon.fakeServer.create();
-
-     view.$(".submit-button").click();
-
-     // Responding with what was sent in
-     var response = server.queue[0].requestBody;
-     server.respondWith([200, { "Content-Type": "application/json" }, response]);
-     server.respond();
-     server.restore();
-
-     expect(callback).toHaveBeenCalledWith(sinon.match({
-         attributes: {
-             author: "Miguel de Cervantes Saavedra",
-             title: "Don Quixote",
-             genre: "Picaresco"
-         }
-     }));
- });
-```
-
-Afterwards we move the Sinon XHR stubbing into the page object.
-
-```diff
- var AddBookViewPageObject = function($addBookView) {
-     this.$view = $addBookView;
-     this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
- };
- _.extend(AddBookViewPageObject.prototype, {
-     author: function(author) { … },
-     title: function(title) { … },
-     genre: function(genre) { … },
-+    save: function() {
-+        var server = sinon.fakeServer.create();
-+
-+        this.$view.find(".submit-button").click();
-+
-+        // Responding with what was sent in
-+        var response = server.queue[0].requestBody;
-+        server.respondWith([200, { "Content-Type": "application/json" }, response]);
-+        server.respond();
-+        server.restore();
-+    }
- });
-
- it('saves the book', function() {
-     …
-     var view = new AddBookView({ genres: genres });
-     view.render();
-
-     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
-
-     var callback = sinon.spy();
-     view.book.on('sync', callback);
-
-     addBookViewPageObject.
+     addBookViewPageObject(addBookView.$el).
          author("Miguel de Cervantes Saavedra").
          title("Don Quixote").
          genre("Picaresco").
-+        save();
-
--    var server = sinon.fakeServer.create();
--
--    view.$(".submit-button").click();
--
--    // Responding with what was sent in
--    var response = server.queue[0].requestBody;
--    server.respondWith([200, { "Content-Type": "application/json" }, response]);
--    server.respond();
--    server.restore();
-
-     expect(callback).toHaveBeenCalledWith(sinon.match({
-         attributes: {
-             author: "Miguel de Cervantes Saavedra",
-             title: "Don Quixote",
-             genre: "Picaresco"
-         }
-     }));
- });
-```
-
-We have one potential little problem here. Each test that makes assertions about saving books will have intimate knowledge about the AddBookView. That is, that the view has an instance of a Book. If there's only a few tests, who cares (!), but if there are many we should probably clean it up. In this case we could inject the view itself instead of the jQuery object.
-
-Notice that in order to avoid unnecessary state in the page object the `save` function returns an object with the XHR assertion function with the `saveCallback` bound in a closure.
-
-```diff
- var AddBookViewPageObject = function($addBookView) {
-     this.$view = $addBookView;
-     this.genreDropDown = new DropDownViewPageObject(this.$view.find(".genres-dropdown"));
- };
- _.extend(AddBookViewPageObject.prototype, {
-     author: function(author) { … },
-     title: function(title) { … },
-     genre: function(genre) { … },
-     save: function() {
-+        var saveCallback = sinon.spy();
-+        this.view.book.on('sync', saveCallback);
-
-         var server = sinon.fakeServer.create();
- 
-         this.$view.find(".submit-button").click();
- 
-         // Responding with what was sent in
-         var response = server.queue[0].requestBody;
-         server.respondWith([200, { "Content-Type": "application/json" }, response]);
-         server.respond();
-         server.restore();
-
-+        return {
-+            expectToHaveSaved: function(book) {
-+                expect(saveCallback).toHaveBeenCalledWith(sinon.match({
-+                    attributes: book
-+                }));
-+            }
-+        };
-     }
- });
-
- it('saves the book', function() {
-     …
-     var view = new AddBookView({ genres: genres });
-     view.render();
-
-     var addBookViewPageObject = new AddBookViewPageObject(view.$el);
-
-     var callback = sinon.spy();
-     view.book.on('sync', callback);
-
-     addBookViewPageObject.
-         author("Miguel de Cervantes Saavedra").
-         title("Don Quixote").
-         genre("Picaresco").
-         save().
-+        expectToHaveSaved({
++        save({
 +            author: "Miguel de Cervantes Saavedra",
 +            title: "Don Quixote",
 +            genre: "Picaresco"
 +        });
 
--    expect(callback).toHaveBeenCalledWith(sinon.match({
--        attributes: {
+-    //  Fake ajax responses
+-    var server = sinon.fakeServer.create();
+-
+-    //  Save the book
+-    this.addBookView.$(".submit-button").click();
+-
+-    //  Responding with what was sent in
+-    var requestBody = server.queue[0].requestBody;
+-    server.respond();
+-    server.restore();
+-
+-    //  Check that we really save what we expect to have saved
+-    expect(JSON.parse(requestBody)).toEqual({
+-        author: "Miguel de Cervantes Saavedra",
+-        title: "Don Quixote",
+-        genre: "Picaresco"
+-    });
+ });
+```
+```diff
+ function addBookViewPageObject($el) {
+     return {
+         author: function(author) {
+             $el.find(".author-input").
+                 val(author).
+                 change();
+             return this;
+         },
+         title: function(title) {
+             $el.find(".title-input").
+                 val(title).
+                 change();
+             return this;
+         },
+         genre: function(genre) {
+             dropDownViewPageObject($el.find(".genres-dropdown")).
+                 openMenu().
+                 chooseOption(genre);
+             return this;
+         },
++        save: function(book) {
++            var server = sinon.fakeServer.create();
++
++            $el.find(".submit-button").click();
++
++            var requestBody = server.queue[0].requestBody;
++
++            server.respond();
++            server.restore();
++
++            expect(JSON.parse(requestBody)).toEqual(book);
++        }
+     };
+ };
+```
+
+However, there are some problems with having the `save` method doing the assertion. E.g. we might in some tests want to assert that _no_ book is saved if we add client-side validation. One solution is to have the `save` method return a new object containing all the relevant expect methods.
+
+```diff
+ it('saves the book', function() {
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
+
+     addBookViewPageObject(addBookView.$el).
+         author("Miguel de Cervantes Saavedra").
+         title("Don Quixote").
+         genre("Picaresco").
+-        save({
 -            author: "Miguel de Cervantes Saavedra",
 -            title: "Don Quixote",
 -            genre: "Picaresco"
--        }
--    }));
+-        });
++        save().
++        expectToHaveSaved({
++            author: "Miguel de Cervantes Saavedra",
++            title: "Don Quixote",
++            genre: "Picaresco"
++        });
  });
 ```
+```diff
+ function addBookViewPageObject($el) {
+     return {
+         author: function(author) {
+             $el.find(".author-input").
+                 val(author).
+                 change();
+             return this;
+         },
+         title: function(title) {
+             $el.find(".title-input").
+                 val(title).
+                 change();
+             return this;
+         },
+         genre: function(genre) {
+             dropDownViewPageObject($el.find(".genres-dropdown")).
+                 openMenu().
+                 chooseOption(genre);
+             return this;
+         },
+-        save: function(book) {
++        save: function() {
+             var server = sinon.fakeServer.create();
+ 
+             $el.find(".submit-button").click();
+ 
+             var requestBody = server.queue[0].requestBody;
+ 
+             server.respond();
+             server.restore();
+ 
+-            expect(JSON.parse(requestBody)).toEqual(book);
++            return {
++                expectToHaveSaved: function(attributes) {
++                    expect(JSON.parse(requestBody)).toEqual(attributes);
++                }
++            };
+         }
+     };
+ };
+```
 
-The end result is then:
+In the end the test looks like this:
 
 ```javascript
- var AddBookViewPageObject = function(addBookView) {
-     this.view = addBookView;
-     this.genreDropDown = new DropDownViewPageObject(this.view.$(".genres-dropdown"));
- };
- _.extend(AddBookViewPageObject.prototype, {
-     author: function(author) {
-         this.view.$(".author-input").
-             val(author).
-             change();
-         return this;
-     },
-     title: function(title) {
-         this.view.$(".title-input").
-             val(title).
-             change();
-         return this;
-     },
-     genre: function(genre) {
-         this.genreDropDown.
-             openMenu().
-             chooseOption(genre);
-         return this;
-     },
-     save: function() {
-         // Use this when asserting the XHR response
-         var saveCallback = sinon.spy();
-         this.view.book.on('sync', saveCallback);
-
-         var server = sinon.fakeServer.create();
-
-         this.view.$(".submit-button").click();
-
-         // Responding with what was sent in
-         var response = server.queue[0].requestBody;
-         server.respondWith([200, { "Content-Type": "application/json" }, response]);
-         server.respond();
-         server.restore();
-
-         return {
-             expectToHaveSaved: function(book) {
-                 expect(saveCallback).toHaveBeenCalledWith(sinon.match({
-                     attributes: book
-                 }));
-             }
-         };
-     }
- });
-
  it('saves the book', function() {
-     var genres = new Genres([
-         {"name":"Crime novel"},
-         {"name":"Picaresco"}
-     ]);
-     var book = new Book();
-     var view = new AddBookView({
-         genres: genres,
-         book: book
-     });
-     view.render();
+     var addBookView = createAddBookView({ genres: ["Picaresco"] });
+     addBookView.render();
 
-     var addBookViewPageObject = new AddBookViewPageObject(view);
-
-     addBookViewPageObject.
+     addBookViewPageObject(addBookView.$el).
          author("Miguel de Cervantes Saavedra").
          title("Don Quixote").
          genre("Picaresco").
@@ -766,6 +592,8 @@ The end result is then:
          });
  });
 ```
+
+It has gotten quite slimmer since we started. There's almost no terms in the test that isn't relevant to the functionality being tested.
 
 Hiding flow between views
 -------------------------

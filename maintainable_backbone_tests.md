@@ -262,7 +262,7 @@ this:
 Here we have created a higher-level helper, which we call
 `addBookViewPageObject`, which wraps all the jQuery details. Because of
 this helper it's easier to update the view and still have all the tests
-running &mdash; we only need to update the jQuery selector one place.
+running &mdash; we only need to update the jQuery selector in one place.
 Additionally, as we are now working at a higher level of abstraction in
 our tests it's often easier to understand the intent. (The more you
 struggle with hundreds of tests in highly interactive JavaScript

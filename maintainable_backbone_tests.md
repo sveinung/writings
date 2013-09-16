@@ -324,7 +324,7 @@ With this abstraction we have cleaned up our test quite a bit:
 
 Now, for the next step in our test we need to handle the genre. However,
 choosing a genre is actually implemented as a `DropDownView`, so we
-don't want the `AddBookView` to have to much knowledge about the
+don't want the `AddBookView` to have too much knowledge about the
 implementation. That only ends up causing problems in the long run, as
 we push knowledge about drop-down specific functionality into other
 tests. Therefore we have implemented a `dropDownViewPageObject` that

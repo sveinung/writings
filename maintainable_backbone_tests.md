@@ -1,14 +1,3 @@
-Writing maintainable Backbone view tests
-========================================
-
-Testing complex Backbone.js views can be painful. These views often
-contain quite a bit of markup and logic, resulting in cluttered and
-brittle tests that are difficult to understand. Additionally, we often
-end up duplicating DOM selectors and Ajax responses.
-
-In this blog post we'll show one way of writing clean and maintainable
-tests for Backbone views.
-
 The example
 -----------
 

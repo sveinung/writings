@@ -230,7 +230,7 @@ it('saves the book', function() {
 });
 ```
 
-Instead of calling `$(".author-input")` we could do something like
+Instead of calling `$(".author-input")`, `$(".title-input")`, and `$(".genres-dropdown")` to set the _author_, _title_ and _genre_ respectively, we could do something like
 this:
 
 ```diff

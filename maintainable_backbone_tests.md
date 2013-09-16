@@ -2,9 +2,9 @@ Writing maintainable Backbone view tests
 ========================================
 
 Testing complex Backbone.js views can be painful. These views often
-contain quite a bit of markup and logic, resulting in tests that are
-both cluttered and difficult to understand. Additionally, we often end
-up duplicating DOM selectors and Ajax responses.
+contain quite a bit of markup and logic, resulting in cluttered and
+brittle tests that are difficult to understand. Additionally, we often
+end up duplicating DOM selectors and Ajax responses.
 
 In this blog post we'll show one way of writing clean and maintainable
 tests for Backbone views.
@@ -13,7 +13,7 @@ The example
 -----------
 
 Throughout this blog post we'll use a simple library application as an
-example. In this library app the user can view a list of books:
+example. In this app a user can view a list of books:
 
 ![The library app](pageobjects/img/1-library.png?raw=true)
 
@@ -40,8 +40,9 @@ intended. And specifically that means that we want to:
 4. Press "Confirm"
 5. Ensure that the book is saved
 
-A typical test for this Backbone view using Jasmine might look something
-like this: (we've added some comments to clarify the intention)
+A typical test for this Backbone view using
+[Jasmine](https://github.com/pivotal/jasmine/) might look something like
+this: (we've added some comments to clarify the intention)
 
 ```javascript
 it('saves the book', function() {
@@ -112,13 +113,16 @@ first started writing tests for our JavaScript we usually went with a
 `beforeEach` for this type of setup. However, there are significant
 problems with this approach.
 
-First of all, when we have a lot of tests in a single file it's often
-quite hard to find a setup that works for _all tests_. Also, we often
-needed to jump to the `beforeEach` to see the current state of the code,
-which can be a hassle. Additionally, it's also possible to have several
-`describe`s inside each other, and therefore also several `beforeEach`s
-who all work on setting up the state. Often it could be quite hard to
-understand the state of the object we were testing.
+First of all, when we have many tests in a single file it's often
+difficult to find a setup that works for _all the tests_. Also, we often
+needed to jump to the `beforeEach` to see the current state of the code.
+This could be a hassle, especially when there was a lot of setup in the
+`beforeEach`.
+
+Additionally, it's also possible to have several `describe`s inside each
+other in Jasmine, and therefore potentially several `beforeEach`s who
+all work on setting up the state. In our experience it could at times be
+quite hard to understand the state of the object we were testing.
 
 Now we prefer to use creation methods instead. So, for us the first step
 towards a cleaner test is to move view creation into a helper:
@@ -179,7 +183,7 @@ intent in our tests. For example, if we need genres in our tests we can
 write:
 
 ```javascript
-createAddBookView({ genres: ["Picaresco"] })
+createAddBookView({ genres: ["Picaresco", "Crime novel"] })
 ```
 
 But when we don't need one, we can use the default instead:
@@ -230,8 +234,9 @@ it('saves the book', function() {
 });
 ```
 
-Instead of calling `$(".author-input")`, `$(".title-input")`, and `$(".genres-dropdown")` to set the _author_, _title_ and _genre_ respectively, we could do something like
-this:
+Instead of calling `$(".author-input")`, `$(".title-input")`, and
+`$(".genres-dropdown")` to set the _author_, _title_ and _genre_
+respectively, we could do something like this:
 
 ```diff
  it('saves the book', function() {
@@ -378,8 +383,8 @@ The `dropDownViewPageObject` is just a simple helper:
 +}
 ```
 
-After applying both the creation helper and the page object, our test is
-getting better:
+After applying both the creation helper and the page object, our test
+has improved considerably:
 
 ```javascript
  it('saves the book', function() {
@@ -498,10 +503,10 @@ saved:
  };
 ```
 
-However, there are some problems with having the `save` method doing the
-assertion. Lets say that we for example want to assert that _no_ book is
-saved if we add client-side validation. Another solution is to have the
-`save` method return a new object that contains the relevant expect
+However, having the `save` method doing the assertion can be
+problematic. Let's say that we for example want to assert that _no_ book
+is saved if we add client-side validation. Another solution is to have
+the `save` method return a new object that contains the relevant expect
 methods:
 
 ```diff
@@ -593,7 +598,7 @@ it('saves the book', function() {
 });
 ```
 
-This test is really easy to understand &mdash; it's succinct and reveals our
+This test is easy to understand &mdash; it's succinct and reveals our
 intent. It's also easy to keep up-to-date with changes in our
 `AddBookView` and `DropDownView`. And perhaps best of all, there's
 nearly no terms in this test that isn't relevant to the functionality
@@ -610,7 +615,7 @@ In our experience Page Objects can considerably decrease the cost (and
 pain) of writing JavaScript tests. We know that this might feel like a
 heavy solution, but this is a way of handling hundreds or maybe
 thousands of tests for a complex application and still being able to
-maintain and (easily) understand the tests.  Also, we can easily create
+maintain and (easily) understand the tests. Also, we can easily create
 a couple of simple helpers for building Page Objects, as we have done
 with [po.js](https://github.com/kjbekkelund/po.js).
 

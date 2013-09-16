@@ -4,19 +4,19 @@ The example
 Throughout this blog post we'll use a simple library application as an
 example. In this app a user can view a list of books:
 
-![The library app](pageobjects/img/1-library.png?raw=true)
+![The library app](https://github.com/sveinung/writings/raw/gh-pages/pageobjects/img/1-library.png?raw=true)
 
 He can click "add book" to get a new view for adding a book:
 
-![The library app](pageobjects/img/2-add-book-view.png?raw=true)
+![The library app](https://github.com/sveinung/writings/raw/gh-pages/pageobjects/img/2-add-book-view.png?raw=true)
 
 Then he can fill in some info about the book:
 
-![The library app](pageobjects/img/3-adding-a-book.png?raw=true)
+![The library app](https://github.com/sveinung/writings/raw/gh-pages/pageobjects/img/3-adding-a-book.png?raw=true)
 
 And then the book appears in the list:
 
-![The library app](pageobjects/img/4-book-added.png?raw=true)
+![The library app](https://github.com/sveinung/writings/raw/gh-pages/pageobjects/img/4-book-added.png?raw=true)
 
 In this blog post we try to write tests for `AddBookView`, which is the
 view that is opened when clicking "Add book" and closed when saving the

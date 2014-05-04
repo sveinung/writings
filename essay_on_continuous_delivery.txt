@@ -1,0 +1,17 @@
+Please share a critical piece of advice that is supported by a personal story that would help a capable friend manage the transition to continuous delivery. (300 to 400 words is ideal.)
+
+
+Your friend has been tasked with transitioning her company's software development efforts to continuous delivery. She's extremely capable, but she's nervous about leading the transition. Please share a story from your own experience that will provide her with a critical piece of advice that will help her to be more successful.
+
+---
+
+Ever since I started working with software developement I have had co-workers with great skills and a good education. I have worked with product owners, project managers, architects, testers, sysadmins and programmers. All of them have had special expertise within their own area of responsibility, and when all these roles are staffed on a project you would think that every aspect of a software project would be covered. Yet the projects I was on failed, as most software projects do.
+
+At some point I was asked to be tech lead on a small project where the project sponsor didn't sit in the same building as us, and she wanted to monitor the project directly. I chose seven other people and asked for servers to host the software we were going to build. Long story short, the project was amazingly successful. We delivered a very valuable product, and with fewer errors than anything I had participated on earlier. Adding new features was incredibly easy, and the project sponsor was spoiled with seeing her ideas running in production soon after they were born. We were practicing continuous delivery.
+
+The reason for the success was not that we were superhuman developers. What I realized was that the main reason for our success was that we only had three roles; the sponsor, the users and the "techies". We lacked most of the roles that I was used to work with. The product owner was the actual sponsor of the project and worried about the product for real. Project managers were not measuring us or pushing us beyond our limits. Architects were not telling us what kind of products or patterns to use. Testers did not obstruct our changes from getting into production. Sysadmins were not trying to prevent changes that could destabilize their servers. Everyone was testing and worrying about the infrastructure our software was going to run on, because it was only us to blame. We delivered software incrementally to fail as fast as possible, so we could correct errors before they got out of hand, and to get a feel for what the users really wanted.
+
+Technically skilled people are used to solving challenges all day long. The more freedom and responsibility they get, the more creative they will be, as long as their goal is known; to satisfy the sponsors through continuous delivery of software valuable to users.
+
+----
+

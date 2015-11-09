@@ -18,4 +18,5 @@ Våre egne bidrag
 Oppsummering
 ============
 
+[http://sveinung.github.io/writings/devopsdays-berlin-2015/sertifisering.jpg]
 

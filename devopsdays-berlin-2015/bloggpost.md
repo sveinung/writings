@@ -11,7 +11,7 @@ Første halvdel av dagene besto av halvtimers foredrag i plenum. Mellom foredrag
 
 TODO
 
-En tydelig trend var Ansible, som [Multi-Stage Provisioning with Ansible](https://speakerdeck.com/kontrafiktion/multi-stage-provisioning-with-ansible), [Test-Driven Infrastructure](http://www.slideshare.net/MartinEtmajer/testing-ansible-roles-with-test-kitchen-serverspec-and-rspec-48185017), og Kjetil og Sveinung sin [Ansible: A Love–Hate Relationship](http://www.devopsdays.org/events/2015-berlin/proposals/Ansible_A_Love_Hate_Relationship/)
+Konferansen hadde en god blanding av myke og harde foredrag. Av de harde gikk det ikke overraskende mye i provisjoneringsrammeverk (spesielt Ansible) og containerteknologi (type Docker). Særlig blant sistnevnte er det fremdeles mye hype ute å går.
 
 ## Ignite talks
 

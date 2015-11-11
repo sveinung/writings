@@ -19,7 +19,7 @@ Formatet for ignite talk er et ganske utfordrende et. Når det fungerer kan det 
 
 Foredraget varer i 5 minutter, hverken mer eller mindre. Foredragsholderen har forberedt 20 slides, og disse bytter med 15 sekunds mellomrom uten at foredragsholderen har mulighet til å styre dette. Dette medfører naturligvis at foredraget må være godt innøvd og med korte konsise poenger, noe som kanskje ikke var tilfellet for alle som presenterte i Berlin.
 
-Første dag på konferansen viste det seg at flere av ignite speaker-ene var blitt syke, så arrangørene etterspurte nye ignite speakers. En av dem som tok utfordringen på strak arm var vår egen Stein Inge Morisbak. Han pratet om hvorfor IT-prosjekter er en dårlig idé og hvordan man heller burde utvikle programvare. Samme foredrag ble for øvrig også holdt på Smidigkonferansen som en [lyntale](https://vimeo.com/145015970).
+Første dag på konferansen viste det seg at flere av ignite speaker-ene var blitt syke, så arrangørene etterspurte nye ignite speakers. En av dem som tok utfordringen på strak arm var vår egen Stein Inge Morisbak. Han pratet om hvorfor IT-prosjekter er en dårlig idé og hvordan man heller burde utvikle programvare. Samme foredrag ble for øvrig også holdt som [lyntale på Smidigkonferansen](https://vimeo.com/145015970).
 
 TODO: Bilder av Stein Inge
 

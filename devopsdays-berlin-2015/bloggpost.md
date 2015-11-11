@@ -35,4 +35,6 @@ Vårt bidrag her var et foredrag om hvordan provisjonering av servere gjøres fo
 
 Under innledende sesjoner på konferansen ble det gjort narr av at alt mulig skal sertifiseres, nå også DevOps. Konferansen tilbydde derfor gratis sertifiseringer for alle som ønsket. Disse kunne man få i resepsjonen.
 
+![Sertifiseringer](kjetil.cert.jpg)
+
 TODO: Bilder

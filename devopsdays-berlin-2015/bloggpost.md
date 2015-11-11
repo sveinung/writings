@@ -9,7 +9,7 @@ Første halvdel av dagene besto av halvtimers foredrag i plenum. Mellom foredrag
 
 ## Sentrale temaer
 
-TODO
+TODO: trenger litt mer her
 
 Konferansen hadde en god blanding av myke og harde foredrag. Av de harde gikk det ikke overraskende mye i provisjoneringsrammeverk (spesielt Ansible) og containerteknologi (type Docker). Særlig blant sistnevnte er det fremdeles mye hype ute å går.
 

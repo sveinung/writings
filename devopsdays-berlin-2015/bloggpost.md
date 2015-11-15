@@ -21,7 +21,7 @@ Foredraget varer i 5 minutter, hverken mer eller mindre. Foredragsholderen har f
 
 Første dag på konferansen viste det seg at flere av ignite speaker-ene var blitt syke, så arrangørene etterspurte nye ignite speakers. En av dem som tok utfordringen på strak arm var vår egen Stein Inge Morisbak. Han pratet om hvorfor IT-prosjekter er en dårlig idé og hvorfor man heller burde bruke linja til å utvikle produkter. En utvidet versjon av samme foredrag ble for øvrig holdt som [lyntale på Smidigkonferansen](https://vimeo.com/145015970).
 
-TODO: Bilder av Stein Inge
+![Stein Inges ignite talk](ignite.jpg)
 
 ## Hands-on presentations
 

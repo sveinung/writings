@@ -29,7 +29,7 @@ Hands-on presentasjoner skal være sesjoner som er mer kodenære og praktiske. O
 
 BEKK hadde bidrag også av denne typen. Sveinung Dalatun og Kjetil Valle holdt et foredrag om hvordan provisjonering av servere gjøres i javaBin, og spesielt med fokus på systemene som driver JavaZone. Dette foredraget ble dessverre ikke filmet, men en tidligere utgave av foredraget fra fjorårets JavaZone er [tilgjengelig på video](https://vimeo.com/105861377).
 
-Vårt bidrag her var et foredrag om hvordan provisjonering av servere gjøres for javaBin og JavaZone. Dette foredraget ble dessverre ikke filment, men tidligere utgave holdt på fjorårets JavaZone er [tilgjengelig på video](https://vimeo.com/105861377).
+![Provisjonering av JavaZone med Ansible](jz-ansible.jpg)
 
 ## DevOps "Certified"
 

@@ -13,6 +13,8 @@ Første halvdel av dagene besto av halvtimers foredrag i plenum. Mellom foredrag
 
 Konferansen hadde en god blanding av "myke" og "harde" foredrag. Av de harde gikk det ikke overraskende mye i provisjoneringsrammeverk (spesielt Ansible) og container-teknologi (type Docker). Særlig blant sistnevnte er det fremdeles mye hype ute å går.
 
+Blant de bedre foredragene står [DevOoops (Increase awareness around DevOps infra security)](https://drive.google.com/file/d/0ByJ_TRRQFrRUc0tocnRTMW1aT2c/view) av Gianluca Varisco. Han pratet om klassiske sikkerhetsfeller man kan gå i der typiske DevOpsverktøy er involvert. Både Git, Vagrant og Docker ble nevnt. Absolutt verdt å se over!
+
 ## Ignite talks
 
 Formatet for ignite talk er et ganske utfordrende et. Når det fungerer kan det bli ganske bra, men det kan samtidig feile grusomt med mindre foredragsholderen er erfaren eller er svært godt forberedt.

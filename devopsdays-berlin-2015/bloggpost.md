@@ -9,11 +9,11 @@ Første halvdel av dagene besto av halvtimers foredrag i plenum. Mellom foredrag
 
 ## Hva ble det pratet om?
 
-Konferansen hadde en god blanding av "myke" og "harde" foredrag. Av de harde gikk det ikke overraskende mye i provisjoneringsrammeverk (spesielt Ansible) og container-teknologi (type Docker). Særlig blant sistnevnte er det fremdeles mye hype ute å går.
+Konferansen hadde en god blanding av «myke» og «harde» foredrag. Av de harde gikk det ikke overraskende mye i provisjoneringsrammeverk (spesielt Ansible) og container-teknologi (type Docker). Særlig blant sistnevnte er det fremdeles mye hype ute å går.
 
 Blant de klart bedre foredragene står [DevOoops (Increase awareness around DevOps infra security)](https://drive.google.com/file/d/0ByJ_TRRQFrRUc0tocnRTMW1aT2c/view) av Gianluca Varisco. Han pratet om klassiske sikkerhetsfeller man kan gå i der typiske DevOpsverktøy er involvert. Både Git, Vagrant og Docker ble nevnt. Absolutt verdt å se over!
 
-I [WARNING is a waste of my time](https://drive.google.com/file/d/0BwE6Lg9fMpezVU9mOG9ZRG8tMTA/view) snakket Schlomo Schapiro om hvorfor det er latskap å logge ting som "warning". Rasjonalet ligger i at det er vanskelig å bygge automatisering rundt en hendelse som kanskje er OK og kanskje ikke.
+I [WARNING is a waste of my time](https://drive.google.com/file/d/0BwE6Lg9fMpezVU9mOG9ZRG8tMTA/view) snakket Schlomo Schapiro om hvorfor det er latskap å logge ting som `warning`. Rasjonalet ligger i at det er vanskelig å bygge automatisering rundt en hendelse som kanskje er OK og kanskje ikke.
 
 Noen foredrag var også av mykere art, noe som bare skulle mangle på en konferanse om DevOps. [Keynoten av John Willis](https://vimeo.com/146217875) handlet om _Improvement kata_. I [Power in the workplace and women in tech](https://vimeo.com/146217876) pratet Inga Höltmann om hvordan makt fungerer på en arbeidsplass, hva som skiller sjefer fra ledere, og hva som kjennetegner en god leder.
 

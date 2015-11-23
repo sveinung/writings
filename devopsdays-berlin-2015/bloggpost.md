@@ -39,7 +39,7 @@ BEKK hadde bidrag også av denne typen. Sveinung Dalatun og Kjetil Valle holdt e
 
 Under innledende sesjoner på konferansen ble det gjort narr av at alt mulig skal sertifiseres – nå også DevOps. Konferansen tilbydde derfor sertifiseringer for alle som ønsket seg dette. Disse kunne fritt hentes i resepsjonen, helt gratis.
 
-![Sertifiseringer](certs.jpg)
+![Sertifiseringer](certs-smaller.jpg)
 
 ## PS: DevOpsDays Oslo 2016
 

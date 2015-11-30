@@ -43,6 +43,6 @@ Under innledende sesjoner på konferansen ble det gjort narr av at alt mulig ska
 
 ## PS: DevOpsDays Oslo 2016
 
-I 2016 trenger du ikke lenger reise ut av Oslo for å delta på konferansen. Da er planen nemlig å arrangere DevOpsDays i Oslo for første gang. For å få det til trenger vi flere som ønsker å bidra. Les mer om [hva slags folk vi ser etter](TODO-link-til-meetup-siden-her) hvis du kunne tenke deg å være med. 
+I 2016 trenger du ikke lenger reise ut av Oslo for å delta på konferansen. Da er planen nemlig å arrangere DevOpsDays i Oslo for første gang. For å få det til trenger vi flere som ønsker å bidra. Les mer om [hva slags folk vi ser etter](http://www.meetup.com/DevOps-Norway/events/227099264/) hvis du kunne tenke deg å være med. 
 
 Vi gleder oss allerede!

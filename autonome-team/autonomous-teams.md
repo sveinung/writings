@@ -13,7 +13,7 @@ An organization can either optimize a value stream for _utilization_ or _through
 Getting rid of feature handovers
 --------------------------------
 
-Anyone who has ever worked on anything with other people have experienced that the one thing impacting lead time most else is handovers. Some handovers we can't easily be without if we need people to specialize as developers, designers, and so on. Some handovers, though, we can avoid by designing our organization the right way.
+Anyone who has ever worked on anything with other people have experienced that the one thing impacting lead time the most is handovers. Some handovers we can't easily be without if we need people to specialize as developers, designers, and so on. Some handovers, though, we can avoid by designing our organization the right way.
 
 Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. The conclusion is that if we design our organization so that every feature requires work done on more than one team we're going to have a bad time! That includes "thinking work" by business people and other people who like to "analyze".
 
@@ -21,7 +21,7 @@ Different teams have different goals and backlogs – it's why we split our orga
 
 As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams, as we stated above). What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
 
-What you should do is to organize your teams around business outcomes and not competencies or even applications. If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes–one outcome, one team–you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
+What you should do is to organize your teams around business outcomes and not competencies or even applications. If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes – one outcome, one team – you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
 
 
 Platform handovers

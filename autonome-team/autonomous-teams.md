@@ -33,12 +33,19 @@ The classical example of a handover is the one to operations. The best way to do
 - the platform should be self-serviced
 - on-premise cloud _will_ impact autonomy negatively
 
+This way, you'll have turned a _process_ into a _resource_, and resources are much less intrusive and much easier to reuse across teams and projects. Take for instance an internal startup embedded in an established organization. This startup will require different processes to function. By turning the process into a resource you make it easier to reuse the capabilities you might have, and thereby possibly increasing your chances of being innovative as well. [4]
+
 
 Steering committees and the like
 --------------------------------
 
+Having a short lead time alone isn't enough if your backlog easily fills up with garbage.
+
+People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who doesn't. The conclusion is that product owners, steering committee members and other people outside the team aren't really qualified in making good decisions concerning the product.
+
 
 Sources:
-- The Everything Store: Jeff Bezos and the Age of Amazon
-- https://puppet.com/resources/whitepaper/state-of-devops-report
-- https://info.thoughtworks.com/download-agile-it-organization-design.html
+- 1 The Everything Store: Jeff Bezos and the Age of Amazon
+- 2 https://puppet.com/resources/whitepaper/state-of-devops-report
+- 3 https://info.thoughtworks.com/download-agile-it-organization-design.html
+- 4 The Innovators Dilemma.

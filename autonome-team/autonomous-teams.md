@@ -19,22 +19,23 @@ Different teams have different goals and backlogs – it's why we split our orga
 
 <un-agile-org.png>
 
-As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams, as we stated above). What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
+As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams, as we stated above). [1] What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
 
-What you should do is to organize your teams around business outcomes and not competencies or even applications. If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes – one outcome, one team – you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
+What you should do is to organize your teams around business outcomes and not competencies or even applications. [3] If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes – one outcome, one team – you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
 
 
-Platform handovers
-------------------
+Shared services
+---------------
 
-The classical example of a handover is the one to operations. The best way to do away with this type of handovers is to provide your operations platform self-serviced.
+Sometimes we need to get something done with a shared service to deliver value. This can be giving our apps to operations for deployment into production, adding some configuration to a message broker or ordering more virtual machines.
 
-- can be standardized
-- the platform should be self-serviced
-- on-premise cloud _will_ impact autonomy negatively
+The people maintaining these shared services doesn't just hang around and wait for your every command. They too have backlogs and priorities different from your own. Therefore if you need something from them and the way you get that is by getting them to do it – e.g. deploying your app – you're going to get idle time in your process. Simply because you're getting involved in another team's process.
+
+Now, if you want teams who depend on these shared services to optimize for autonomy, these services should be self-serviced.
 
 This way, you'll have turned a _process_ into a _resource_, and resources are much less intrusive and much easier to reuse across teams and projects. Take for instance an internal startup embedded in an established organization. This startup will require different processes to function. By turning the process into a resource you make it easier to reuse the capabilities you might have, and thereby possibly increasing your chances of being innovative as well. [4]
 
+In the case of operations, this is where public cloud really shines and where on-premise operations platforms lag behind. A large reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would hurt their wallets. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
 
 Steering committees and the like
 --------------------------------

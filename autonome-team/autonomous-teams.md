@@ -37,15 +37,42 @@ This way, you'll have turned a _process_ into a _resource_, and resources are mu
 
 In the case of operations, this is where public cloud really shines and where on-premise operations platforms lag behind. A large reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would hurt their wallets. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
 
-Steering committees and the like
---------------------------------
 
-Having a short lead time alone isn't enough if your backlog easily fills up with garbage.
+Power vs. competence
+--------------------
 
-People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who doesn't. The conclusion is that product owners, steering committee members and other people outside the team aren't really qualified in making good decisions concerning the product.
+Having a short lead time alone isn't enough if your backlog is half garbage. Who among us haven't experienced product owners, architects or steering committees meddling in affairs of which they know little?
+
+People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who doesn't and are more fit in making the right decisions because of their knowledge than people outside the team who doesn't see the whole picture.
+
+You can do some of the following:
+- Incorporate them into the team.
+- Take away their power. Give them an advisory function instead.
+- Get rid of them.
 
 
-Sources:
+Design principles for teams
+---------------------------
+
+
+
+
+Conclusion
+----------
+
+Litt drodling her...
+
+Design principles for teams
+
+0. Organizing for cost or for throughput?
+1. Organize teams around business outcomes
+2. Make shared services self-serviced
+3. Empower the team
+
+
+Sources
+-------
+
 - 1 The Everything Store: Jeff Bezos and the Age of Amazon
 - 2 https://puppet.com/resources/whitepaper/state-of-devops-report
 - 3 https://info.thoughtworks.com/download-agile-it-organization-design.html

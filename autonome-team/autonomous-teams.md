@@ -17,7 +17,7 @@ Anyone who has ever worked on anything with other people have experienced that t
 
 Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. The conclusion is that if we design our organization so that every feature requires work done on more than one team we're going to have a bad time! That includes "thinking work" by business people and other people who like to "analyze".
 
-<un-agile-org.png>
+![Bad feedbackloops](img/un-agile-org.png)
 
 As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams, as we stated above). [1] What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
 
@@ -45,14 +45,16 @@ Having a short lead time alone isn't enough if your backlog is half garbage. Who
 
 People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who doesn't and are more fit in making the right decisions because of their knowledge than people outside the team who doesn't see the whole picture.
 
+![Bad feedbackloops](img/bad-feedbackloops.png)
+
 You can do some of the following:
 - Incorporate them into the team.
 - Take away their power. Give them an advisory function instead.
 - Get rid of them.
 
 
-Design principles for teams
----------------------------
+Design principles
+-----------------
 
 
 

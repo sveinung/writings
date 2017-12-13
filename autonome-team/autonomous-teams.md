@@ -1,5 +1,5 @@
-Autonomous teams – Organizing for Speed and Quality
-===================================================
+The Forces of Autonomous teams
+==============================
 
 Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in really really bad way.
 

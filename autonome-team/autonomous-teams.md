@@ -5,7 +5,7 @@ Lead time is the time it takes you to complete a process, for instance from conc
 
 For innovation to work optimally learning has to be as time and cost efficient as possible. Increase lead time and you'll reduce your learning rate. Increase deployment costs and you'll reduce the number of hypotheses you can run for the same amount of money, thereby reducing the number of features you can try out before running out of money or having your steering committee lose their patience and kicking your butt out on the street.
 
-This blogpost highlights some common organizational pitfalls that negatively impacts your ability to deliver value to your customers.
+This blogpost highlights some common organizational pitfalls that negatively impacts your ability to deliver value to your customers and what you should do instead.
 
 An organization can either optimize a value stream for _cost_ or _lead time_, not both. Since throughput makes more sense if you'd like to make it easier to be innovative I'm going to assume throughput is your cup of tea.
 

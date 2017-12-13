@@ -56,12 +56,6 @@ You can do some of the following:
 Design principles
 -----------------
 
-
-
-
-Conclusion
-----------
-
 Litt drodling her...
 
 Design principles for teams
@@ -70,6 +64,10 @@ Design principles for teams
 1. Organize teams around business outcomes
 2. Make shared services self-serviced
 3. Empower the team
+
+
+Conclusion
+----------
 
 
 Sources

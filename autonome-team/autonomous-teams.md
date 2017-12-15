@@ -1,7 +1,7 @@
 Autonomous teams – Organizing for Speed and Quality
 ===================================================
 
-Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in really really bad way.
+Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really really bad way.
 
 For innovation to work optimally learning has to be as time and cost efficient as possible. Increase lead time and you'll reduce your learning rate. Increase deployment costs and you'll reduce the number of hypotheses you can run for the same amount of money, thereby reducing the number of features you can try out before running out of money or having your steering committee lose their patience and kicking your butt out on the street.
 
@@ -15,7 +15,7 @@ Getting rid of feature handovers
 
 Anyone who has ever worked on anything with other people have experienced that the one thing impacting lead time the most is handovers. Some handovers we can't easily be without if we need people to specialize as developers, designers, and so on. Some handovers, though, we can avoid by designing our organization the right way.
 
-Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. The conclusion is that if we design our organization so that every feature requires work done on more than one team we're going to have a bad time! That includes "thinking work" by business people and other people who like to "analyze".
+Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. The conclusion is that if we design our organization so that every feature requires work done by more than one team we're going to have a bad time! That includes "thinking work" by business people and other people typically analyzing or assessing.
 
 ![Bad feedbackloops](img/un-agile-org.png)
 
@@ -29,15 +29,15 @@ If you organize around competencies or applications you're most likely going to 
 Shared services
 ---------------
 
-Sometimes we need to get something done with a shared service to deliver value. This can be giving our apps to operations for deployment into production, adding some configuration to a message broker or ordering more virtual machines.
+Sometimes we need to get something done with a shared service to deliver value. This can be handing over our applications to operations for deployment into production, adding some configuration to a message broker or ordering more virtual machines.
 
-The people maintaining these shared services doesn't just hang around and wait for your every command. They too have backlogs and priorities different from your own. Therefore if you need something from them and the way you get that is by getting them to do it – e.g. deploying your app – you're going to get idle time in your process. Simply because you're getting involved in another team's process.
+The people maintaining these shared services don't just hang around and wait for your every command. They too have backlogs and priorities different from your own. Therefore if you require their services by getting them to do something – e.g. deploying your app – you're going to get idle time in your process. Simply because you're getting involved in another team's process.
 
 Now, if you want teams who depend on these shared services to optimize for autonomy, these services should be self-serviced.
 
 This way, you'll have turned a _process_ into a _resource_, and resources are much less intrusive and much easier to reuse across teams and projects. Take for instance an internal startup embedded in an established organization. This startup will require different processes to function. By turning the process into a resource you make it easier to reuse the capabilities you might have, and thereby possibly increasing your chances of being innovative as well. [3]
 
-In the case of operations, this is where public cloud really shines and where on-premise operations platforms lag behind. A large reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would hurt their wallets. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
+In the case of operations, this is where public cloud really shines and where on-premise operations platforms lag behind. The main reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would reduce their income. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
 
 
 Power vs. competence
@@ -45,7 +45,7 @@ Power vs. competence
 
 Having a short lead time alone isn't enough if your backlog is half garbage. Who among us haven't experienced product owners, architects or steering committees meddling in affairs of which they know little?
 
-People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who doesn't and are more fit in making the right decisions because of their knowledge than people outside the team who doesn't see the whole picture.
+People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who don't. They are more fit to make the right decisions, because of their knowledge, than people outside the team who don't see the whole picture.
 
 ![Bad feedbackloops](img/bad-feedbackloops.png)
 

@@ -1,5 +1,5 @@
-Autonomous teams – Organizing for Speed and Quality
-===================================================
+Organizing for Speed and Responsiveness
+=======================================
 
 Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really really bad way.
 
@@ -7,7 +7,13 @@ For innovation to work optimally learning has to be as time and cost efficient a
 
 This blogpost highlights some common organizational pitfalls that negatively impacts your ability to deliver value to your customers and what you should do instead.
 
-An organization can either optimize a value stream for _cost_ or _lead time_, not both. Since a low lead time makes more sense if you'd like to make innovation easier I'm going to assume lead time is your cup of tea.
+An organization can either optimize a value stream for _high utilization_ or _short lead time_, not both. Cost optimizing organizations tend to favor utilization as costs tend to go down (at least in the short term) if every employee is always busy. Responsiveness optimizing organizations tend to favor lead time since it makes innovation easier and makes customers more happy.
+
+![Utilization vs. lead time](img/lead-time-vs-utilization.png)
+
+If you were a customer standing in the line at the grocery store, would you rather the cashiers were fully utilized or responsive? If you were badly hurt in a car accident would you die happy if atleast the doctors were being cost efficient?
+
+The following advices assumes that you prefer _not_ to have long queues in your value streams.
 
 
 Getting rid of feature handovers
@@ -17,11 +23,11 @@ Anyone who has ever worked on anything with other people have experienced that t
 
 Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. The conclusion is that if we design our organization so that every feature requires work done by more than one team we're going to have a bad time! That includes "thinking work" by business people and other people typically analyzing or assessing.
 
-![Bad feedbackloops](img/un-agile-org.png)
+![Many handovers](img/un-agile-org.png)
 
 As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams, as we stated above). [1] What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
 
-What you should do is to organize your teams around _business outcomes_ and not competencies or even applications. [2] A business outcome is in itself valuable to a business. E.g. IT-operations or security solutions in themselves aren't valuable. They're only valuable because they help you deliver e.g. an internet store or a solution that let people apply for universities.
+What you should do is to organize your teams around _business outcomes_ and not competencies or even applications. [2] A business outcome is in itself valuable to a business. E.g. IT-operations or security solutions in themselves aren't valuable. They're only valuable because they help you deliver e.g. an internet store or a solution that let people apply for universities. Organizing around business outcomes depends on teams being cross-functional. They should contain all the competencies required to do their jobs and no-one should be part-time.
 
 If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes – one outcome, one team – you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
 
@@ -60,12 +66,12 @@ Conclusion
 
 To sum it all up in a few questions you can ask yourself:
 
-0. Should you optimize for cost or lead time?
+0. Should you optimize for high utilization or short lead time?
 1. Can you organize your teams around business outcomes?
 2. Can you make shared services self-serviced?
 3. Can you give the team authority to make product-related decisions themselves?
 
-None of these are all or nothing, but everytime you answer "no" or "no"-ish to some question you subtract from your ability to deliver.
+None of these advices are all or nothing, but everytime you answer "no" or "no"-ish to some question you subtract from your ability to deliver.
 
 Sources
 -------

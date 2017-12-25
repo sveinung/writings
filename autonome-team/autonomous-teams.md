@@ -55,6 +55,12 @@ People inside the team are exposed to most of the feedbackloops related to the d
 
 ![Bad feedbackloops](img/bad-feedbackloops.png)
 
+Centralization of authority will have the same effect on your teams as handovers across teams will have. If your teams will have to ask a leader outside the team for permissions your lead time increase as this leader doesn't necessarily have the same priorities you have. Most likely you'll also spend time bringing them up to speed as they don't have the same level of knowlegde that you have.
+
+Generally, _as centralization of authority goes up, autonomy – and therefore lead time – will go down._
+
+![Centralization of authority vs. autonomy](img/negative-correlation-centralization-vs-autonomy.png) 
+
 You can do some of the following:
 - Incorporate them into the team.
 - Take away their power. Give them an advisory function instead.

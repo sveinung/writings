@@ -9,7 +9,7 @@ This blogpost highlights some common organizational pitfalls that negatively imp
 
 An organization can either optimize a value stream for _high utilization_ or _short lead time_, not both. Cost optimizing organizations tend to favor utilization as costs tend to go down (at least in the short term) if every employee is always busy. Responsiveness optimizing organizations tend to favor lead time since it makes innovation easier and makes customers more happy.
 
-![Utilization vs. lead time](img/lead-time-vs-utilization.png)
+![Utilization vs. lead time](img/negative-correlation-leadtime-vs-util.png)
 
 If you were a customer standing in the line at the grocery store, would you rather the cashiers were fully utilized or responsive? If you were badly hurt in a car accident would you die happy if atleast the doctors were being cost efficient?
 

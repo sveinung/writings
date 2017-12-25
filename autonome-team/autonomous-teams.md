@@ -61,8 +61,8 @@ Generally, _as centralization of authority goes up, autonomy – and therefore l
 
 ![Centralization of authority vs. autonomy](img/negative-correlation-centralization-vs-autonomy.png) 
 
-You can do some of the following:
-- Incorporate them into the team.
+If you want to decrease centralization you can do some of the following:
+- Moving the people with authority into the team.
 - Take away their power. Give them an advisory function instead.
 - Get rid of them.
 
@@ -79,9 +79,16 @@ To sum it all up in a few questions you can ask yourself:
 
 None of these advices are all or nothing, but everytime you answer "no" or "no"-ish to some question you subtract from your ability to deliver.
 
+
 Sources
 -------
 
 1. The Everything Store: Jeff Bezos and the Age of Amazon by Brad Stone
 2. https://info.thoughtworks.com/download-agile-it-organization-design.html
 3. The Innovators Dilemma by Clayton M. Christensen
+
+
+Acknowledgements
+----------------
+
+Based on discussions with Gaute Rossnes, Stian Liknes and Thomas Arp in the Continuous Delivery focus group at Bekk Consulting, and Torstein Gjengedal and Stein Inge Morisbak.

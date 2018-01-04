@@ -3,7 +3,7 @@ Organizing for Speed and Responsiveness
 
 Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really really bad way.
 
-For innovation to work optimally learning has to be as time and cost efficient as possible. Increase lead time and you'll reduce your learning rate. Increase deployment costs and you'll reduce the number of hypotheses you can run for the same amount of money, thereby reducing the number of features you can try out before running out of money or having your steering committee lose their patience and kicking your butt out on the street.
+For innovation to work optimally learning has to be as time and cost efficient as possible. A long lead time will reduce your learning rate. As deployment costs goes up the number of hypotheses you can run for the same amount of money goes down, thereby reducing the number of features you can try out before running out of money or having your steering committee lose their patience and kicking your butt out on the street.
 
 This blogpost highlights some common organizational pitfalls that negatively impacts your ability to deliver value to your customers and what you should do instead.
 

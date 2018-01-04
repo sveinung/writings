@@ -11,7 +11,7 @@ An organization can either optimize a value stream for _high utilization_ or _sh
 
 ![Utilization vs. lead time](img/negative-correlation-leadtime-vs-util.png)
 
-If you were a customer standing in the line at the grocery store, would you rather the cashiers were fully utilized or responsive? If you were badly hurt in a car accident would you die happy if atleast the doctors were being cost efficient?
+As a negative correlation exists between utilization and lead time you have to choose wisely. If what you develop depends on your responsiveness towards your customers or your ability to learn faster than your competitor, then you should choose low lead time over high utilization. As lead time goes down responsiveness goes up and the ability to learn increases. E.g. if your lead time is four weeks and your main competitor's is one week, your competitor will have had four opportunities for validating hypotheses and fixing bugs for every one opportunity you get.
 
 The following advices assumes that you prefer _not_ to have long queues in your value streams.
 

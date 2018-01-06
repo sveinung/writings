@@ -27,7 +27,7 @@ Different teams have different goals and backlogs – it's why we split our orga
 
 As long as you divide your people into teams you're going to have silos and suboptimization. Just by existing, teams act as barriers to communication and cooperation (this is due to them having different goals than other teams). This isn't necessarily bad. Good team boundaries reduces overhead and gives people focus [1]. What you need to do is to _organize your teams in a way that causes suboptimization to be as optimal as possible_. If you're optimizing for speed and agility, you want to reduce the number of handovers needed to deliver customer value and to test hypotheses. If that means increasing the number of handovers needed to implement _shared services_, so be it.
 
-What you should do is to organize your teams around _business outcomes_ and not competencies or even applications [2]. A business outcome is something that is in itself valuable to a business – a service or product a customer is willing to use. Functions and services inside an organization that aren't customer-facing (like governance, operations and development) are _outputs_ [4]. Organizing around outputs instead of outcomes risks optimizing for something that customers aren't willing to pay for.
+What you should do is to organize your teams around _business outcomes_ and not competencies or even applications [2]. A business outcome is something that is in itself valuable to a business – a service or product a customer is willing to use. Functions and services inside an organization that aren't customer-facing (like governance, operations and development) are _outputs_ [3]. Organizing around outputs instead of outcomes risks optimizing for something that customers aren't willing to pay for.
 
 Organizing around business outcomes depends on teams being cross-functional. They should contain all the competencies required to do their jobs and no-one should be part-time.
 
@@ -87,7 +87,8 @@ Sources
 
 1. The Everything Store: Jeff Bezos and the Age of Amazon by Brad Stone
 2. https://info.thoughtworks.com/download-agile-it-organization-design.html
-3. The Innovators Dilemma by Clayton M. Christensen
+3. https://hbr.org/2012/11/its-not-just-semantics-managing-outcomes
+4. The Innovators Dilemma by Clayton M. Christensen
 
 
 Acknowledgements

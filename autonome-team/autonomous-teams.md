@@ -1,5 +1,5 @@
-Organizing for Speed and Responsiveness
-=======================================
+Organizing for Speed
+====================
 
 In this blogpost I will exlore some of the forces and organizational pitfalls affecting your team's ability to deliver value to your customers and what you should do to alleviate them.
 

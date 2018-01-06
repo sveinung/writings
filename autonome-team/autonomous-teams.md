@@ -35,15 +35,15 @@ If you organize around competencies or applications you're most likely going to 
 Shared services
 ---------------
 
-Sometimes we need to get something done with a shared service to deliver value. This can be handing over our applications to operations for deployment into production, adding some configuration to a message broker or ordering more virtual machines.
+Sometimes we need to get something done with a shared service to deliver value. This can be handing over applications to operations for deployment into production, adding configuration to a message broker or setting up virtual machines.
 
-The people maintaining these shared services don't just hang around and wait for your every command. They too have backlogs and priorities different from your own. Therefore if you require their services by getting them to do something – e.g. deploying your app – you're going to get idle time in your process. Simply because you're getting involved in another team's process.
+The people maintaining these shared services don't just hang around and wait for your every command. They too have backlogs and priorities different from your own. Therefore if you require their services by getting them to do something you're going to get idle time in your process, as you're getting involved in another team's process.
 
-Now, if you want teams who depend on these shared services to optimize for autonomy, these services should be self-serviced.
+If you want teams who depend on these shared services to optimize for autonomy, these services should be self-serviced.
 
 This way, you'll have turned a _process_ into a _resource_, and resources are much less intrusive and much easier to reuse across teams and projects. Take for instance an internal startup embedded in an established organization. This startup will require different processes to function. By turning the process into a resource you make it easier to reuse the capabilities you might have, and thereby possibly increasing your chances of being innovative as well [3].
 
-In the case of operations, this is where public cloud really shines and where on-premise operations platforms lag behind. The main reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would reduce their income. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
+In the case of operations, this is an area where public cloud really shines and on-premise operations platforms lag behind. The main reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity. They're economically incentivized to do so. If it wasn't for spare capacity you'd get resource contentions between different clients and that would reduce their income. On-premise platform providers have economical incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if you're viewed as a cost center, as many on-premise operations platforms are. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and protection will hurt autonomy.
 
 
 Power vs. competence
@@ -51,18 +51,18 @@ Power vs. competence
 
 Having a short lead time alone isn't enough if your backlog is half garbage. Who among us haven't experienced product owners, architects or steering committees meddling in affairs of which they know little?
 
-People inside the team are exposed to most of the feedbackloops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who don't. They are more fit to make the right decisions, because of their knowledge, than people outside the team who don't see the whole picture.
+People inside the team are exposed to most of the feedback loops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who don't. They are more fit to make the right decisions, because of their knowledge, than people outside the team who don't see the whole picture.
 
 ![Bad feedbackloops](img/bad-feedbackloops.png)
 
-Centralization of authority will have the same effect on your teams as handovers across teams will have. If your teams will have to ask a leader outside the team for permissions your lead time increase as this leader doesn't necessarily have the same priorities you have. Most likely you'll also spend time bringing them up to speed as they don't have the same level of knowlegde that you have.
+Centralization of authority will have the same effect on your teams as handovers across teams will have. If your teams will have to ask a leader outside the team for permissions your lead time increase as this leader doesn't necessarily have the same priorities you have. Most likely you'll also spend time bringing them up to speed as they don't have the same level of knowledge that you have.
 
-Generally, _as centralization of authority goes up, autonomy – and therefore lead time – will go down._
+Generally, _as centralization of authority goes up, autonomy – and therefore lead time – goes down._
 
 ![Centralization of authority vs. autonomy](img/negative-correlation-centralization-vs-autonomy.png) 
 
-If you want to decrease centralization you can do some of the following:
-- Moving the people with authority into the team.
+If you want to decrease centralization you can:
+- Move the people with authority into the team.
 - Take away their power. Give them an advisory function instead.
 - Get rid of them.
 

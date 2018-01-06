@@ -9,7 +9,7 @@ For innovation to work optimally learning has to be as time and cost efficient a
 
 An organization can either optimize a value stream for _high utilization_ or _short lead time_, not both. Cost optimizing organizations tend to favor utilization as costs tend to go down (at least in the short term) if every employee is always busy. Responsiveness optimizing organizations tend to favor lead time since it makes innovation easier and makes customers more happy.
 
-![Utilization vs. lead time](img/negative-correlation-leadtime-vs-util.png)
+![Utilization vs. lead time](img/lead-time-vs-utilization.png)
 
 As a negative correlation exists between utilization and lead time you have to choose wisely. If what you develop depends on your responsiveness towards your customers or your ability to learn faster than your competitor, then you should choose low lead time over high utilization. As lead time goes down responsiveness goes up and the ability to learn increases. E.g. if your lead time is four weeks and your main competitor's is one week, your competitor will have had four opportunities for validating hypotheses and fixing bugs for every one opportunity you get.
 

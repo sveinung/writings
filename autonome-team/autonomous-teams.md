@@ -7,11 +7,11 @@ Lead time is the time it takes you to complete a process, for instance from conc
 
 For innovation to work optimally learning has to be as time and cost efficient as possible. A long lead time will reduce your learning rate. As deployment costs goes up the number of hypotheses you can run for the same amount of money goes down, thereby reducing the number of features you can try out before running out of money.
 
-An organization can either optimize a value stream for _high utilization_ or _short lead time_, not both. Cost optimizing organizations tend to favor utilization as costs tend to go down (at least in the short term) if every employee is always busy. Responsiveness optimizing organizations tend to favor lead time since it makes innovation easier and makes customers more happy.
+An organization can either optimize a value stream for _high utilization_ or _short lead time_, not both. Cost optimizing organizations tend to favor utilization as costs tend to go down (at least in the short term) if every employee is always busy, but if everyone are busy new features will spend more time waiting than if everyone were idle. Responsiveness optimizing organizations tend to favor lead time since it makes innovation easier and makes customers more happy.
 
 ![Utilization vs. lead time](img/lead-time-vs-utilization.png)
 
-As a negative correlation exists between utilization and lead time you have to choose wisely. If what you develop depends on your responsiveness towards your customers or your ability to learn faster than your competitor, then you should choose low lead time over high utilization. As lead time goes down responsiveness goes up and the ability to learn increases. E.g. if your lead time is four weeks and your main competitor's is one week, your competitor will have had four opportunities for validating hypotheses and fixing bugs for every one opportunity you get.
+As a negative correlation exists between utilization and lead time you have to choose wisely. If what you develop depends on your responsiveness towards your customers or your ability to learn faster than your competitor, then you should choose low lead time over high utilization. As lead time goes down responsiveness goes up and the ability to learn increases. E.g. if your lead time is four weeks and your main competitor's is one week, your competitor will have had four opportunities for validating hypotheses and fixing bugs for every one opportunity you get. Therefore, _the more your market is characterized by change, the more you should focus on lead time over utilization_, and if it isn't characterized by change now it might soon be.
 
 The following advices assumes that you prefer _not_ to have long queues in your value streams.
 
@@ -73,7 +73,6 @@ Conclusion
 
 To sum it all up in a few questions you can ask yourself:
 
-0. Should you optimize for high utilization or short lead time?
 1. Can you organize your teams around business outcomes?
 2. Can you make shared services self-serviced?
 3. Can you give the team authority to make product-related decisions themselves?

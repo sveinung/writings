@@ -61,7 +61,7 @@ Centralization of authority will have the same effect on your teams as handovers
 
 Generally, _as centralization of authority goes up, autonomy – and therefore lead time – goes down._
 
-![Centralization of authority vs. autonomy](img/negative-correlation-centralization-vs-autonomy.png) 
+![Centralization of authority vs. autonomy](img/centralization-vs-autonomy.png)
 
 If you want to decrease centralization you can:
 - Move the people with authority into the team.

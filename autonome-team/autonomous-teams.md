@@ -65,7 +65,7 @@ Assuming that you've already organized your teams around business outcomes, the 
 
 In some cases you might need to keep the people having that centralized authority centralized, but in those cases you should try to give them an advisory function instead. This way you'll essentially turn them into a self-serviced shared service, the result being a decrease in lead time.
 
-If all else fail and authority cannot be moved the least you should do is to establish some feedback loops between the decision-makers and the consequenses of their decisions. Even if it won't affect lead time it will improve the quality of future decisions. Without feedback there can be no learning.
+If all else fail and authority cannot be moved the least you should do is to establish some feedback loops between the decision-makers and the consequences of their decisions. Even if it won't affect lead time it will improve the quality of future decisions. Without feedback there can be no learning.
 
 
 Conclusion

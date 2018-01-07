@@ -48,25 +48,24 @@ This way, you'll have turned a _process_ into a _resource_, and resources are mu
 In the case of operations, this is an area where public cloud really shines and on-premise operations platforms lag behind. The main reason why a public cloud provider is able to provide a self-serviced platform for many customers is because they have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients and that would reduce their income. If you use an on-premise operations platform instead, something else happens. With on-prem you'll have economic incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if the on-premise operations platform is viewed as a cost center. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and this protection will reduce autonomy.
 
 
-Power vs. competence
---------------------
+Authority following feedback loops
+----------------------------------
 
-Having a short lead time alone isn't enough if your backlog is half garbage. Who among us haven't experienced product owners, architects or steering committees meddling in affairs of which they know little?
-
-People inside the team are exposed to most of the feedback loops related to the development of the product or service. Seems natural doesn't it? Those who work with something on a daily basis know more about it than those who don't. They are more fit to make the right decisions, because of their knowledge, than people outside the team who don't see the whole picture.
+Having a short lead time alone isn't enough if you're constantly distracted from doing the most valuable work you can do. Distractions can occur if there is a mismatch between authority and feedback, i.e. if the people with authority doesn't get direct feedback on the decisions they make. For instance, if you mandate that a new technology should be used for a given problem, you should also have to use that technology yourself. You will more easily know if that mandate was a good one if you're exposed to all the pains and pleasures of your own choices.
 
 ![Bad feedbackloops](img/bad-feedbackloops.png)
 
-Centralization of authority will have the same effect on your teams as handovers across teams will have. If your teams will have to ask a leader outside the team for permissions your lead time increase as this leader doesn't necessarily have the same priorities you have. Most likely you'll also spend time bringing them up to speed as they don't have the same level of knowledge that you have.
+Centralization of authority will have the same effect on your teams as handovers across teams will have. If your teams will have to ask a leader outside the team for permissions your lead time increase as this leader doesn't necessarily have the same priorities you have. Most likely you'll also spend extra time communicating as they don't know everything you do and vice versa.
 
-Generally, _as centralization of authority goes up, autonomy – and therefore lead time – goes down._
+Generally, _as centralization of authority goes up, autonomy goes down, and therefore lead time goes up._
 
 ![Centralization of authority vs. autonomy](img/centralization-vs-autonomy.png)
 
-If you want to decrease centralization you can:
-- Move the people with authority into the team.
-- Take away their power. Give them an advisory function instead.
-- Get rid of them.
+Assuming that you've already organized your teams around business outcomes, the place where most product related feedback loops occur is within those teams. If you want to make sure decision-making is well connected to feedback loops then authority regarding product development should be located inside those teams. This can be done by either moving the people with authority inside those teams or by transferring that authority.
+
+In some cases you might need to keep the people having that centralized authority centralized, but in those cases you should try to give them an advisory function instead. This way you'll essentially turn them into a self-serviced shared service, the result being a decrease in lead time.
+
+If all else fail and authority cannot be moved the least you should do is to establish some feedback loops between the decision-makers and the consequenses of their decisions. Even if it won't affect lead time it will improve the quality of future decisions. Without feedback there can be no learning.
 
 
 Conclusion

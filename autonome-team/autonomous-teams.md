@@ -51,7 +51,7 @@ In the case of operations, this is an area where public cloud really shines and 
 Authority following feedback loops
 ----------------------------------
 
-Having a short lead time alone isn't enough if you're constantly distracted from doing the most valuable work you can do. Distractions can occur if there is a mismatch between authority and feedback, i.e. if the people with authority doesn't get direct feedback on the decisions they make. For instance, if you mandate that a new technology should be used for a given problem, you should also have to use that technology yourself. You will more easily know if that mandate was a good one if you're exposed to all the pains and pleasures of your own choices.
+Having a short lead time alone isn't enough if you're constantly distracted from doing the most valuable work you can do. Distractions can occur if there is a mismatch between authority and feedback, i.e. if the people with authority doesn't get direct feedback on the decisions they make. For instance, if you mandate that a new technology should be used for a given problem, you should also have to use that technology yourself. You will more easily know if that mandate was a good one if you're exposed to all the pains and pleasures of your own choices [5].
 
 ![Bad feedbackloops](img/bad-feedbackloops.png)
 
@@ -85,9 +85,10 @@ Sources
 -------
 
 1. The Everything Store: Jeff Bezos and the Age of Amazon by Brad Stone
-2. https://info.thoughtworks.com/download-agile-it-organization-design.html
+2. Agile IT Organization Design: For Digital Transformation and Continuous Delivery by Sriram Narayan
 3. https://hbr.org/2012/11/its-not-just-semantics-managing-outcomes
 4. The Innovators Dilemma by Clayton M. Christensen
+5. Thinking in Systems: A Primer by Donella H. Meadows
 
 
 Acknowledgements

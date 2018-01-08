@@ -93,4 +93,4 @@ Sources
 Acknowledgements
 ----------------
 
-Based on discussions with Gaute Rossnes, Stian Liknes and Thomas Arp in the Continuous Delivery focus group at Bekk Consulting, and Torstein Gjengedal and Stein Inge Morisbak.
+Based on discussions with Gaute Rossnes, Stian Liknes and Thomas Arp in the Continuous Delivery focus group at Bekk Consulting, and Torstein Gjengedal, Stein Inge Morisbak and Jøran Vagnby Lillesand.

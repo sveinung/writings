@@ -21,7 +21,7 @@ Getting rid of feature handovers
 
 Anyone who has ever worked on anything with other people have experienced that the one thing impacting lead time the most is handovers. Some handovers we can't easily be without if we need people to specialize as developers, designers, and so on. Some handovers, though, we can avoid by designing our organization the right way.
 
-Different teams have different goals and backlogs – it's why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing. And because different teams have different goals and backlogs they'll also have different priorities. Therefore, if an organization is designed in such a way that every feature needs to be handed over between multiple teams or departments, the work item will likely spend some time waiting for every team it goes through and as a consequence lead time goes up. That includes "thinking work" by business people and other people typically analyzing or assessing.
+Different teams have different goals and backlogs – that are two of the reasons why we split our organizations in multiple teams in the first place, to be able to work concurrently with more than one thing in an efficient manner. And because different teams have different goals and backlogs they'll also have different priorities. Therefore, if an organization is designed in such a way that every feature needs to be handed over between multiple teams or departments, the work item will likely spend some time waiting for every team it goes through and as a consequence lead time goes up. That includes "thinking work" by business people and other people typically analyzing or assessing.
 
 ![Many handovers](img/un-agile-org.png)
 

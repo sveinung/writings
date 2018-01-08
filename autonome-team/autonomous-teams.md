@@ -31,6 +31,8 @@ What you should do is to organize your teams around _business outcomes_ and not 
 
 Organizing around business outcomes depends on teams being cross-functional. They should contain all the competencies required to do their jobs and no-one should be part-time.
 
+According to Sriram Narayan [2] a good business outcome is characterized by being testable, valuable, independently achievable and negotiable (TVIN). For instance, if you've divided an outcome and find that it's no longer valuable by itself it's not an outcome, but an output (or an _activity_ as Sriram Narayan calls it).
+
 If you organize around competencies or applications you're most likely going to have a significant amount of handovers per feature you want implemented. If you organize around business outcomes – one outcome, one team – you'll avoid feature handovers. You might still have to endure handovers due to _shared services_ (e.g. a common style guide or common SSO solution), but such work doesn't have to be a part of every feature you implement, like frontend or database work probably will.
 
 

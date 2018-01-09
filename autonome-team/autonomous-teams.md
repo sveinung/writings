@@ -1,7 +1,7 @@
 Organizing for Speed
 ====================
 
-Handovers. Centralization vs. autonomy. Shared services. Your team's ability to deliver value to your customers is affected by many forces and potential organizational pitfalls. In this blogpost you'll learn how to exploit the forces and alleviate the pitfalls.
+Handovers. Centralization vs. autonomy. Shared services. Your team's ability to deliver value to your customers is affected by many forces and potential organizational pitfalls. In this blogpost you'll learn how to deal with some of them.
 
 ![Alt text](img/front.jpg)
 

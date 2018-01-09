@@ -3,7 +3,7 @@ Organizing for Speed
 
 Handovers. Centralization vs. autonomy. Shared services. Your team's ability to deliver value to your customers is affected by many forces and potential organizational pitfalls. In this blogpost you'll learn how to exploit the forces and alleviate the pitfalls.
 
-![Alt text](front.jpg)
+![Alt text](img/front.jpg)
 
 Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really, really bad way.
 

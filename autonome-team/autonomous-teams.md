@@ -1,9 +1,9 @@
 Organizing for Speed
 ====================
 
-In this blogpost I will exlore some of the forces and organizational pitfalls affecting your team's ability to deliver value to your customers and what you should do to alleviate them.
+In this blogpost I will explore some of the forces and organizational pitfalls affecting your team's ability to deliver value to your customers and what you should do to alleviate them.
 
-Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really really bad way.
+Lead time is the time it takes you to complete a process, for instance from conceiving an idea to actually having something implemented in production. Shortening this lead time makes everything better. If you think it doesn't apply to you you're probably ripe for being naturally selected in a really, really bad way.
 
 For innovation to work optimally learning has to be as time and cost efficient as possible. A long lead time will reduce your learning rate. As deployment costs goes up the number of hypotheses you can run for the same amount of money goes down, thereby reducing the number of features you can try out before running out of money.
 

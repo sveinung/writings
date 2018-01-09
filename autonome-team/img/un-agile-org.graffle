@@ -92,7 +92,7 @@ Some random service team}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
 
 \f0\fs30 \cf2 \expnd0\expndtw0\kerning0
-Enterprise "Service" Bus team}</string>
+Enterprise "service" bus team}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -316,7 +316,7 @@ The business people}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2017-12-11 19:52:26 +0000</string>
+	<string>2018-01-09 18:46:40 +0000</string>
 	<key>Modifier</key>
 	<string>Sveinung Dalatun</string>
 	<key>NotesVisible</key>
@@ -397,7 +397,7 @@ The business people}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{149, 4}, {930, 873}}</string>
+		<string>{{149, 41}, {930, 873}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>

@@ -24,3 +24,11 @@ https://blogg.bekk.no/organizing-for-speed-17462894baf4
 
 Public cloud providers organize their services around business outcomes. In-house operations departments organize around outputs as operations in itself isn't what they sell to their customers, unless they're the operations department of Amazon or Google.
 
+
+Outcome oriented teams' budgets are directly influenced by how well their products and services perform. If they sell more their budgets (should atleast) increase too.
+
+Operations teams' budgets are seldom a function of how their clients (the development teams) use them. Often their budgets are either fixed or tied to how many people are on the operations team.
+
+If you find you cannot use public cloud, you should at the very least find a way to tie your operations teams budget directly changes in the market affecting the development teams. If not, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
+
+Fixed bare-minimum budgets < Fixed ample budgets < Budgets tied to demand

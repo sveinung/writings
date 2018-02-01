@@ -11,10 +11,12 @@ Self-serviced platform have a lot of spare capacity, which they're economically 
 E.g., imagine having an on-premise database as the main storage of your organization. Each team that needs storage gets their own separate spaces (or schemas) in this database. Now, an internal startup wants to test something radically new to try to beat your main competitor. As this organization has standardized on this database the internal startup has no choice but to use the same storage as everybody else. The difference between the internal startup and the other teams is that the startup has no idea how their new product is going to be used. If their product turns out to be a real hit they could very well end up spending a lot more of the databases resources than the organizations established products. In the worst case scenario new products ends up impacting the ability of established products to create customer value. The database administrators might well be aware of this and as a counter-measure institute control mechanisms to avoid anyone spending more resources than planned (for example with up-front performance testing). These control mechanisms are added development costs for the internal startup and therefore a competative disadvantage compared to their competitors.
 
 
-Upfront investments
--------------------
+Upfront investments in self-service platforms
+---------------------------------------------
 
-Cloud providers can invest lots of money upfront in hiding their operations processes behind a self-serviced operations platform. They simply have to because of the number of clients they're aiming for.
+Cloud providers can invest lots of money upfront in hiding their operations processes behind a self-serviced operations platform. They simply have to because of the number of clients they're aiming for. At a sufficiently large scale automation and self-service is necessary to be profitable.
+
+Smaller enterprises will have a harder time economically justifying building their own self-service platforms. As a result you'll experience process leakage, where the clients of the platform have to issue change orders instead of just doing it themselves.
 
 
 Economic incentives
@@ -32,3 +34,5 @@ Operations teams' budgets are seldom a function of how their clients (the develo
 If you find you cannot use public cloud, you should at the very least find a way to tie your operations teams budget directly changes in the market affecting the development teams. If not, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
 
 Fixed bare-minimum budgets < Fixed ample budgets < Budgets tied to demand
+
+No matter how good your reasons for using on-prem over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.

@@ -1,7 +1,19 @@
-Public Cloud will always be better
-==================================
+The Effect of Public Cloud on Team Autonomy
+===========================================
 
-Alternativ tittel: Don't use on-premise operations platforms
+Choosing to host your own operations platform in-house will result in many adverserial effects on your ability to deliver. Likewise, using public cloud will give benefits beside the usually mentioned technological ones. This blogpost will explain why public cloud is almost always systematically beneficial to your speed and autonomy, and what you should do if you're stuck with on-premise.
+
+
+Upfront investments in self-service platforms
+---------------------------------------------
+
+Cloud providers can invest a lot of resources upfront in hiding their operations processes behind a self-serviced operations platform. They simply have to if they want to scale independently of their number of ops people. At a sufficiently large scale automation and self-service is necessary to be profitable. Hence, public cloud providers are pretty incentivized to get out of your way as much as possible.
+
+Smaller enterprises will have a harder time economically justifying building their own self-service platforms. As a result you'll experience process leakage, where the clients of the platform have to issue change orders instead of just doing it themselves.
+
+![Without self-service](img/value-stream-without-self-service.png)
+
+![With self-service](img/value-stream-with-self-service.png)
 
 Spare capacity
 --------------
@@ -11,21 +23,10 @@ Self-serviced platform have a lot of spare capacity, which they're economically 
 E.g., imagine having an on-premise database as the main storage of your organization. Each team that needs storage gets their own separate spaces (or schemas) in this database. Now, an internal startup wants to test something radically new to try to beat your main competitor. As this organization has standardized on this database the internal startup has no choice but to use the same storage as everybody else. The difference between the internal startup and the other teams is that the startup has no idea how their new product is going to be used. If their product turns out to be a real hit they could very well end up spending a lot more of the databases resources than the organizations established products. In the worst case scenario new products ends up impacting the ability of established products to create customer value. The database administrators might well be aware of this and as a counter-measure institute control mechanisms to avoid anyone spending more resources than planned (for example with up-front performance testing). These control mechanisms are added development costs for the internal startup and therefore a competative disadvantage compared to their competitors.
 
 
-Upfront investments in self-service platforms
----------------------------------------------
-
-Cloud providers can invest lots of money upfront in hiding their operations processes behind a self-serviced operations platform. They simply have to because of the number of clients they're aiming for. At a sufficiently large scale automation and self-service is necessary to be profitable.
-
-Smaller enterprises will have a harder time economically justifying building their own self-service platforms. As a result you'll experience process leakage, where the clients of the platform have to issue change orders instead of just doing it themselves.
-
-
 Economic incentives
 -------------------
 
-https://blogg.bekk.no/organizing-for-speed-17462894baf4
-
-Public cloud providers organize their services around business outcomes. In-house operations departments organize around outputs as operations in itself isn't what they sell to their customers, unless they're the operations department of Amazon or Google.
-
+Public cloud providers organize their services around [business outcomes](https://blogg.bekk.no/organizing-for-speed-17462894baf4). In-house operations departments organize around outputs as operations in itself isn't what they sell to their customers, unless they're the operations department of Amazon or Google.
 
 Outcome oriented teams' budgets are directly influenced by how well their products and services perform. If they sell more their budgets (should atleast) increase too.
 
@@ -36,3 +37,10 @@ If you find you cannot use public cloud, you should at the very least find a way
 Fixed bare-minimum budgets < Fixed ample budgets < Budgets tied to demand
 
 No matter how good your reasons for using on-prem over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.
+
+
+What if I still want to use on-premise
+--------------------------------------
+
+
+

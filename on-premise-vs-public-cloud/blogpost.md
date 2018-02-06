@@ -7,6 +7,8 @@ Everything that needs to be done for every feature you develop has the potential
 
 ![Self-servicedness impacts autonomy](img/self-service-autonomy.png)
 
+From here on we'll explore three reasons why public cloud usually is better for your teams' autonomy.
+
 
 Upfront investments in self-service platforms
 ---------------------------------------------

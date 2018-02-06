@@ -1,7 +1,11 @@
 The Effect of Public Cloud on Team Autonomy
 ===========================================
 
-Choosing to host your own operations platform in-house will result in many adverserial effects on your ability to deliver. Likewise, using public cloud will give benefits beside the usually mentioned technological ones. This blogpost will explain why public cloud is almost always systematically beneficial to your speed and autonomy, and what you should do if you're stuck with on-premise.
+Choosing to host your own operations platform in-house will result in many adverserial effects on your ability to deliver. Likewise, using public cloud will give benefits beside the usually mentioned technological ones. This blogpost will explain why public cloud is almost always systematically beneficial to your speed and autonomy, and what you should do if you're stuck with on-premise to not make everything grind to a halt.
+
+Everything that needs to be done for every feature you develop has the potential to really mess up your lead time, throughput and general ability to deliver value. The operations part is no different. If you're optimizing for low lead time, you should generally try to make your development teams as autonomous as possible. When it comes to operations platforms you should only use those that are self-serviced.
+
+![Self-servicedness impacts autonomy](self-service-autonomy.png)
 
 
 Upfront investments in self-service platforms

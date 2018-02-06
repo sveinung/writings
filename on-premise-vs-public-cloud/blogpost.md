@@ -13,12 +13,17 @@ Smaller enterprises will have a harder time economically justifying building the
 
 ![Without self-service](img/value-stream-without-self-service.png)
 
+As you can see above processes that stretches over multiple teams will invariably involve more waiting and reduced speed than processes that are confined to one team (see [Organizing for Speed](https://blogg.bekk.no/organizing-for-speed-17462894baf4)). Communication and handovers across team boundaries are a lot more discontinuous than within.
+
 ![With self-service](img/value-stream-with-self-service.png)
+
+If you want to optimize your teams for speed and throughput you should only use operations platforms that are fully self-serviced. If you still need to use an on-premise platform, you should at the very least invest enough into it that the dev teams using it can do everything they need to do themselves without acting through intermediary ops people.
+
 
 Spare capacity
 --------------
 
-Self-serviced platform have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients and that would reduce their income. If you use an on-premise operations platform instead, something else happens. With on-prem you'll have economic incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if the on-premise operations platform is viewed as a cost center. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and this protection will reduce autonomy.
+Public cloud providers have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients and that would reduce their income. If you use an on-premise operations platform instead, something else happens. With on-prem you'll have economic incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if the on-premise operations platform is viewed as a cost center. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and this protection will reduce autonomy.
 
 E.g., imagine having an on-premise database as the main storage of your organization. Each team that needs storage gets their own separate spaces (or schemas) in this database. Now, an internal startup wants to test something radically new to try to beat your main competitor. As this organization has standardized on this database the internal startup has no choice but to use the same storage as everybody else. The difference between the internal startup and the other teams is that the startup has no idea how their new product is going to be used. If their product turns out to be a real hit they could very well end up spending a lot more of the databases resources than the organizations established products. In the worst case scenario new products ends up impacting the ability of established products to create customer value. The database administrators might well be aware of this and as a counter-measure institute control mechanisms to avoid anyone spending more resources than planned (for example with up-front performance testing). These control mechanisms are added development costs for the internal startup and therefore a competative disadvantage compared to their competitors.
 

@@ -5,7 +5,7 @@ Choosing to host your own operations platform in-house will result in many adver
 
 Everything that needs to be done for every feature you develop has the potential to really mess up your lead time, throughput and general ability to deliver value. The operations part is no different. If you're optimizing for low lead time, you should generally try to make your development teams as autonomous as possible. When it comes to operations platforms you should only use those that are self-serviced.
 
-![Self-servicedness impacts autonomy](self-service-autonomy.png)
+![Self-servicedness impacts autonomy](img/self-service-autonomy.png)
 
 
 Upfront investments in self-service platforms

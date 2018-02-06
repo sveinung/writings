@@ -29,7 +29,9 @@ If you want to optimize your teams for speed and throughput you should only use 
 Spare capacity
 --------------
 
-Public cloud providers have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients and that would reduce their income. If you use an on-premise operations platform instead, something else happens. With on-prem you'll have economic incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if the on-premise operations platform is viewed as a cost center. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and this protection will reduce autonomy.
+Public cloud providers have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients, which results in making the platform less attractive, which in turn means money lost for the provider.
+
+If you use an on-premise operations platform instead, something else happens. With on-prem you'll have economic incentives to _not_ have spare capacity, because spare capacity is wasted money. And that simply will not do if the on-premise operations platform is viewed as a cost center. The unfortunate result is that the operations platform will become a scarce resource. Scarce resources are protected and this protection will reduce autonomy.
 
 E.g., imagine having an on-premise database as the main storage of your organization. Each team that needs storage gets their own separate spaces (or schemas) in this database. Now, an internal startup wants to test something radically new to try to beat your main competitor. As this organization has standardized on this database the internal startup has no choice but to use the same storage as everybody else. The difference between the internal startup and the other teams is that the startup has no idea how their new product is going to be used. If their product turns out to be a real hit they could very well end up spending a lot more of the databases resources than the organizations established products. In the worst case scenario new products ends up impacting the ability of established products to create customer value. The database administrators might well be aware of this and as a counter-measure institute control mechanisms to avoid anyone spending more resources than planned (for example with up-front performance testing). These control mechanisms are added development costs for the internal startup and therefore a competative disadvantage compared to their competitors.
 
@@ -37,21 +39,24 @@ E.g., imagine having an on-premise database as the main storage of your organiza
 Economic incentives
 -------------------
 
+Inside an organization you have two types of teams:
+- The _outcome-oriented teams_ who deliver a business outcome to some users or customers
+- The _output-oriented teams_ who deliver some value only ment for consumption within the organization's walls
+
 Public cloud providers organize their services around [business outcomes](https://blogg.bekk.no/organizing-for-speed-17462894baf4). In-house operations departments organize around outputs as operations in itself isn't what they sell to their customers, unless they're the operations department of Amazon or Google.
 
 Outcome oriented teams' budgets are directly influenced by how well their products and services perform. If they sell more their budgets (should atleast) increase too.
 
+![Budgets related to product demand](img/product-demand-and-budget.png)
+
 Operations teams' budgets are seldom a function of how their clients (the development teams) use them. Often their budgets are either fixed or tied to how many people are on the operations team.
 
-If you find you cannot use public cloud, you should at the very least find a way to tie your operations teams budget directly changes in the market affecting the development teams. If not, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
+![Budgets related to platform demand](img/platform-demand-and-dysfunctional-budget.png)
 
-Fixed bare-minimum budgets < Fixed ample budgets < Budgets tied to demand
+If you find you cannot use public cloud, you should find a way to tie your operations teams budget directly to the demand expressed by your development teams. Or at the very least give your operations team a budget big enough for them to _not_ be scrooges. If you don't, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
+
+
+Conclusion
+----------
 
 No matter how good your reasons for using on-prem over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.
-
-
-What if I still want to use on-premise
---------------------------------------
-
-
-

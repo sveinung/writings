@@ -61,4 +61,9 @@ With public cloud these incentives are alligned correctly by default. If you fin
 Conclusion
 ----------
 
-No matter how good your reasons for using on-prem over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.
+I've shown you some of the benefits using public cloud has for your ability to deliver value, specifically:
+- how willingness to invest upfront in hiding internal operational processes increases self-servicedness in the platform
+- whether or not the platform is incentivized to have spare capacity affects the autonomy of the clients of the platform
+- how well the budget of operations is a function of their demand
+
+No matter how good your reasons for using on-premise over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.

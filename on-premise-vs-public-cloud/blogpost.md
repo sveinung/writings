@@ -40,8 +40,8 @@ Economic incentives
 -------------------
 
 Inside an organization you have two types of teams:
-- The _outcome-oriented teams_ who deliver a business outcome to some users or customers
-- The _output-oriented teams_ who deliver some value only ment for consumption within the organization's walls
+- The _outcome-oriented teams_ who deliver a business outcome to some users or customers.
+- The _output-oriented teams_ who deliver some value only meant for consumption within the organization's walls.
 
 Public cloud providers organize their services around [business outcomes](https://blogg.bekk.no/organizing-for-speed-17462894baf4). In-house operations departments organize around outputs as operations in itself isn't what they sell to their customers, unless they're the operations department of Amazon or Google.
 

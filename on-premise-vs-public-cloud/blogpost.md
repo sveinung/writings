@@ -1,17 +1,15 @@
 The Effect of Public Cloud on Team Autonomy
 ===========================================
 
-Using public cloud over on-premise will result in many beneficial effects on your organization's ability to deliver value. This blogpost will explain why public cloud is almost always systematically beneficial to your development teams' speed and autonomy, and what you should do if you're stuck with on-premise to not make everything grind to a halt.
+Having an internal team instead of an external corporation handling your infrastructure can have subtle consequences on the autonomy of your teams. If you're using on-premise it doesn't matter _that much_ what type of infrastructure you're using. Just by having it managed by an internal team you'll gain some extra problems (or _organizational forces_ if you will) that will need managing. If left unchecked, they can prove detrimental to your development teams' speed and autonomy. These organizational forces are already managed correctly if you use public cloud because of the nature of how public cloud providers work in their relationship with their customers (i.e. you). This blogpost will focus on how these forces work and what you should do if you're stuck with on-premise.
+
+
+Infrastructure must be self-serviced
+------------------------------------
 
 Everything that needs to be done for every feature you develop has the potential to really mess up your lead time, throughput and general ability to deliver value. The operations part is no different. If you're optimizing for low lead time, you should generally try to make your development teams as autonomous as possible. For operations platforms (public cloud and on-premise) to enable autonomy for their clients, they _must_ be self-serviced.
 
 ![Self-servicedness impacts autonomy](img/self-service-autonomy.png)
-
-From here on we'll explore three reasons why public cloud usually is better for your teams' autonomy.
-
-
-Upfront investments in self-service platforms
----------------------------------------------
 
 Public cloud providers can invest a lot of resources upfront in hiding their operations processes behind a self-serviced operations platform. They simply have to if they want to scale independently of their number of operations employees. At a sufficiently large scale automation and self-service is necessary to be profitable. Hence, public cloud providers are very incentivized to get out of your way as much as possible.
 
@@ -26,8 +24,8 @@ As you can see above processes that stretches over multiple teams will invariabl
 If you want to optimize your teams for speed and throughput you should only use operations platforms that are fully self-serviced. If you still need to use an on-premise platform, you should at the very least invest enough into it that the product teams using it can do everything they need to do themselves without acting through intermediary operations people.
 
 
-Spare capacity
---------------
+You must have ample spare capacity
+----------------------------------
 
 Public cloud providers have a lot of spare capacity, which they're economically incentivized to have. Without spare capacity you'd get resource contentions between different clients, which results in making the platform less attractive, which in turn means money lost for the provider.
 
@@ -38,8 +36,8 @@ If you use on-premise instead something else happens. With on-premise you'll hav
 E.g., imagine having an on-premise database as the main storage of your organization. Each team that needs storage gets their own separate spaces (or schemas) in this database. Now, an internal startup wants to test something radically new to try to beat your main competitor. As this organization has standardized on this database the internal startup has no choice but to use the same storage as everybody else. The difference between the internal startup and the other teams is that the startup has no idea how their new product is going to be used. If their product turns out to be a real hit they could very well end up spending a lot more of the databases resources than the organizations established products. In the worst case scenario new products ends up impacting the ability of established products to create customer value. The database administrators might well be aware of this and as a counter-measure institute control mechanisms to avoid anyone spending more resources than planned (for example with up-front performance testing). These control mechanisms are added development costs for the internal startup and therefore a competative disadvantage compared to any competitor that doesn't have the same restrictions.
 
 
-Economic incentives
--------------------
+The budget of operations should be a function of their demand
+-------------------------------------------------------------
 
 Inside an organization you have two types of teams:
 - The _outcome-oriented teams_ who deliver value to some external users or customers and are therefore the organization's reason for being.

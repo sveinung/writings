@@ -1,7 +1,7 @@
 The Effects of Public Cloud on Team Autonomy
 ============================================
 
-Having an internal team instead of an external corporation handling your infrastructure can have subtle consequences for the autonomy of your teams. If you're using on-premise it doesn't matter _that much_ what type of infrastructure you're using. Just by having it managed by an internal team you'll gain some extra problems that will need managing. If left unchecked, they can prove detrimental to your development teams' speed and autonomy. These problems are the manifestations of _organizational forces_ that are already managed correctly when using public cloud because of the nature of how public cloud providers work in their relationship with their customers. I.e. you. This blogpost will focus on how these forces work and what you should do if you're stuck with on-premise.
+Having an internal team instead of an external corporation handling your infrastructure can have subtle consequences for the autonomy of your teams. If you're using on-premise it doesn't matter _that much_ what type of infrastructure you're using. Just by having it managed by an internal team you'll gain some extra problems that will need managing. If left unchecked, they can prove detrimental to your development teams' speed and autonomy. These problems are the manifestations of _economic incentives_ that are already managed correctly when using public cloud because of the nature of how public cloud providers work in their relationship with their customers. I.e. you. This blogpost will focus on how these incentives work and what you should do if you're stuck with on-premise.
 
 
 Infrastructure must be self-serviced
@@ -66,4 +66,4 @@ I've shown you some of the benefits using public cloud has for your ability to d
 - whether or not the platform is incentivized to have spare capacity affects the autonomy of the clients of the platform
 - how well the budget of operations is a function of their demand
 
-No matter how good your reasons for using on-premise over public cloud might otherwise be, these organizational forces will take their toll if you don't address them.
+No matter how good your reasons for using on-premise over public cloud might otherwise be, the incentives covered will take their toll if you don't address them.

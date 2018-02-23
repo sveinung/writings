@@ -55,7 +55,9 @@ Operations teams' budgets are seldom a function of how their clients (the develo
 
 ![Budgets related to platform demand](img/platform-demand-and-dysfunctional-budget.png)
 
-With public cloud these incentives are alligned correctly by default. If you find you cannot use public cloud, you should find a way to tie your operations teams budget directly to the demand expressed by your development teams. Or at the very least give your operations team a budget big enough for them to _not_ be scrooges. If you don't, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
+The big problem with incentive models for development and operations looking like the two illustrations above, is that you're incentivizing development teams who are doing well to grow while at the same time you're telling operations to sit still and just dare to use a penny more! What happens? Bottlenecks.
+
+With public cloud these incentives are alligned correctly by default. You need more infrastructure? Just open your wallet and pay up. If you cannot use public cloud for whatever reason, you should find a way to tie your operations teams budget directly to the demand expressed by your development teams. Or at the very least give your operations team a budget big enough for them to _not_ be scrooges. If you don't, you may very well find that you miss market opportunities just because operations doesn't have the resources and incentives to scale.
 
 
 Conclusion

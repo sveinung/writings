@@ -17,7 +17,7 @@ Smaller enterprises will have a harder time economically justifying making their
 
 ![Without self-service](img/value-stream-without-self-service.png)
 
-As you can see above processes that stretches over multiple teams will invariably involve more waiting and reduced speed than processes that are confined to one team (see [Organizing for Speed](https://blogg.bekk.no/organizing-for-speed-17462894baf4)). Communication and handovers across team boundaries are a lot more discontinuous than within.
+As you can see above, processes that stretches over multiple teams will invariably involve more waiting and reduced speed than processes that are confined to one team (see [Organizing for Speed](https://blogg.bekk.no/organizing-for-speed-17462894baf4)). Communication and handovers across team boundaries are a lot more discontinuous than within.
 
 ![With self-service](img/value-stream-with-self-service.png)
 

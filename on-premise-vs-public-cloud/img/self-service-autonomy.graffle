@@ -53,7 +53,7 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
-			<string>{{285.37176530217528, 73.999999046325684}, {121, 14}}</string>
+			<string>{{311.37176530217528, 73.999999046325684}, {95, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -93,7 +93,7 @@
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 High self-servicedness}</string>
+\f0\fs24 \cf0 Very self-serviced}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -249,7 +249,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{152.00000016545653, 74}, {119, 14}}</string>
+			<string>{{152.00000016545653, 74}, {90, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -289,7 +289,7 @@
 {\*\expandedcolortbl;;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Low self-servicedness}</string>
+\f0\fs24 \cf0 Not self-serviced}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -462,7 +462,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2018-02-06 17:38:54 +0000</string>
+	<string>2018-02-25 16:48:18 +0000</string>
 	<key>Modifier</key>
 	<string>Sveinung Dalatun</string>
 	<key>NotesVisible</key>

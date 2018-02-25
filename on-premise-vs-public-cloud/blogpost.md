@@ -21,7 +21,7 @@ As you can see above, processes that stretches over multiple teams will invariab
 
 ![With self-service](img/value-stream-with-self-service.png)
 
-If you want to optimize your teams for speed and throughput you should only use infrastructures that are fully self-serviced. If you still need to use an on-premise platform, you should at the very least invest enough into it that the development teams using it can do everything they need to do themselves without acting through intermediary operations people.
+If you want to optimize your teams for speed and throughput you should only use infrastructures that are fully self-serviced. If you still need to use an on-premise platform, you should at the very least invest enough into it that the development teams using it can do everything they need to do themselves without involving anyone outside the team.
 
 On-premise infrastructures can never compete with public cloud when it comes to their breadth of provided services. If you're stuck with on-premise and you suddenly realize that you need a service that the platform doesn't already provide (like a new kind of database) you'll have to wait for the operations department to accept the change request, prioritize it, learn the technology, and then get it up and running. All these extra things operations need to do to support a new technology is nothing but added costs and waiting compared to public cloud.
 

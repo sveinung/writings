@@ -47,7 +47,7 @@ Inside an organization you have two types of teams:
 
 Public cloud providers organize their services around [business outcomes](https://blogg.bekk.no/organizing-for-speed-17462894baf4). In-house operations departments organize around outputs as operations in itself is not what they sell to their customers, unless they are the operations department of Amazon or Google.
 
-Outcome oriented teams' budgets are directly influenced by how well their products and services perform. If they sell more their budgets should increase too to meet the extra demand. As the performance of product teams are so directly tied to the purpose (and profits if you are into money!) of the organization they will have an easier time justifying any budget increases compared to teams viewed as a cost center.
+Outcome oriented teams' budgets are directly influenced by how well their products and services perform. If they sell more, their budgets should increase too to meet the extra demand. As the performance of product teams are so directly tied to the purpose (and profits if you are into money!) of the organization they will have an easier time justifying any budget increases compared to teams viewed as a cost center.
 
 ![Budgets related to product demand](img/product-demand-and-budget.png)
 

@@ -1,6 +1,6 @@
 # Booster 2018
 
-Tradisjonen tru reiste også denne våren ei lite gruppe bekkarar til Bergen for å dela av kompetansen sin. For den uinnvidde er Booster ein veldig anleis konferanse som har eit veldig sterkt fokus på workshops, korte foredrag og alt for mykje mat. Minn meg på å ta ein ekstra joggetur når eg kjem tilbake til Oslo.
+Tradisjonen tru reiste også denne våren ei lite gruppe bekkarar til Bergen for å dela av kompetansen sin. For den uinnvidde er [Booster](https://2018.boosterconf.no/) ein veldig anleis konferanse som har eit veldig sterkt fokus på workshops, korte foredrag og alt for mykje mat. Minn meg på å ta ein ekstra joggetur når eg kjem tilbake til Oslo.
 
 Frå BEKK var me fem fagstaute fagfolk. Alle saman med foredrag.
 

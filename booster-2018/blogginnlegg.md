@@ -49,4 +49,4 @@ På fredagen då fredagskjensla var som sterkast var Erlend og eg på ein worksh
 
 ![Døme på A-Frame](a-frame.png)
 
-Sjølve [VR-appen](https://sveinung.github.io/a-frame-test/) er lagt ut på [GitHub](https://github.com/sveinung/a-frame-test). Trykk `W`, `A`, `S` og `D` for å gå rundt. Trykk `Space` for å utføra eit dårlig hopp. Kulare på mobil enn PC.
+Sjølve [VR-appen](https://sveinung.github.io/a-frame-test/) er lagt ut i eit [GitHub-repo](https://github.com/sveinung/a-frame-test). Trykk `W`, `A`, `S` og `D` for å gå rundt. Trykk `Space` for å utføra eit dårlig hopp. Kulare på mobil enn PC.

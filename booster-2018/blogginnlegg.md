@@ -48,3 +48,5 @@ Tim Berglund, kjend frå sal 1 på JavaZone, hadde ein [introworkshop](https://g
 På fredagen då fredagskjensla var som sterkast var Erlend og eg på ein workshop i [A-Frame](https://aframe.io/), som er eit webrammeverk for å lage VR-innhald. Definitivt det artigaste eg har gjort med HTML på lenge. Det var sjukt vanskelig å følga med på workshopen og samstundes halda sine eigne fjolletendensar i sjakk.
 
 ![Døme på A-Frame](a-frame.png)
+
+Sjølve [VR-appen](https://sveinung.github.io/a-frame-test/) er lagt ut på [GitHub](https://github.com/sveinung/a-frame-test). Trykk `W`, `A`, `S` og `D` for å gå rundt. Trykk `Space` for å utføra eit dårlig hopp. Kulare på mobil enn PC.

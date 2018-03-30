@@ -13,7 +13,12 @@ Eg har nokre gode nyhender! Folk som er meir kompetente enn deg vil mest sannsyn
 Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt eige ego bekrefta, men dei treng du ikkje lata sleppa til uansett. Spørsmålsrunden etter foredraget ditt kan du med fordel droppa – dei er _som regel ein dårlig idé_ uansett då folk lurer på ulike ting – så du treng ikkje frykte at den lokale altvitaren skal setta deg til veggs. Innviter heller til spørsmål etter foredraget på tomannshand. Då treng ikkje dei uinteresserte høyre på allskens obskure spørsmål, og altvitaren får ikkje endorfindosen sin av å få eit ufortjent publikum.
 
 
-### "Foredraget passer ikkje så godt inn på X"
+### "Folk har sikkert høyrt om dette før"
+
+Kor mange geniale idéar har vel ikkje menneskeslekta gått glipp av fordi opphavspersonen tenkte "Dette veit sikkert alle frå før av"? Tenk heller sånn: Om du brukte god tid på læra akkurat denne eine tingen så vil garantert mange andre bruke like lang tid. Del derfor utan skam og utan anger. Som eg sa over: Dei som kan det går forbi til neste ting. Dei som ikkje kan det blir opplyst av deg.
+
+
+### "Foredraget passer ikkje så godt inn på <Konferanse X>"
 
 Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje di – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn.
 

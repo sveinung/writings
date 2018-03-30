@@ -6,7 +6,7 @@ Med _bidrag_ meiner eg sånt som presentasjonar, blogginnlegg, artiklar, o.l.
 
 ## Myter som hindrer deg i å produsera
 
-### "Eg trur det finst andre som er meir skikka til å skrive/snakke om X"
+### "Det finst andre som er meir skikka til å skrive/snakke om temaet"
 
 Eg har nokre gode nyhender! Folk som er meir kompetente enn deg vil mest sannsynlig ikkje møte opp i salen (om det er eit foredrag) eller lesa innlegget (om det er ein artikkel). Kvifor skulle dei gjort det? Dei kan det jo frå før av!
 
@@ -18,9 +18,9 @@ Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt 
 Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje di – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn.
 
 
-### "Mitt bidrag er dårligare enn dei andre på X"
+### "Mitt bidrag er dårligare enn dei andre sine"
 
-Enten X er JavaZone eller blogg.bekk.no så høyrer eg støtt og stadig at folk held igjen fordi dei føler at det dei evner å produsere aldri vil bli så godt som det dei beste produserer. Folk flest går ikkje rundt og samanlikner foredraga eller blogginnlegga til andre etterpå. Eg gjer det i alle fall ikkje. Tviler på at særlig mange andre gjer det heller.
+Enten det er snakk om JavaZone eller blogg.bekk.no så høyrer eg støtt og stadig at folk held igjen fordi dei føler at det dei evner å produsere aldri vil bli så godt som det dei beste produserer. Folk flest går ikkje rundt og samanlikner foredraga eller blogginnlegga til andre etterpå. Eg gjer det i alle fall ikkje. Tviler på at særlig mange andre gjer det heller.
 
 Det vil alltid vera nokon andre på same plass som deg vekkjer mykkje meir [åtgaum](https://ordbok.uib.no/perl/ordbok.cgi?OPP=%C3%A5tgaum&nynorsk=+&ordbok=begge) enn deg med bidraga sine enn dine, men om dei hadde latt den same frykta hindre dei i å levera så hadde dei aldri blitt så gode heller. "Fake it 'til you make it" som me seier på nynorsk.
 

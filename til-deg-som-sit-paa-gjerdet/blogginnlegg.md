@@ -20,7 +20,7 @@ Kor mange geniale idéar har vel ikkje menneskeslekta gått glipp av fordi oppha
 
 ### "Foredraget passer ikkje så godt inn på <Konferanse X>"
 
-Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje di – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn.
+Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje du – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn.
 
 
 ### "Mitt bidrag er dårligare enn dei andre sine"

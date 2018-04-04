@@ -24,7 +24,7 @@ Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt 
 Kor mange geniale idéar har vel ikkje menneskeslekta gått glipp av fordi opphavspersonen tenkte "Dette veit sikkert alle frå før av"? Tenk heller sånn: Om du har brukt noko tid på læra akkurat denne eine tingen så vil garantert mange andre bruke like lang tid. Del derfor utan skam og utan anger. Som eg sa over: Dei som kan det frå før går forbi. Dei som ikkje kan det blir opplyst av _deg_.
 
 
-### "Foredraget passer ikkje så godt inn på <Konferanse X>"
+### "Foredraget passer ikkje så godt inn på Konferanse X"
 
 Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje du – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn. Stol litt på at programkomitéen gjer jobben sin.
 
@@ -38,21 +38,24 @@ Det vil alltid vera nokon andre på same plass som deg vekkjer mykkje meir [åtg
 
 ## Kort ned dørstokkmila
 
+Å gje seg sjølv riktig haldning er utan tvil det viktigaste steget. Skal ein gå gjennom døra kan ein ikkje vera redd ho. Men for å faktisk gidde å gå gjennom kan ein ved hjelp av eit knippe teknikkar gjera arbeidet enklare for seg sjølv.
+
+
 ### Splitt og hersk
 
 Mange tenker at ein presentasjon eller ein artikkel må dekka all verda for å kunne vera relevant. Ein ting er sikkert, det er ein fantastisk måte å aldri kome i mål på. Bryt heller opp i mindre leveransar. Tenk MVP og Lean Startup her også. Ingen hindrer deg i å utvide ein lyntale til eit foredrag eller eit 2-siders blogginnlegg til eit middels langt kvad i framtida.
 
 
+### Loggfør ting du har lært
+
+Skriv ned ting du lærer ein stad. Ved jamne mellomrom kan du gå over det du har lært i det siste og sjå etter mønster. Før du veit ordet av det har du allereie eit halvt blogginnlegg liggande. Tankearbeidet er fort meir enn halve jobben.
+
+
 ### Støtt andre som har bidratt!
 
-Ikkje la kjente og kjære sine bidrag gå uakta hen! Skryt av dei. Ikkje vér gniten med "like"-en. Fortel dei kva dei gjorde bra. Du vil på den måten auka sannsynet for at dei produserer meir og du auker synligheita på bidraget deira. Når det deretter er din tur til å bidra med noko så er du kanskje så heldig at dei gjengjeld tenesta.
+Ikkje la kjente og kjære sine bidrag gå uakta hen! Skryt av dei. Ikkje vér gniten med "like"-en. Fortel dei kva dei gjorde bra. Du vil på den måten auka sannsynet for at dei produserer meir og du auker synligheita på bidraget deira. Dette bidreg til å bygge ein tilbakemeldingskultur. Når det deretter er din tur til å bidra med noko så er du kanskje så heldig at dei gjengjeld tenesta.
 
-Rett etter på ukonstruktive negative tilbakemeldingar på skalaen over kjipe ting her i verda finn du _null tilbakemeldingar_ når du har lagt 40 timar ned i eit stykke arbeid. Litt konstruktivt skryt er betre løn enn ... vel, _løn_.
-
-
-### Skriv dagbok over ting du har lært
-
-Skriv ned ting du lærer ein stad. Ved jamne mellomrom kan du gå over det du har lært i det siste og sjå etter mønster. Før du veit ordet av det har du allereie eit halvt blogginnlegg liggande. Tankearbeidet er fort meir enn halve arbeidet.
+Rett etter _ukonstruktive negative tilbakemeldingar_ på skalaen over kjipe ting her i verda finn du _null tilbakemeldingar_ når du har lagt 40 timar ned i eit stykke arbeid. Litt konstruktivt skryt er betre løn enn ... vel, _løn_.
 
 
 ## Konklusjon

@@ -14,9 +14,9 @@ Det er flauare å blotta hjarta sitt framfor eit publikum enn den nakne kroppen 
 
 Eg har nokre gode nyhender! Folk som er meir kompetente enn deg vil mest sannsynlig ikkje møte opp i salen (om det er eit foredrag) eller lesa innlegget (om det er ein artikkel). Kvifor skal dei det? Dei kan det jo frå før av!
 
-Det er ikkje eingong sikkert at dei som eigentlig hadde vore betre skikka kjem til å sende inn den presentasjonen eller skrive det blogginnlegget. Resultatet blir då at ein heil del uheldige sjeler må klara seg utan å bli opplyst.
+Det er ikkje eingong sikkert at dei som eigentlig hadde vore betre skikka kjem til å sende inn den presentasjonen eller skrive det blogginnlegget. Resultatet blir då at ein heil del uheldige sjeler må klara seg utan å bli opplyst og verda blir desto fattigare.
 
-Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt eige ego bekrefta, men dei treng du ikkje lata sleppa til uansett. Spørsmålsrunden etter foredraget ditt kan du med fordel droppa – den er _som regel ein dårlig idé_ uansett då folk lurer på ulike ting – så du treng ikkje frykte at den lokale altvitaren skal setta deg til veggs. Innviter heller til spørsmål etter foredraget på tomannshand. Då treng ikkje dei uinteresserte høyre på allskens obskure spørsmål, og altvitaren får ikkje endorfindosen sin av å få eit ufortjent publikum.
+Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt eige ego bekrefta gjennom å stille usaklige spørsmål, men dei treng du ikkje lata sleppa til uansett. Spørsmålsrunden etter foredraget ditt kan du med fordel droppa. Den er _som regel ein dårlig idé_ uansett då folk lurer på ulike ting. Dermed treng du ikkje frykte at den lokale altvitaren skal setta deg til veggs. Innviter heller til spørsmål etter foredraget på tomannshand. Då treng ikkje dei uinteresserte høyre på allskens obskure spørsmål, og altvitaren får ikkje endorfindosen sin av å få eit ufortjent publikum.
 
 
 ### "Folk har sikkert høyrt om dette før"
@@ -53,7 +53,7 @@ Skriv ned ting du lærer ein stad. Ved jamne mellomrom kan du gå over det du ha
 
 ### Støtt andre som har bidratt!
 
-Ikkje la kjente og kjære sine bidrag gå uakta hen! Skryt av dei. Ikkje vér gniten med "like"-en. Fortel dei kva dei gjorde bra. Du vil på den måten auka sannsynet for at dei produserer meir og du auker synligheita på bidraget deira. Dette bidreg til å bygge ein tilbakemeldingskultur. Når det deretter er din tur til å bidra med noko så er du kanskje så heldig at dei gjengjeld tenesta.
+Ikkje la kjente og kjære sine bidrag gå uakta hen! Skryt av dei. Ikkje vér gniten med "like"-en. Fortel dei kva dei gjorde bra. Du vil på den måten auka sannsynet for at dei produserer meir og du gjer bidraget deira meir synleg. Dette bidreg til å bygge ein tilbakemeldingskultur. Når det deretter er din tur til å bidra med noko så er du kanskje så heldig at dei gjengjeld tenesta.
 
 Rett etter _ukonstruktive negative tilbakemeldingar_ på skalaen over kjipe ting her i verda finn du _null tilbakemeldingar_ når du har lagt 40 timar ned i eit stykke arbeid. Litt konstruktivt skryt er betre løn enn ... vel, _løn_.
 

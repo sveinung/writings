@@ -7,10 +7,10 @@ Med _bidrag_ meiner eg sånt som presentasjonar, blogginnlegg, artiklar, o.l.
 
 ## Myter som hindrer deg i å publisera
 
-Det er flauare å blotta hjarta sitt framfor eit publikum enn den nakne kroppen sin, men som regel har folk meir nytte av å høyra tankane dine enn av å sjå deg naken. Det er mange mørke tankar som hindrer oss i å opna oss og bidra med erfaringane våre.
+Det er flauare å blotta hjarta sitt framfor eit publikum enn den nakne kroppen sin, men som regel har folk meir nytte av å høyra tankane dine enn av å sjå deg naken. Det er mange mørke tankar som hindrer oss i å opna oss og bidra med erfaringane våre. Du har sikkert tenkt mange av dei sjølv. Du har ikkje vore åleina i å tenka dei.
 
 
-### "Det finst andre som er meir skikka til å skrive/snakke om temaet"
+### "Det finst andre som er meir skikka til å skrive eller snakke om temaet"
 
 Eg har nokre gode nyhender! Folk som er meir kompetente enn deg vil mest sannsynlig ikkje møte opp i salen (om det er eit foredrag) eller lesa innlegget (om det er ein artikkel). Kvifor skal dei det? Dei kan det jo frå før av!
 
@@ -24,7 +24,7 @@ Det finst sjølvsagt raringar som møter opp på foredrag berre for å få sitt 
 Kor mange geniale idéar har vel ikkje menneskeslekta gått glipp av fordi opphavspersonen tenkte "Dette veit sikkert alle frå før av"? Tenk heller sånn: Om du har brukt noko tid på læra akkurat denne eine tingen så vil garantert mange andre bruke like lang tid. Del derfor utan skam og utan anger. Som eg sa over: Dei som kan det frå før går forbi. Dei som ikkje kan det blir opplyst av _deg_.
 
 
-### "Foredraget passer ikkje så godt inn på Konferanse X"
+### "Foredraget passer ikkje så godt inn på konferansen"
 
 Det er programmkomitéen si oppgåve å vurdere om bidraget passer godt nok inn eller ei – ikkje du – så ikkje nøl. Du får alltid avslag på dei bidraga du ikkje sender inn. Stol litt på at programkomitéen gjer jobben sin.
 

@@ -2,6 +2,8 @@
 
 Med dette blogginnlegget vil eg motivera deg som sit på gjerdet til å publisera meir. Enten det er foredrag på konferansar eller blogginnlegg på Medium. Opp gjennom min eigen karriere har eg høyrt mange rasjonaliseringar frå folk som gjerne _vil_ bidra, men som av ymse årsakar overbeviser seg sjølv om at dei ikkje _kan_ bidra. Legg frå deg bedragarsyndromet og ikkje vér eit hinder for deg sjølv!
 
+![Alt text](framside.jpg)
+
 Med _bidrag_ meiner eg sånt som presentasjonar, blogginnlegg, artiklar, o.l.
 
 
